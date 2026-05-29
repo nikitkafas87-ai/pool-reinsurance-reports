@@ -1,17 +1,17 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-29 16:30 +03:00",
+  "updatedAt": "2026-05-29 16:41 +03:00",
   "dev": [
     {
-      "date": "2026-05-29 16:11 +03:00",
+      "date": "2026-05-29 16:41 +03:00",
       "environment": "Dev-with-Test-DB",
-      "title": "Pool cache - Dev - 2026-05-29 итог запуска",
+      "title": "Pool cache - Dev - итог завершенного запуска",
       "slug": "2026-05-29-1611-dev-pool-check",
       "href": "cache/dev/2026-05-29-1611-dev-pool-check/",
-      "alias": "Absolut, Alfa, Reso",
-      "status": "working",
-      "lastResult": "passed",
-      "summary": "Единый очищенный снимок ДЭВ-кеша после запуска: рабочие replay-ready источники для Absolut, Alfa, Reso."
+      "alias": "Absolut, Alfa, Gelios, Reso, Soglasie; Energogarant stale",
+      "status": "mixed",
+      "lastResult": "5 working, 3 stale",
+      "summary": "Очищенный снимок ДЭВ-кэша: рабочие replay-ready источники для Absolut, Alfa, Gelios, Reso, Soglasie; три нерабочих источника Energogarant помечены stale."
     }
   ],
   "prod": []

@@ -1,16 +1,16 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-29 16:30 +03:00",
+  "updatedAt": "2026-05-29 16:41 +03:00",
   "dev": [
     {
       "date": "2026-05-29 16:11 +03:00",
       "environment": "Dev-with-Test-DB",
-      "title": "Pool check - Dev - 2026-05-29 итог запуска",
+      "title": "Pool check - Dev - итог завершенного запуска",
       "slug": "2026-05-29-1611-dev-pool-check",
       "href": "reports/dev/2026-05-29-1611-dev-pool-check/",
       "insurers": "22 approved insurers",
       "status": "manual_check_required",
-      "summary": "Единый итоговый отчет по ДЭВ-прогону: активный pass для Absolut, Alfa, Reso; историческая бизнес-обработка OK для Absolut, Alfa, Energogarant, Gelios, Soglasie, Reso; по остальным СК нет активного положительного воспроизведения или найдены только отрицательные признаки."
+      "summary": "Единый итоговый отчет: 5 активных положительных проверок прошли; Energogarant после 3 валидных попыток не воспроизвел положительный признак; по остальным СК нет подтвержденного источника или только отрицательные признаки."
     }
   ],
   "prod": []
