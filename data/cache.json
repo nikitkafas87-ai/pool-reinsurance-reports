@@ -1,7 +1,18 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-29 15:36 +03:00",
+  "updatedAt": "2026-05-29 16:11 +03:00",
   "dev": [
+    {
+      "date": "2026-05-29 16:11 +03:00",
+      "environment": "Dev-with-Test-DB",
+      "title": "Pool cache - Dev - payload extraction fixed",
+      "slug": "2026-05-29-1611-dev-payload-extraction-fix",
+      "href": "cache/dev/2026-05-29-1611-dev-payload-extraction-fix/",
+      "alias": "Absolut, Alfa, Reso",
+      "status": "working",
+      "lastResult": "passed",
+      "summary": "Sanitized snapshot after adding replay-ready Alfa and Reso sources via chunked PublicApiLogs extraction."
+    },
     {
       "date": "2026-05-29 15:36 +03:00",
       "environment": "Dev-with-Test-DB",

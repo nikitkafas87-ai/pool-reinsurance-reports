@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ДЭВ пул - фикс извлечения PublicApiLogs</title>
+<style>
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:#f5f7fa;color:#172033}
+main{max-width:1180px;margin:0 auto;padding:28px 20px 44px}
+h1{font-size:26px;margin:0 0 8px}
+h2{font-size:18px;margin:28px 0 10px}
+.meta{color:#667085;margin:0 0 18px}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.stat,.section{background:#fff;border:1px solid #e3e7ed;border-radius:8px;padding:14px}
+.stat b{display:block;font-size:22px;margin-bottom:4px}
+.stat span{font-size:12px;color:#667085}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #e3e7ed;border-radius:8px;overflow:hidden}
+th{background:#243447;color:#fff;text-align:left;font-size:12px;padding:10px;white-space:nowrap}
+td{font-size:13px;padding:10px;border-top:1px solid #eef1f5;vertical-align:top}
+code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:#eef2f6;border-radius:4px;padding:1px 4px}
+.pill{display:inline-block;border-radius:999px;padding:3px 8px;font-size:12px;background:#edf2f7;color:#344054}
+.passed{background:#e7f7ed;color:#126b39}
+.blocked{background:#fff4df;color:#8a5a00}
+ul{padding-left:20px}
+@media(max-width:780px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}table{display:block;overflow-x:auto}}
+</style>
+</head>
+<body>
+<main>
+  <h1>ДЭВ проверка пула: извлечение PublicApiLogs исправлено</h1>
+  <p class="meta">Дата: 2026-05-29 16:11 +03:00. Среда: Dev-with-Test-DB. Базы: <code>InsappLogTest</code>, <code>InsappCoreTest</code>. Кеш: <code>active-source-cache.test.json</code>.</p>
+
+  <div class="grid">
+    <div class="stat"><b>2</b><span>СК активно воспроизведены этим прогоном</span></div>
+    <div class="stat"><b>4/4</b><span>метода Public API прошли успешно</span></div>
+    <div class="stat"><b>3</b><span>рабочих источника теперь в ДЭВ кеше</span></div>
+    <div class="stat"><b>passed</b><span>статус фикса извлечения</span></div>
+  </div>
+
+  <h2>Что исправлено</h2>
+  <div class="section">
+    <p>Добавлен локальный извлекатель <code>extract_public_api_flow.py</code>: он вызывает DB MCP напрямую, получает <code>PublicApiLogs.RequestBody</code> как UTF-16LE base64 кусками, собирает тело локально и проверяет JSON. Ручное копирование длинного тела анкеты больше не требуется.</p>
+    <p>Добавлен повторитель <code>replay_public_api_flow.py</code>: он берет восстановленный поток, создает новую заявку, заменяет <code>ApplicationId</code> в следующих запросах и выполняет исходную последовательность Public API.</p>
+  </div>
+
+  <h2>Проверенный источник</h2>
+  <table>
+    <thead><tr><th>Параметр</th><th>Значение</th></tr></thead>
+    <tbody>
+      <tr><td>Источник</td><td><code>08debd5c-1138-0e89-bee7-4316cc091392</code></td></tr>
+      <tr><td>Новая заявка</td><td><code>08debd83-c1b8-c2bb-bee7-430ff000f316</code></td></tr>
+      <tr><td>Восстановленный поток</td><td><code>New</code>, <code>SetStatusWidgetDisplayed</code>, <code>SendOsagoApplication</code>, <code>SendToInsurers</code></td></tr>
+      <tr><td>Результат API</td><td>Все 4 метода вернули <code>200 - OK</code> и <code>result=true</code>.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Положительные признаки</h2>
+  <table>
+    <thead><tr><th>СК</th><th>Лог</th><th>Признак</th><th>Время</th><th>Итог</th></tr></thead>
+    <tbody>
+      <tr><td>Alfa</td><td><code>AlfaLogs</code></td><td><code>"reinsurance":true</code></td><td>2026-05-29 16:11:24 +03:00</td><td><span class="pill passed">passed</span></td></tr>
+      <tr><td>Reso</td><td><code>ResoLogs</code></td><td><code>Calculate2Response/ns2:Commission=0.0</code></td><td>2026-05-29 16:11:18 +03:00</td><td><span class="pill passed">passed</span></td></tr>
+    </tbody>
+  </table>
+
+  <h2>Core обработка</h2>
+  <table>
+    <thead><tr><th>СК</th><th>InsurerId</th><th>Оффер</th><th>Обязательный кросс</th><th>Итог</th></tr></thead>
+    <tbody>
+      <tr><td>Alfa</td><td><code>CDA9423C-A34D-4752-87D3-47DEFEC5CB56</code></td><td><code>OfferStatusTypeId=5</code>, <code>OfferTypeId=7</code>, премия 7824.70</td><td><code>UpsaleType=4</code>, <code>IsOptional=false</code>, 2000.00</td><td><span class="pill passed">OK</span></td></tr>
+      <tr><td>Reso</td><td><code>25EA32F4-0337-45B7-8C9A-50D3D4A84471</code></td><td><code>OfferStatusTypeId=5</code>, <code>OfferTypeId=7</code>, премия 8324.70</td><td><code>UpsaleType=16</code>, <code>IsOptional=false</code>, 2500.00</td><td><span class="pill passed">OK</span></td></tr>
+    </tbody>
+  </table>
+
+  <h2>Кеш</h2>
+  <ul>
+    <li>В <code>active-source-cache.test.json</code> добавлены рабочие replay-ready источники для <code>Alfa</code> и <code>Reso</code>.</li>
+    <li>Теперь ДЭВ кеш содержит рабочие источники для <code>Absolut</code>, <code>Alfa</code>, <code>Reso</code>.</li>
+    <li>Сырые тела запросов, base64, API-ключи и персональные данные не публикуются в отчете.</li>
+  </ul>
+</main>
+</body>
+</html>
