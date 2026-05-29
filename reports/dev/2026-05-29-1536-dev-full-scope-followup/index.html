@@ -30,19 +30,19 @@ ul{padding-left:20px}
 <body>
 <main>
   <h1>ДЭВ проверка перестраховочного пула: полный охват</h1>
-  <p class="meta">Дата: 2026-05-29 15:36 +03:00. Среда: Dev-with-Test-DB. Базы: <code>InsappLogTest</code>, <code>InsappCoreTest</code>. Кеш: <code>active-source-cache.test.json</code>.</p>
+  <p class="meta">Дата: 2026-05-29 15:36 +03:00. Обновлено: 2026-05-29 15:50 +03:00. Среда: Dev-with-Test-DB. Базы: <code>InsappLogTest</code>, <code>InsappCoreTest</code>. Кеш: <code>active-source-cache.test.json</code>.</p>
 
   <div class="grid">
     <div class="stat"><b>22</b><span>СК в утвержденном списке</span></div>
     <div class="stat"><b>6</b><span>СК с недавними Core перестраховочными офферами</span></div>
-    <div class="stat"><b>5</b><span>исторических источников с бизнес-обработкой OK</span></div>
+    <div class="stat"><b>6</b><span>исторических источников с бизнес-обработкой OK</span></div>
     <div class="stat"><b>manual_check_required</b><span>общий статус</span></div>
   </div>
 
   <h2>Короткий итог</h2>
   <div class="section">
     <p>Полный активный прогон всех 22 СК не завершен: после успешного <code>Absolut</code> ручной перенос тела анкеты из MCP-ответа повредил JSON при попытке активного дубля <code>Alfa/Reso</code>. Эта попытка не засчитана.</p>
-    <p>При этом по историческим свежим заявкам проверена бизнес-обработка для <code>Absolut</code>, <code>Alfa</code>, <code>Energogarant</code>, <code>Gelios</code>, <code>Soglasie</code>: нарушений в Core не найдено.</p>
+    <p>При этом по историческим свежим заявкам проверена бизнес-обработка для <code>Absolut</code>, <code>Alfa</code>, <code>Energogarant</code>, <code>Gelios</code>, <code>Soglasie</code>, <code>Reso</code>: нарушений в Core не найдено.</p>
   </div>
 
   <h2>Активная заявка</h2>
@@ -63,7 +63,7 @@ ul{padding-left:20px}
       <tr><td>Energogarant</td><td><code>08debd60-6da3-610e-bee7-4316cc093330</code></td><td>Пул <code>is_reinsurance=true</code>; Core: <code>OfferStatusTypeId=3</code>, <code>OfferTypeId=4</code>.</td><td><span class="pill passed">OK</span></td></tr>
       <tr><td>Gelios</td><td><code>08debcc2-e6be-072c-bee7-4316cc074b3e</code></td><td>Пул <code>isReinsured=true</code>; Core: статус 5, тип 7, обязательный кросс <code>UpsaleType=3</code>, <code>IsOptional=false</code>.</td><td><span class="pill passed">OK</span></td></tr>
       <tr><td>Soglasie</td><td><code>08debbdd-bb4d-c3e1-bee7-43277c009ebd</code></td><td>Пул <code>param/id=6463/result=1</code>; Core: статус 5, тип 7, обязательный кросс <code>UpsaleType=18</code>, <code>IsOptional=false</code>.</td><td><span class="pill passed">OK</span></td></tr>
-      <tr><td>Reso</td><td><code>08debd5c-1138-0e89-bee7-4316cc091392</code></td><td>Core: статус 5, тип 7, обязательный кросс <code>UpsaleType=16</code>, <code>IsOptional=false</code>; в <code>ResoLogs</code> явный текстовый признак пула не найден.</td><td><span class="pill blocked">manual_check_required</span></td></tr>
+      <tr><td>Reso</td><td><code>08debd5c-1138-0e89-bee7-4316cc091392</code></td><td>Пул <code>Calculate2Response/ns2:Commission=0.0</code>; Core: статус 5, тип 7, добровольный кросс переведен в обязательный сценарий: <code>UpsaleType=16</code>, <code>IsOptional=false</code>.</td><td><span class="pill passed">OK</span></td></tr>
     </tbody>
   </table>
 
@@ -72,6 +72,7 @@ ul{padding-left:20px}
     <thead><tr><th>Группа</th><th>Результат</th></tr></thead>
     <tbody>
       <tr><td>Известные точные правила, расширение до 30 дней</td><td>Для <code>Ingos</code>, <code>Intouch</code>, <code>Maks</code>, <code>Renis</code>, <code>Sovkom</code>, <code>Ugoria</code>, <code>Zetta</code> положительный источник не найден. <code>Intouch</code> и <code>Renis</code> медленные: около 17.8с и 6.5с.</td></tr>
+      <tr><td>Reso</td><td>Новый точный признак: ответ <code>Calculate2Response</code> с <code>&lt;ns2:Commission&gt;0.0&lt;/ns2:Commission&gt;</code>. За период с 2026-05-15 найдено 296 строк по 281 заявке; последний сигнал 2026-05-29 14:41:09 +03:00.</td></tr>
       <tr><td>astrovolga</td><td>Найдено только <code>transferToPool:false</code>. Положительного <code>true</code> за 14 дней нет.</td></tr>
       <tr><td>Pari</td><td>Найдено только <code>reinsurance:false</code>. Положительного <code>true</code> за 14 дней нет.</td></tr>
       <tr><td>BSO</td><td>Найдено <code>is_reinsurance:"false"</code> и ошибки <code>reinsurance resolving error</code>. Подтвержденного положительного значения нет.</td></tr>
@@ -82,7 +83,7 @@ ul{padding-left:20px}
   <h2>Что нужно улучшить</h2>
   <ul>
     <li>Сделать локальный извлекатель тел <code>PublicApiLogs</code> через MCP-совместимый безопасный формат, чтобы не переносить base64 руками.</li>
-    <li>Для <code>Reso</code> отдельно разобрать XML/схему ответа: Core показывает перестраховочный тип оффера, но явного логового признака пока нет.</li>
+    <li>Для <code>Reso</code> следующий шаг не поиск признака, а нормальная активная проверка после фикса извлечения тел <code>PublicApiLogs</code>: новый признак уже определен как <code>Commission=0.0</code>.</li>
     <li>Для <code>astrovolga</code>, <code>Pari</code>, <code>BSO</code> сохранить найденные отрицательные поля как кандидаты, но не считать их положительными без true-сэмпла.</li>
   </ul>
 </main>

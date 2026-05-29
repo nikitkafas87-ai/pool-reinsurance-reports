@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-29 15:36 +03:00",
+  "updatedAt": "2026-05-29 15:50 +03:00",
   "dev": [
     {
       "date": "2026-05-29 15:36 +03:00",
@@ -10,7 +10,7 @@
       "href": "reports/dev/2026-05-29-1536-dev-full-scope-followup/",
       "insurers": "22 approved insurers",
       "status": "manual_check_required",
-      "summary": "Checked all approved log tables for the active duplicate, verified historical handling for 5 positive sources, and searched candidate signals for insurers without exact rules. Full active replay is blocked by payload extraction."
+      "summary": "Checked all approved log tables for the active duplicate, verified historical handling for 6 positive sources including Reso Commission=0.0, and searched candidate signals for insurers without exact rules. Full active replay is blocked by payload extraction."
     },
     {
       "date": "2026-05-29 15:05 +03:00",
