@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ДЭВ проверка перестраховочного пула - итог</title>
+<style>
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:#f5f7fa;color:#172033}
+main{max-width:1240px;margin:0 auto;padding:28px 20px 44px}
+h1{font-size:26px;margin:0 0 8px}
+h2{font-size:18px;margin:28px 0 10px}
+.meta{color:#667085;margin:0 0 18px}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.stat,.section{background:#fff;border:1px solid #e3e7ed;border-radius:8px;padding:14px}
+.stat b{display:block;font-size:22px;margin-bottom:4px}
+.stat span{font-size:12px;color:#667085}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #e3e7ed;border-radius:8px;overflow:hidden}
+th{background:#243447;color:#fff;text-align:left;font-size:12px;padding:10px;white-space:nowrap}
+td{font-size:13px;padding:10px;border-top:1px solid #eef1f5;vertical-align:top}
+code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:#eef2f6;border-radius:4px;padding:1px 4px}
+.pill{display:inline-block;border-radius:999px;padding:3px 8px;font-size:12px;background:#edf2f7;color:#344054}
+.passed{background:#e7f7ed;color:#126b39}
+.blocked{background:#fff4df;color:#8a5a00}
+.failed{background:#fdecec;color:#a12626}
+.note{border-left:4px solid #2f6fed;background:#eef4ff;padding:10px 12px;border-radius:6px}
+ul{padding-left:20px}
+@media(max-width:780px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}table{display:block;overflow-x:auto}}
+</style>
+</head>
+<body>
+<main>
+  <h1>ДЭВ проверка перестраховочного пула: итог одного запуска</h1>
+  <p class="meta">Период работы: 2026-05-29 15:05-16:11 +03:00. Среда: Dev-with-Test-DB. Базы: <code>InsappLogTest</code>, <code>InsappCoreTest</code>. Кеш: <code>active-source-cache.test.json</code>.</p>
+
+  <div class="grid">
+    <div class="stat"><b>22</b><span>СК в утвержденном списке</span></div>
+    <div class="stat"><b>3</b><span>активно воспроизведены</span></div>
+    <div class="stat"><b>6</b><span>проверена бизнес-обработка</span></div>
+    <div class="stat"><b>manual_check_required</b><span>общий статус</span></div>
+  </div>
+
+  <h2>Итог</h2>
+  <div class="section">
+    <p>В рамках одного ДЭВ-прогона подтверждены активные положительные признаки пула для <code>Absolut</code>, <code>Alfa</code>, <code>Reso</code>. Для <code>Energogarant</code>, <code>Gelios</code>, <code>Soglasie</code> подтверждена корректная историческая бизнес-обработка свежих источников.</p>
+    <p>Проблема с безопасным извлечением тела анкеты из <code>PublicApiLogs</code> решена: добавлены локальные скрипты chunked base64 extraction + replay, и на новой заявке <code>08debd83-c1b8-c2bb-bee7-430ff000f316</code> успешно воспроизведены <code>Alfa</code> и <code>Reso</code>.</p>
+    <p>Общий статус не переведен в <code>passed</code>, потому что весь список из 22 СК не имеет активного положительного воспроизведения: по части СК нет подтвержденного источника, по части найдены только отрицательные признаки.</p>
+  </div>
+
+  <h2>Активные проверки</h2>
+  <table>
+    <thead><tr><th>СК</th><th>Источник</th><th>Новая заявка</th><th>Признак в логе</th><th>Core обработка</th><th>Итог</th></tr></thead>
+    <tbody>
+      <tr><td>Absolut</td><td><code>08debd78-85e4-e64c-bee7-4317b405f3b7</code></td><td><code>08debd7a-4a80-8045-bee7-4317b405fa40</code></td><td><code>reinsurance=true</code></td><td><code>OfferStatusTypeId=3</code>, <code>OfferTypeId=4</code>, ожидаемый отказ</td><td><span class="pill passed">passed</span></td></tr>
+      <tr><td>Alfa</td><td><code>08debd5c-1138-0e89-bee7-4316cc091392</code></td><td><code>08debd83-c1b8-c2bb-bee7-430ff000f316</code></td><td><code>"reinsurance":true</code></td><td><code>OfferStatusTypeId=5</code>, <code>OfferTypeId=7</code>, обязательный кросс <code>UpsaleType=4</code>, <code>IsOptional=false</code></td><td><span class="pill passed">passed</span></td></tr>
+      <tr><td>Reso</td><td><code>08debd5c-1138-0e89-bee7-4316cc091392</code></td><td><code>08debd83-c1b8-c2bb-bee7-430ff000f316</code></td><td><code>Calculate2Response/ns2:Commission=0.0</code></td><td><code>OfferStatusTypeId=5</code>, <code>OfferTypeId=7</code>, обязательный кросс <code>UpsaleType=16</code>, <code>IsOptional=false</code></td><td><span class="pill passed">passed</span></td></tr>
+    </tbody>
+  </table>
+
+  <h2>Историческая бизнес-обработка</h2>
+  <table>
+    <thead><tr><th>СК</th><th>Источник</th><th>Проверка</th><th>Итог</th></tr></thead>
+    <tbody>
+      <tr><td>Absolut</td><td><code>08debd78-85e4-e64c-bee7-4317b405f3b7</code></td><td>Пул привел к отказу: <code>OfferStatusTypeId=3</code>, <code>OfferTypeId=4</code>.</td><td><span class="pill passed">OK</span></td></tr>
+      <tr><td>Alfa</td><td><code>08debd5c-1138-0e89-bee7-4316cc091392</code></td><td>Пул одобрен только с обязательным кроссом <code>UpsaleType=4</code>, <code>IsOptional=false</code>.</td><td><span class="pill passed">OK</span></td></tr>
+      <tr><td>Energogarant</td><td><code>08debd60-6da3-610e-bee7-4316cc093330</code></td><td>Пул привел к отказу: <code>OfferStatusTypeId=3</code>, <code>OfferTypeId=4</code>.</td><td><span class="pill passed">OK</span></td></tr>
+      <tr><td>Gelios</td><td><code>08debcc2-e6be-072c-bee7-4316cc074b3e</code></td><td>Пул одобрен только с обязательным кроссом <code>UpsaleType=3</code>, <code>IsOptional=false</code>.</td><td><span class="pill passed">OK</span></td></tr>
+      <tr><td>Soglasie</td><td><code>08debbdd-bb4d-c3e1-bee7-43277c009ebd</code></td><td>Пул одобрен только с обязательным кроссом <code>UpsaleType=18</code>, <code>IsOptional=false</code>.</td><td><span class="pill passed">OK</span></td></tr>
+      <tr><td>Reso</td><td><code>08debd5c-1138-0e89-bee7-4316cc091392</code></td><td>Пул <code>Commission=0.0</code> одобрен только с обязательным кроссом <code>UpsaleType=16</code>, <code>IsOptional=false</code>.</td><td><span class="pill passed">OK</span></td></tr>
+    </tbody>
+  </table>
+
+  <h2>Общий охват СК</h2>
+  <table>
+    <thead><tr><th>СК</th><th>Что известно по итогам прогона</th><th>Статус</th></tr></thead>
+    <tbody>
+      <tr><td>Absolut</td><td>Активно воспроизведен положительный признак <code>reinsurance=true</code>; Core отказал корректно.</td><td><span class="pill passed">active passed</span></td></tr>
+      <tr><td>Alfa</td><td>Активно воспроизведен <code>"reinsurance":true</code>; Core дал аппрув только с обязательным кроссом.</td><td><span class="pill passed">active passed</span></td></tr>
+      <tr><td>Reso</td><td>Активно воспроизведен <code>Commission=0.0</code>; Core дал аппрув только с обязательным кроссом.</td><td><span class="pill passed">active passed</span></td></tr>
+      <tr><td>Energogarant</td><td>Есть свежий исторический источник <code>is_reinsurance=true</code>; Core отказал корректно. Активный replay еще не выполнен.</td><td><span class="pill blocked">historical OK</span></td></tr>
+      <tr><td>Gelios</td><td>Есть свежий исторический источник <code>isReinsured=true</code>; Core дал аппрув только с обязательным кроссом. Активный replay еще не выполнен.</td><td><span class="pill blocked">historical OK</span></td></tr>
+      <tr><td>Soglasie</td><td>Есть свежий исторический источник <code>param/id=6463/result=1</code>; Core дал аппрув только с обязательным кроссом. Активный replay еще не выполнен.</td><td><span class="pill blocked">historical OK</span></td></tr>
+      <tr><td>Ingos, Intouch, Maks, Renis, Sovkom, Ugoria, Zetta</td><td>По известным точным правилам положительный источник не найден при расширении до 30 дней; <code>Intouch</code> и <code>Renis</code> медленные на запросах.</td><td><span class="pill blocked">source not found</span></td></tr>
+      <tr><td>astrovolga</td><td>Найден только отрицательный признак <code>transferToPool:false</code>.</td><td><span class="pill blocked">negative only</span></td></tr>
+      <tr><td>Pari</td><td>Найден только отрицательный признак <code>reinsurance:false</code>.</td><td><span class="pill blocked">negative only</span></td></tr>
+      <tr><td>BSO</td><td>Найдены <code>is_reinsurance:"false"</code> и ошибки <code>reinsurance resolving error</code>; положительного значения нет.</td><td><span class="pill blocked">negative/error only</span></td></tr>
+      <tr><td>AlfaDec, Rgs, Sber, Sogaz, Tinkoff, Vsk</td><td>Широких совпадений <code>pool/reinsur/перестрах</code> за 14 дней не найдено.</td><td><span class="pill blocked">no signal found</span></td></tr>
+    </tbody>
+  </table>
+
+  <h2>Кеш и инструменты</h2>
+  <ul>
+    <li>В ДЭВ-кеше теперь 3 рабочих источника: <code>Absolut</code>, <code>Alfa</code>, <code>Reso</code>.</li>
+    <li>Добавлены скрипты <code>extract_public_api_flow.py</code> и <code>replay_public_api_flow.py</code>; ручное копирование тел анкет больше не используется.</li>
+    <li>Сырые тела запросов, base64, API-ключи и персональные данные не публикуются.</li>
+  </ul>
+</main>
+</body>
+</html>

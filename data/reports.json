@@ -1,36 +1,16 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-29 16:11 +03:00",
+  "updatedAt": "2026-05-29 16:30 +03:00",
   "dev": [
     {
       "date": "2026-05-29 16:11 +03:00",
       "environment": "Dev-with-Test-DB",
-      "title": "Pool check - Dev - PublicApiLogs payload extraction fixed",
-      "slug": "2026-05-29-1611-dev-payload-extraction-fix",
-      "href": "reports/dev/2026-05-29-1611-dev-payload-extraction-fix/",
-      "insurers": "Alfa, Reso",
-      "status": "passed",
-      "summary": "Chunked MCP extraction and local replay fixed the PublicApiLogs payload issue. New application 08debd83-c1b8-c2bb-bee7-430ff000f316 reproduced Alfa and Reso positive pool signals with correct required-cross handling."
-    },
-    {
-      "date": "2026-05-29 15:36 +03:00",
-      "environment": "Dev-with-Test-DB",
-      "title": "Pool check - Dev - full scope follow-up",
-      "slug": "2026-05-29-1536-dev-full-scope-followup",
-      "href": "reports/dev/2026-05-29-1536-dev-full-scope-followup/",
+      "title": "Pool check - Dev - 2026-05-29 итог запуска",
+      "slug": "2026-05-29-1611-dev-pool-check",
+      "href": "reports/dev/2026-05-29-1611-dev-pool-check/",
       "insurers": "22 approved insurers",
       "status": "manual_check_required",
-      "summary": "Checked all approved log tables for the active duplicate, verified historical handling for 6 positive sources including Reso Commission=0.0, and searched candidate signals for insurers without exact rules. Payload extraction blocker was fixed in the later 16:11 report."
-    },
-    {
-      "date": "2026-05-29 15:05 +03:00",
-      "environment": "Dev-with-Test-DB",
-      "title": "Pool check - Dev - Absolut active passed, scope partial",
-      "slug": "2026-05-29-1505-dev-absolut-partial",
-      "href": "reports/dev/2026-05-29-1505-dev-absolut-partial/",
-      "insurers": "Absolut; sources found for Alfa, Energogarant, Gelios, Soglasie",
-      "status": "manual_check_required",
-      "summary": "Absolut reproduced exact pool signal and correct declined offer. Full 22-insurer scope needs additional active runs and source expansion."
+      "summary": "Единый итоговый отчет по ДЭВ-прогону: активный pass для Absolut, Alfa, Reso; историческая бизнес-обработка OK для Absolut, Alfa, Energogarant, Gelios, Soglasie, Reso; по остальным СК нет активного положительного воспроизведения или найдены только отрицательные признаки."
     }
   ],
   "prod": []

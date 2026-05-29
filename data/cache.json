@@ -1,39 +1,17 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-29 16:11 +03:00",
+  "updatedAt": "2026-05-29 16:30 +03:00",
   "dev": [
     {
       "date": "2026-05-29 16:11 +03:00",
       "environment": "Dev-with-Test-DB",
-      "title": "Pool cache - Dev - payload extraction fixed",
-      "slug": "2026-05-29-1611-dev-payload-extraction-fix",
-      "href": "cache/dev/2026-05-29-1611-dev-payload-extraction-fix/",
+      "title": "Pool cache - Dev - 2026-05-29 итог запуска",
+      "slug": "2026-05-29-1611-dev-pool-check",
+      "href": "cache/dev/2026-05-29-1611-dev-pool-check/",
       "alias": "Absolut, Alfa, Reso",
       "status": "working",
       "lastResult": "passed",
-      "summary": "Sanitized snapshot after adding replay-ready Alfa and Reso sources via chunked PublicApiLogs extraction."
-    },
-    {
-      "date": "2026-05-29 15:36 +03:00",
-      "environment": "Dev-with-Test-DB",
-      "title": "Pool cache - Dev - full scope follow-up",
-      "slug": "2026-05-29-1536-dev-full-scope-followup",
-      "href": "cache/dev/2026-05-29-1536-dev-full-scope-followup/",
-      "alias": "Absolut",
-      "status": "working",
-      "lastResult": "passed",
-      "summary": "Sanitized snapshot after the full-scope follow-up. Cache still has one working Absolut source."
-    },
-    {
-      "date": "2026-05-29 15:05 +03:00",
-      "environment": "Dev-with-Test-DB",
-      "title": "Pool cache - Dev - Absolut working source",
-      "slug": "2026-05-29-1505-dev-absolut-partial",
-      "href": "cache/dev/2026-05-29-1505-dev-absolut-partial/",
-      "alias": "Absolut",
-      "status": "working",
-      "lastResult": "passed",
-      "summary": "Sanitized snapshot of the test cache after successful Absolut active reproduction."
+      "summary": "Единый очищенный снимок ДЭВ-кеша после запуска: рабочие replay-ready источники для Absolut, Alfa, Reso."
     }
   ],
   "prod": []
