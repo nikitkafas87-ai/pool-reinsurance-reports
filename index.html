@@ -75,7 +75,7 @@ function statusClass(status) {
   const value = String(status || "").toLowerCase();
   if (value === "passed" || value === "working") return "passed";
   if (value.startsWith("failed") || value === "stale" || value === "invalid") return "failed";
-  if (value.startsWith("blocked") || value === "needsrefresh") return "blocked";
+  if (value.startsWith("blocked") || value === "needsrefresh" || value === "manual_check_required") return "blocked";
   return "";
 }
 
@@ -83,12 +83,12 @@ function statBlock(items) {
   const total = items.length;
   const passed = items.filter(x => x.status === "passed" || x.status === "working").length;
   const failed = items.filter(x => String(x.status || "").startsWith("failed") || x.status === "stale" || x.status === "invalid").length;
-  const blocked = items.filter(x => String(x.status || "").startsWith("blocked") || x.status === "needsRefresh").length;
+  const blocked = items.filter(x => String(x.status || "").startsWith("blocked") || x.status === "needsRefresh" || x.status === "manual_check_required").length;
   return `<div class="summary">
     <div class="stat"><b>${total}</b><span>Всего</span></div>
     <div class="stat"><b>${passed}</b><span>Успешно / рабочие</span></div>
     <div class="stat"><b>${failed}</b><span>Ошибки / устарели</span></div>
-    <div class="stat"><b>${blocked}</b><span>Блокировки / обновить</span></div>
+    <div class="stat"><b>${blocked}</b><span>Блокировки / ручная проверка</span></div>
   </div>`;
 }
 

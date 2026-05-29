@@ -1,6 +1,17 @@
 {
   "version": 1,
-  "updatedAt": null,
-  "dev": [],
+  "updatedAt": "2026-05-29 15:05 +03:00",
+  "dev": [
+    {
+      "date": "2026-05-29 15:05 +03:00",
+      "environment": "Dev-with-Test-DB",
+      "title": "Pool check - Dev - Absolut active passed, scope partial",
+      "slug": "2026-05-29-1505-dev-absolut-partial",
+      "href": "reports/dev/2026-05-29-1505-dev-absolut-partial/",
+      "insurers": "Absolut; sources found for Alfa, Energogarant, Gelios, Soglasie",
+      "status": "manual_check_required",
+      "summary": "Absolut reproduced exact pool signal and correct declined offer. Full 22-insurer scope needs additional active runs and source expansion."
+    }
+  ],
   "prod": []
 }

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ДЭВ проверка пула - 2026-05-29</title>
+<style>
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:#f5f7fa;color:#172033}
+main{max-width:1120px;margin:0 auto;padding:28px 20px 44px}
+h1{font-size:26px;margin:0 0 8px}
+h2{font-size:18px;margin:28px 0 10px}
+p{line-height:1.5}
+.meta{color:#667085;margin:0 0 18px}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.stat,.section{background:#fff;border:1px solid #e3e7ed;border-radius:8px;padding:14px}
+.stat b{display:block;font-size:22px;margin-bottom:4px}
+.stat span{font-size:12px;color:#667085}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #e3e7ed;border-radius:8px;overflow:hidden}
+th{background:#243447;color:#fff;text-align:left;font-size:12px;padding:10px;white-space:nowrap}
+td{font-size:13px;padding:10px;border-top:1px solid #eef1f5;vertical-align:top}
+code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:#eef2f6;border-radius:4px;padding:1px 4px}
+.pill{display:inline-block;border-radius:999px;padding:3px 8px;font-size:12px;background:#edf2f7;color:#344054}
+.passed{background:#e7f7ed;color:#126b39}
+.blocked{background:#fff4df;color:#8a5a00}
+.note{border-left:4px solid #2f6fed;background:#eef4ff;padding:10px 12px;border-radius:6px}
+ul{padding-left:20px}
+@media(max-width:780px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}table{display:block;overflow-x:auto}}
+</style>
+</head>
+<body>
+<main>
+  <h1>ДЭВ проверка перестраховочного пула</h1>
+  <p class="meta">Дата прогона: 2026-05-29 15:05 +03:00. Среда: Dev-with-Test-DB. Базы: <code>InsappLogTest</code>, <code>InsappCoreTest</code>. Кеш: <code>active-source-cache.test.json</code>.</p>
+
+  <div class="grid">
+    <div class="stat"><b>22</b><span>СК в утвержденном списке</span></div>
+    <div class="stat"><b>5</b><span>найдены точные источники за 14 дней</span></div>
+    <div class="stat"><b>1</b><span>активный дубль выполнен полностью</span></div>
+    <div class="stat"><b>manual_check_required</b><span>общий статус прогона</span></div>
+  </div>
+
+  <h2>Итог</h2>
+  <div class="section">
+    <p><b>Absolut</b> прошел полный активный сценарий: новая заявка создана, анкета отправлена, расчет запущен, в логе СК найден точный положительный признак пула, в Core найден отказной перестраховочный оффер.</p>
+    <p class="note">Общий прогон помечен как <code>manual_check_required</code>, потому что остальные найденные источники пока не были активно воспроизведены, а по части СК нужен динамический поиск старше 14 дней или уточнение точного признака.</p>
+  </div>
+
+  <h2>Найденные источники</h2>
+  <table>
+    <thead><tr><th>СК</th><th>Источник</th><th>Дата сигнала</th><th>Таблица</th><th>Статус</th></tr></thead>
+    <tbody>
+      <tr><td>Absolut</td><td><code>08debd78-85e4-e64c-bee7-4317b405f3b7</code></td><td>2026-05-29T14:50:52.9748509+03:00</td><td>AbsolutLogs</td><td><span class="pill passed">passed</span></td></tr>
+      <tr><td>Alfa</td><td><code>08debd64-8b86-7a9d-7346-1c8f1c031481</code></td><td>2026-05-29T12:27:50.4097406+03:00</td><td>AlfaLogs</td><td><span class="pill blocked">manual_check_required</span>: по свежему источнику не найден PublicApiLogs-поток</td></tr>
+      <tr><td>Energogarant</td><td><code>08debd60-6da3-610e-bee7-4316cc093330</code></td><td>2026-05-29T11:59:51.1048058+03:00</td><td>EnergogarantLogs</td><td><span class="pill blocked">manual_check_required</span>: поток найден, активный дубль не запускался</td></tr>
+      <tr><td>Gelios</td><td><code>08debcc2-e6be-072c-bee7-4316cc074b3e</code></td><td>2026-05-28T17:10:44.2464344+03:00</td><td>GeliosLogs</td><td><span class="pill blocked">manual_check_required</span>: поток найден, активный дубль не запускался</td></tr>
+      <tr><td>Soglasie</td><td><code>08debbdd-bb4d-c3e1-bee7-43277c009ebd</code></td><td>2026-05-27T13:51:00.5114989+03:00</td><td>SoglasieLogs</td><td><span class="pill blocked">manual_check_required</span>: поток найден, активный дубль не запускался</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Активная проверка Absolut</h2>
+  <table>
+    <thead><tr><th>Пункт самопроверки</th><th>Результат</th></tr></thead>
+    <tbody>
+      <tr><td>Новая заявка</td><td><code>08debd7a-4a80-8045-bee7-4317b405fa40</code></td></tr>
+      <tr><td>Public API</td><td><code>New</code>, <code>SendOsagoApplication</code>, <code>SendToInsurers</code> зафиксированы в <code>PublicApiLogs</code> с <code>200 - OK</code>.</td></tr>
+      <tr><td>Лог СК</td><td><code>AbsolutLogs</code> для точной новой заявки содержит <code>"reinsurance":"true"</code>.</td></tr>
+      <tr><td>Core offer</td><td><code>OfferId=08debd7a-8e3e-3ad3-bee7-4317b405faf5</code>, <code>InsurerId=1F836F31-CF6A-4324-B513-462D4DBEA401</code>, <code>OfferStatusTypeId=3</code>, <code>OfferTypeId=4</code>, премия <code>9542.24</code>.</td></tr>
+      <tr><td>Бизнес-ожидание</td><td>Для обычного пула ожидается отказ. Фактический статус оффера: отказ. <span class="pill passed">passed</span></td></tr>
+      <tr><td>Кеш</td><td>Источник сохранен как <code>working</code> в тестовом кеше с полным потоком для повтора.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Не покрыто этим прогоном</h2>
+  <ul>
+    <li>За 14 дней не найден точный источник для <code>Ingos</code>, <code>Intouch</code>, <code>Maks</code>, <code>Renis</code>, <code>Sovkom</code>, <code>Ugoria</code>, <code>Zetta</code>; динамическое расширение периода не выполнялось.</li>
+    <li>Для <code>AlfaDec</code>, <code>astrovolga</code>, <code>Reso</code>, <code>Rgs</code>, <code>Sber</code>, <code>Sogaz</code>, <code>Tinkoff</code>, <code>Vsk</code>, <code>BSO</code>, <code>Pari</code> в скилле пока нет точного положительного шаблона, поэтому активный источник нельзя выбирать надежно.</li>
+    <li>Объединенный поиск по нескольким таблицам за 14 дней получил таймаут. Поиск надо выполнять по таблицам отдельно.</li>
+  </ul>
+
+  <h2>Улучшения для скилла</h2>
+  <ul>
+    <li>Для локального активного прогона тестовой среды пробовать <code>https://test-api.insapp.pro</code>, если <code>http://test-api.insapp.pro</code> возвращает HTTP 405.</li>
+    <li>Добавить технический помощник для извлечения PublicApiLogs-тел в локальный временный файл без ручного копирования base64 из ответа MCP.</li>
+    <li>Разделить поиск источников по таблицам и фиксировать время выполнения каждого запроса; объединенный запрос по многим таблицам не использовать.</li>
+    <li>Явно помечать СК без точного положительного шаблона как требующие ручного уточнения правила, а не пытаться брать источник из широких совпадений.</li>
+  </ul>
+</main>
+</body>
+</html>

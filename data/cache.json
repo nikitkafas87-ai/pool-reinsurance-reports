@@ -1,6 +1,18 @@
 {
   "version": 1,
-  "updatedAt": null,
-  "dev": [],
+  "updatedAt": "2026-05-29 15:05 +03:00",
+  "dev": [
+    {
+      "date": "2026-05-29 15:05 +03:00",
+      "environment": "Dev-with-Test-DB",
+      "title": "Pool cache - Dev - Absolut working source",
+      "slug": "2026-05-29-1505-dev-absolut-partial",
+      "href": "cache/dev/2026-05-29-1505-dev-absolut-partial/",
+      "alias": "Absolut",
+      "status": "working",
+      "lastResult": "passed",
+      "summary": "Sanitized snapshot of the test cache after successful Absolut active reproduction."
+    }
+  ],
   "prod": []
 }
