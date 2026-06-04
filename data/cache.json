@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-29 16:41 +03:00",
+  "updatedAt": "2026-06-05 00:45",
   "dev": [
     {
       "date": "2026-05-29 16:41 +03:00",
@@ -14,5 +14,16 @@
       "summary": "Очищенный снимок ДЭВ-кэша: рабочие replay-ready источники для Absolut, Alfa, Gelios, Reso, Soglasie; три нерабочих источника Energogarant помечены stale."
     }
   ],
-  "prod": []
+  "prod": [
+    {
+      "date": "2026-06-05 00:45",
+      "environment": "Prod",
+      "title": "Cache snapshot - Prod - active sources",
+      "slug": "2026-06-05-0025-prod-active-pool",
+      "href": "cache/prod/2026-06-05-0025-prod-active-pool/",
+      "alias": "Absolut, Alfa, Gelios, Ingos, Energogarant, Reso, Soglasie, Ugoria",
+      "status": "working",
+      "lastResult": "8 working Prod replay sources added"
+    }
+  ]
 }

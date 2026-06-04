@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-29 16:41 +03:00",
+  "updatedAt": "2026-06-05 00:45",
   "dev": [
     {
       "date": "2026-05-29 16:11 +03:00",
@@ -13,5 +13,16 @@
       "summary": "Единый итоговый отчет: 5 активных положительных проверок прошли; Energogarant после 3 валидных попыток не воспроизвел положительный признак; по остальным СК нет подтвержденного источника или только отрицательные признаки."
     }
   ],
-  "prod": []
+  "prod": [
+    {
+      "date": "2026-06-05 00:45",
+      "environment": "Prod",
+      "title": "Pool check - Prod - active full scope",
+      "slug": "2026-06-05-0025-prod-active-pool",
+      "href": "reports/prod/2026-06-05-0025-prod-active-pool/",
+      "insurers": "approved full scope",
+      "status": "failed_pool_not_reproduced",
+      "summary": "8 passed, 1 failed_pool_not_reproduced, 4 blocked_no_source, 9 manual_check_required"
+    }
+  ]
 }
