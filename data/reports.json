@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-05 00:45",
+  "updatedAt": "2026-06-05 09:53",
   "dev": [
     {
       "date": "2026-05-29 16:11 +03:00",
@@ -15,14 +15,14 @@
   ],
   "prod": [
     {
-      "date": "2026-06-05 00:45",
+      "date": "2026-06-05 09:53",
       "environment": "Prod",
-      "title": "Pool check - Prod - active full scope",
+      "title": "Пул ОСАГО - Prod - активный полный список",
       "slug": "2026-06-05-0025-prod-active-pool",
       "href": "reports/prod/2026-06-05-0025-prod-active-pool/",
-      "insurers": "approved full scope",
-      "status": "failed_pool_not_reproduced",
-      "summary": "8 passed, 1 failed_pool_not_reproduced, 4 blocked_no_source, 9 manual_check_required"
+      "insurers": "утвержденный список СК",
+      "status": "failed_offer_handling",
+      "summary": "9 пройдено, 1 пул не воспроизвелся, 1 ошибка обработки оффера, 11 без источника для активного прогона"
     }
   ]
 }
