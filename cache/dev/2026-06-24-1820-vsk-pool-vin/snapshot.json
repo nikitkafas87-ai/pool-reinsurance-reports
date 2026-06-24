@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "generatedAt": "2026-06-24 18:20 +03:00",
+  "environment": "Дев/тест",
+  "entries": [
+    {
+      "alias": "Vsk",
+      "status": "не промотирован в working",
+      "sourceApplicationId": "08debd78-85e4-e64c-bee7-4317b405f3b7",
+      "sourceAlias": "Absolut",
+      "sourceSignalDate": null,
+      "logTable": "VskLogs",
+      "signalPattern": "isReinsurance=true",
+      "insurerId": "36583f16-235c-42d6-8fce-b04aa6459730",
+      "lastUsedAt": "2026-06-24T18:17:22+03:00",
+      "lastResult": "Положительный признак ВСК воспроизведен, но Core offer обработан ошибочно",
+      "lastPositiveAt": "2026-06-24T18:17:22.6249979+03:00",
+      "lastPositiveNewApplicationId": "08ded203-a9d1-96c2-bee7-4339b001bcdc",
+      "lastOfferResult": "OfferStatusTypeId=5, OfferTypeId=1, PremiumAmount=9542.24",
+      "notes": "Сырые тела запросов и API-ключи исключены. Источник не сохранен как working, потому что обязательная самопроверка не прошла на бизнес-обработке оффера."
+    }
+  ]
+}

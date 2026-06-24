@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-24 16:35",
+  "updatedAt": "2026-06-24 18:20",
   "dev": [
     {
       "date": "2026-05-29 16:11 +03:00",
@@ -21,6 +21,16 @@
       "insurers": "полный утвержденный список СК",
       "status": "пул не воспроизведен",
       "summary": "9 пройдено, 1 пул не воспроизведен, 12 без источника, 0 ручных проверок"
+    },
+    {
+      "date": "2026-06-24 18:20",
+      "environment": "Дев/тест",
+      "title": "Проверка пула ОСАГО - ВСК - VIN-маркер",
+      "slug": "2026-06-24-1820-vsk-pool-vin",
+      "href": "reports/dev/2026-06-24-1820-vsk-pool-vin/",
+      "insurers": "Vsk",
+      "status": "ошибка обработки оффера",
+      "summary": "VIN Z8TXTGF2WHM035428 воспроизвел isReinsurance=true в VskLogs, но Core offer остался OfferStatusTypeId=5 и OfferTypeId=1."
     }
   ],
   "prod": [
