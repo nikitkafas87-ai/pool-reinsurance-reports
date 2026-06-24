@@ -1,28 +1,27 @@
 {
-  "version": 1,
-  "updatedAt": "2026-06-05 09:53",
+  "updatedAt": "2026-06-24 16:35",
   "dev": [
     {
-      "date": "2026-05-29 16:11 +03:00",
-      "environment": "Dev-with-Test-DB",
-      "title": "Pool check - Dev - итог завершенного запуска",
-      "slug": "2026-05-29-1611-dev-pool-check",
-      "href": "reports/dev/2026-05-29-1611-dev-pool-check/",
-      "insurers": "22 approved insurers",
-      "status": "manual_check_required",
-      "summary": "Единый итоговый отчет: 5 активных положительных проверок прошли; Energogarant после 3 валидных попыток не воспроизвел положительный признак; по остальным СК нет подтвержденного источника или только отрицательные признаки."
+      "date": "2026-06-24 16:35",
+      "environment": "Dev/Test",
+      "title": "Pool check - Dev - active full scope",
+      "slug": "2026-06-24-dev-active-pool",
+      "href": "reports/dev/2026-06-24-dev-active-pool/",
+      "insurers": "approved full scope",
+      "status": "failed_pool_not_reproduced",
+      "summary": "9 passed, 1 failed_pool_not_reproduced, 12 blocked_no_source, 0 manual_check_required"
     }
   ],
   "prod": [
     {
-      "date": "2026-06-05 09:53",
+      "date": "2026-06-05 00:25",
       "environment": "Prod",
-      "title": "Пул ОСАГО - Prod - активный полный список",
+      "title": "Pool check - Prod - active full scope",
       "slug": "2026-06-05-0025-prod-active-pool",
       "href": "reports/prod/2026-06-05-0025-prod-active-pool/",
-      "insurers": "утвержденный список СК",
-      "status": "failed_offer_handling",
-      "summary": "9 пройдено, 1 пул не воспроизвелся, 1 ошибка обработки оффера, 11 без источника для активного прогона"
+      "insurers": "approved full scope",
+      "status": "manual_check_required",
+      "summary": "7 passed, 2 failed_pool_not_reproduced, 4 blocked_no_source, 9 manual_check_required"
     }
   ]
 }

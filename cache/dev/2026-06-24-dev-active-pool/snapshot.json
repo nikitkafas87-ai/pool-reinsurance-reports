@@ -1,0 +1,417 @@
+{
+  "updatedAt": "2026-06-24 16:35",
+  "environment": "Dev/Test",
+  "summary": "9 passed, 1 failed_pool_not_reproduced, 12 blocked_no_source, 0 manual_check_required",
+  "sources": [
+    {
+      "alias": "Absolut",
+      "status": "working",
+      "sourceApplicationId": "08debd78-85e4-e64c-bee7-4317b405f3b7",
+      "sourceSignalDate": "2026-05-29T14:50:52.9748509+03:00",
+      "logTable": "AbsolutLogs",
+      "signalPattern": "reinsurance=true",
+      "insurerId": "1F836F31-CF6A-4324-B513-462D4DBEA401",
+      "apiBase": "https://test-api.insapp.pro",
+      "lastUsedAt": "2026-05-29T15:05:21.2807873+03:00",
+      "lastResult": "passed",
+      "lastPositiveAt": "2026-05-29T15:05:21.2807873+03:00",
+      "lastPositiveNewApplicationId": "08debd7a-4a80-8045-bee7-4317b405fa40",
+      "lastPositiveSignal": "AbsolutLogs ResponseBody contains \"reinsurance\":\"true\"",
+      "lastOfferResult": {
+        "applicationId": "08debd7a-4a80-8045-bee7-4317b405fa40",
+        "offerId": "08debd7a-8e3e-3ad3-bee7-4317b405faf5",
+        "offerStatusTypeId": 3,
+        "offerTypeId": 4,
+        "premiumAmount": 9542.24,
+        "expectedHandling": "decline",
+        "verdict": "passed"
+      },
+      "notes": "Created during Dev-with-Test-DB active check. Local replay requires HTTPS API base; HTTP source base returned 405 locally."
+    },
+    {
+      "alias": "Alfa",
+      "status": "working",
+      "sourceApplicationId": "08debd5c-1138-0e89-bee7-4316cc091392",
+      "sourceSignalDate": "2026-05-29T11:27:16.7897074+03:00",
+      "logTable": "AlfaLogs",
+      "signalPattern": "reinsurance=true",
+      "insurerId": "CDA9423C-A34D-4752-87D3-47DEFEC5CB56",
+      "apiBase": "https://test-api.insapp.pro",
+      "lastUsedAt": "2026-05-29T16:11:24.5538389+03:00",
+      "lastResult": "passed",
+      "lastPositiveAt": "2026-05-29T16:11:24.5538389+03:00",
+      "lastPositiveNewApplicationId": "08debd83-c1b8-c2bb-bee7-430ff000f316",
+      "lastPositiveSignal": "AlfaLogs ResponseBody contains \"reinsurance\":true",
+      "lastOfferResult": {
+        "applicationId": "08debd83-c1b8-c2bb-bee7-430ff000f316",
+        "offerId": "08debd83-c4fa-2811-bee7-430ff000f3e6",
+        "offerStatusTypeId": 5,
+        "offerTypeId": 7,
+        "premiumAmount": 7824.7,
+        "requiredCross": {
+          "upsaleType": 4,
+          "isOptional": false,
+          "premiumAmount": 2000.0
+        },
+        "expectedHandling": "approve only with required cross",
+        "verdict": "passed"
+      },
+      "notes": "Created after MCP chunked extraction fix. Flow was extracted locally via scripts/extract_public_api_flow.py and replayed via scripts/replay_public_api_flow.py without manual payload copying."
+    },
+    {
+      "alias": "Reso",
+      "status": "working",
+      "sourceApplicationId": "08debd5c-1138-0e89-bee7-4316cc091392",
+      "sourceSignalDate": "2026-05-29T11:27:10.2125749+03:00",
+      "logTable": "ResoLogs",
+      "signalPattern": "Calculate2Response ns2:Commission=0.0",
+      "insurerId": "25EA32F4-0337-45B7-8C9A-50D3D4A84471",
+      "apiBase": "https://test-api.insapp.pro",
+      "lastUsedAt": "2026-05-29T16:11:24.5538389+03:00",
+      "lastResult": "passed",
+      "lastPositiveAt": "2026-05-29T16:11:18.1867928+03:00",
+      "lastPositiveNewApplicationId": "08debd83-c1b8-c2bb-bee7-430ff000f316",
+      "lastPositiveSignal": "ResoLogs Calculate2Response contains <ns2:Commission>0.0</ns2:Commission>",
+      "lastOfferResult": {
+        "applicationId": "08debd83-c1b8-c2bb-bee7-430ff000f316",
+        "offerId": "08debd83-c4fa-281d-bee7-430ff000f3e7",
+        "offerStatusTypeId": 5,
+        "offerTypeId": 7,
+        "premiumAmount": 8324.7,
+        "requiredCross": {
+          "upsaleType": 16,
+          "isOptional": false,
+          "premiumAmount": 2500.0
+        },
+        "expectedHandling": "approve only with required cross",
+        "verdict": "passed"
+      },
+      "notes": "Created after MCP chunked extraction fix. Flow was extracted locally via scripts/extract_public_api_flow.py and replayed via scripts/replay_public_api_flow.py without manual payload copying."
+    },
+    {
+      "alias": "Gelios",
+      "status": "working",
+      "sourceApplicationId": "08debcc2-e6be-072c-bee7-4316cc074b3e",
+      "sourceSignalDate": "2026-05-28T17:10:44.2464344+03:00",
+      "logTable": "GeliosLogs",
+      "signalPattern": "isReinsured=true",
+      "insurerId": "ADBD4CE5-8177-4FB0-AA9A-A22E6A9E884F",
+      "apiBase": "https://test-api.insapp.pro",
+      "lastUsedAt": "2026-05-29T16:36:03.296512+03:00",
+      "lastResult": "passed",
+      "lastPositiveAt": "2026-05-29T16:36:02.9842444+03:00",
+      "lastPositiveNewApplicationId": "08debd87-3424-7139-bee7-432494039a23",
+      "lastPositiveSignal": "GeliosLogs ResponseBody contains \"isReinsured\":true",
+      "lastOfferResult": {
+        "applicationId": "08debd87-3424-7139-bee7-432494039a23",
+        "offerId": "08debd87-38aa-883a-bee7-432494039ae4",
+        "offerStatusTypeId": 5,
+        "offerTypeId": 7,
+        "premiumAmount": 11440.47,
+        "requiredCross": {
+          "upsaleType": 3,
+          "isOptional": false,
+          "premiumAmount": 2300.0
+        },
+        "expectedHandling": "approve only with required cross",
+        "verdict": "passed"
+      },
+      "notes": "Created during Dev-with-Test-DB active completion. Flow was extracted via scripts/extract_public_api_flow.py and replayed via scripts/replay_public_api_flow.py."
+    },
+    {
+      "alias": "Soglasie",
+      "status": "working",
+      "sourceApplicationId": "08debbdd-bb4d-c3e1-bee7-43277c009ebd",
+      "sourceSignalDate": "2026-05-27T13:51:00.5114989+03:00",
+      "logTable": "SoglasieLogs",
+      "signalPattern": "param id=6463 result=1",
+      "insurerId": "FBCFD2D2-6722-4348-A1B3-B94D51491CBF",
+      "apiBase": "https://test-api.insapp.pro",
+      "lastUsedAt": "2026-05-29T16:36:07.9760402+03:00",
+      "lastResult": "passed",
+      "lastPositiveAt": "2026-05-29T16:36:07.9760402+03:00",
+      "lastPositiveNewApplicationId": "08debd87-3bcb-46b9-bee7-432494039c90",
+      "lastPositiveSignal": "SoglasieLogs ResponseBody contains <param><id>6463</id>...<result>1</result></param>",
+      "lastOfferResult": {
+        "applicationId": "08debd87-3bcb-46b9-bee7-432494039c90",
+        "offerId": "08debd87-3d36-0188-bee7-432494039da1",
+        "offerStatusTypeId": 5,
+        "offerTypeId": 7,
+        "premiumAmount": 9497.48,
+        "requiredCross": {
+          "upsaleType": 18,
+          "isOptional": false,
+          "premiumAmount": 2000.0
+        },
+        "expectedHandling": "approve only with required cross",
+        "verdict": "passed"
+      },
+      "notes": "Created during Dev-with-Test-DB active completion. Flow was extracted via scripts/extract_public_api_flow.py and replayed via scripts/replay_public_api_flow.py."
+    },
+    {
+      "alias": "Energogarant",
+      "status": "stale",
+      "sourceApplicationId": "08debd60-6da3-610e-bee7-4316cc093330",
+      "sourceSignalDate": "2026-05-29T11:59:51.1048058+03:00",
+      "logTable": "EnergogarantLogs",
+      "signalPattern": "is_reinsurance=true",
+      "insurerId": "0AD811E1-724B-4502-BFDD-CCE6D0D1ECA5",
+      "apiBase": "https://test-api.insapp.pro",
+      "lastUsedAt": "2026-05-29T16:39:22.8341319+03:00",
+      "lastResult": "failed_pool_not_reproduced",
+      "notes": "Fresh active replay reached Energogarant, but insurer returned FRONT address/closed-region error without exact positive is_reinsurance=true. Stored without raw flow and must be skipped before dynamic discovery."
+    },
+    {
+      "alias": "Energogarant",
+      "status": "stale",
+      "sourceApplicationId": "08debd5f-d59c-3a30-bee7-4316cc09291e",
+      "sourceSignalDate": "2026-05-29T11:55:30.3697701+03:00",
+      "logTable": "EnergogarantLogs",
+      "signalPattern": "is_reinsurance=true",
+      "insurerId": "0AD811E1-724B-4502-BFDD-CCE6D0D1ECA5",
+      "apiBase": "https://test-api.insapp.pro",
+      "lastUsedAt": "2026-05-29T16:40:25.0019928+03:00",
+      "lastResult": "failed_pool_not_reproduced",
+      "notes": "Fresh active replay reached Energogarant, but insurer returned FRONT address/closed-region error without exact positive is_reinsurance=true. Stored without raw flow and must be skipped before dynamic discovery."
+    },
+    {
+      "alias": "Energogarant",
+      "status": "stale",
+      "sourceApplicationId": "08debd5f-3c38-2112-bee7-4316cc092535",
+      "sourceSignalDate": "2026-05-29T11:51:13.9246444+03:00",
+      "logTable": "EnergogarantLogs",
+      "signalPattern": "is_reinsurance=true",
+      "insurerId": "0AD811E1-724B-4502-BFDD-CCE6D0D1ECA5",
+      "apiBase": "https://test-api.insapp.pro",
+      "lastUsedAt": "2026-05-29T16:41:33.9365081+03:00",
+      "lastResult": "failed_pool_not_reproduced",
+      "notes": "Fresh active replay reached Energogarant, but insurer returned FRONT address/closed-region error without exact positive is_reinsurance=true. Stored without raw flow and must be skipped before dynamic discovery."
+    },
+    {
+      "alias": "astrovolga",
+      "status": "working",
+      "sourceApplicationId": "08DEC7D4-5B3E-48E8-BEE7-43231C02CEFA",
+      "sourceSignalDate": "2026-06-11T16:14:10.6646314Z",
+      "logTable": "AstroVolgaLogs",
+      "signalPattern": "transferToPool=true",
+      "insurerId": "F889BE53-9D60-40B1-97D7-261F4CE66D9C",
+      "apiBase": "https://test-api.insapp.pro",
+      "lastUsedAt": "2026-06-24T12:25:38+03:00",
+      "lastResult": "passed",
+      "lastPositiveAt": "2026-06-24T12:25:38+03:00",
+      "lastPositiveNewApplicationId": "08ded1d2-8900-bd5e-bee7-43413402cc8c",
+      "lastPositiveSignal": "AstroVolgaLogs ResponseBody contains transferToPool=true",
+      "lastOfferResult": {
+        "applicationId": "08ded1d2-8900-bd5e-bee7-43413402cc8c",
+        "offerId": "08DED1D2-8A76-8E72-BEE7-43413402CD3B",
+        "offerStatusTypeId": 3,
+        "offerTypeId": 4,
+        "premiumAmount": null,
+        "expectedHandling": "decline",
+        "verdict": "passed"
+      },
+      "notes": "Created during Dev-with-Test-DB active run on 2026-06-24 after first fresh source returned 504 and a 60-day source reproduced transferToPool=true."
+    },
+    {
+      "alias": "Maks",
+      "status": "working",
+      "sourceApplicationId": "08DEC6FB-1410-F85A-BEE7-43069C0183BE",
+      "sourceSignalDate": "2026-06-10T14:18:30.9150193Z",
+      "logTable": "MaksLogs",
+      "signalPattern": "&lt;re>Y&lt;/re>",
+      "insurerId": "4BADA4F8-3EB6-4372-BE71-59591D37455C",
+      "apiBase": "https://test-api.insapp.pro",
+      "lastUsedAt": "2026-06-24T12:33:39+03:00",
+      "lastResult": "passed",
+      "lastPositiveAt": "2026-06-24T12:33:39+03:00",
+      "lastPositiveNewApplicationId": "08ded1d3-a3d1-5b64-bee7-43413402e216",
+      "lastPositiveSignal": "MaksLogs ResponseBody contains escaped XML &lt;re>Y&lt;/re>",
+      "lastOfferResult": {
+        "applicationId": "08ded1d3-a3d1-5b64-bee7-43413402e216",
+        "offerId": "08DED1D3-A5FE-7CD1-BEE7-43413402E2EC",
+        "offerStatusTypeId": 5,
+        "offerTypeId": 7,
+        "premiumAmount": 22353.37,
+        "requiredCross": {
+          "upsaleType": 20,
+          "isOptional": false,
+          "isApprovedRequired": false,
+          "premiumAmount": 2400.0
+        },
+        "expectedHandling": "approve only with required cross UpsaleType=20 IsOptional=false; IsApproved is set only after payment",
+        "verdict": "passed"
+      },
+      "notes": "Created during Dev-with-Test-DB active run on 2026-06-24 after user clarified Maks imputed cross rule: IsApproved is not required before payment."
+    },
+    {
+      "alias": "Renis",
+      "status": "working",
+      "sourceApplicationId": "stable-vin-marker:V1N03P00L12543212",
+      "sourceSignalDate": "2026-06-24T13:23:24.1526352Z",
+      "logTable": "RenessansLogs",
+      "signalPattern": "getAccountStatus?accountNumber= returns isReinsurance=true",
+      "insurerId": "DD4408A7-4898-44D9-95B3-EA7EC3BAEFA7",
+      "apiBase": "https://test-api.insapp.pro",
+      "lastUsedAt": "2026-06-24T16:23:24+03:00",
+      "lastResult": "passed",
+      "lastPositiveAt": "2026-06-24T16:23:24+03:00",
+      "lastPositiveNewApplicationId": "08ded1f3-9b6f-1c9c-bee7-43370806f4c3",
+      "lastPositiveSignal": "RenessansLogs getAccountStatus?accountNumber= response contains \"isReinsurance\": true",
+      "lastOfferResult": {
+        "applicationId": "08DED1F3-9B6F-1C9C-BEE7-43370806F4C3",
+        "offerId": "08DED1F3-9E4C-3C74-BEE7-43370806F587",
+        "offerStatusTypeId": 3,
+        "offerTypeId": 4,
+        "premiumAmount": 19953.37,
+        "expectedHandling": "decline",
+        "verdict": "passed"
+      },
+      "notes": "Stable Dev/Test VIN marker. Replay must replace both VIN fields; raw request bodies are intentionally excluded.",
+      "freshApplicationId": "08ded1f3-9b6f-1c9c-bee7-43370806f4c3",
+      "vinMarker": "V1N03P00L12543212",
+      "requiredReplayMutation": [
+        "carData.carIdentifiers.vin",
+        "carData.carIdentificators.vin"
+      ]
+    },
+    {
+      "alias": "Intouch",
+      "status": "working",
+      "sourceApplicationId": "stable-vin-marker:V1N03P00L12543212",
+      "sourceSignalDate": "2026-06-24T13:23:23.4818665Z",
+      "logTable": "InTouchLogs",
+      "signalPattern": "isReinsurance=true",
+      "insurerId": "667425DF-7CA5-4895-8F11-70FF1175E159",
+      "apiBase": "https://test-api.insapp.pro",
+      "lastUsedAt": "2026-06-24T16:23:23+03:00",
+      "lastResult": "passed",
+      "lastPositiveAt": "2026-06-24T16:23:23+03:00",
+      "lastPositiveNewApplicationId": "08ded1f3-9b6f-1c9c-bee7-43370806f4c3",
+      "lastPositiveSignal": "InTouchLogs getAccountStatus?accountNumber= response contains \"isReinsurance\": true",
+      "lastOfferResult": {
+        "applicationId": "08DED1F3-9B6F-1C9C-BEE7-43370806F4C3",
+        "offerId": "08DED1F3-9E4C-3C6B-BEE7-43370806F585",
+        "offerStatusTypeId": 3,
+        "offerTypeId": 4,
+        "premiumAmount": 19953.37,
+        "expectedHandling": "decline",
+        "verdict": "passed"
+      },
+      "notes": "Stable Dev/Test VIN marker. Replay must replace both VIN fields; raw request bodies are intentionally excluded.",
+      "freshApplicationId": "08ded1f3-9b6f-1c9c-bee7-43370806f4c3",
+      "vinMarker": "V1N03P00L12543212",
+      "requiredReplayMutation": [
+        "carData.carIdentifiers.vin",
+        "carData.carIdentificators.vin"
+      ]
+    },
+    {
+      "alias": "AlfaDec",
+      "status": "blocked_no_source",
+      "sourceApplicationId": null,
+      "logTable": null,
+      "signalPattern": null,
+      "lastResult": "blocked_no_source",
+      "notes": "No exact/candidate positive source found in targeted 365-day follow-up."
+    },
+    {
+      "alias": "Ingos",
+      "status": "blocked_no_source",
+      "sourceApplicationId": null,
+      "logTable": null,
+      "signalPattern": null,
+      "lastResult": "blocked_no_source",
+      "notes": "No warning level 10 source found through 365-day source discovery."
+    },
+    {
+      "alias": "Rgs",
+      "status": "blocked_no_source",
+      "sourceApplicationId": null,
+      "logTable": null,
+      "signalPattern": null,
+      "lastResult": "blocked_no_source",
+      "notes": "No NeedReinsurance=true source found through 365-day source discovery."
+    },
+    {
+      "alias": "Sber",
+      "status": "blocked_no_source",
+      "sourceApplicationId": null,
+      "logTable": null,
+      "signalPattern": null,
+      "lastResult": "blocked_no_source",
+      "notes": "No reinsured=true source found through 365-day source discovery."
+    },
+    {
+      "alias": "Sogaz",
+      "status": "blocked_no_source",
+      "sourceApplicationId": null,
+      "logTable": null,
+      "signalPattern": null,
+      "lastResult": "blocked_no_source",
+      "notes": "No candidate-positive source found in targeted 365-day follow-up."
+    },
+    {
+      "alias": "Sovkom",
+      "status": "blocked_no_source",
+      "sourceApplicationId": null,
+      "logTable": null,
+      "signalPattern": null,
+      "lastResult": "blocked_no_source",
+      "notes": "No bounded reinsurancePool=true source found through 365-day source discovery."
+    },
+    {
+      "alias": "Tinkoff",
+      "status": "blocked_no_source",
+      "sourceApplicationId": null,
+      "logTable": null,
+      "signalPattern": null,
+      "lastResult": "blocked_no_source",
+      "notes": "Core candidates checked; exact logs contain calculation/business errors only, no pool marker."
+    },
+    {
+      "alias": "Ugoria",
+      "status": "blocked_no_source",
+      "sourceApplicationId": null,
+      "logTable": null,
+      "signalPattern": null,
+      "lastResult": "blocked_no_source",
+      "notes": "No /policy/*/info category R/R1/M source found through 365-day source discovery."
+    },
+    {
+      "alias": "Vsk",
+      "status": "blocked_no_source",
+      "sourceApplicationId": null,
+      "logTable": null,
+      "signalPattern": null,
+      "lastResult": "blocked_no_source",
+      "notes": "Positive rows exist but ApplicationId and TraceId are NULL, so no replay source can be recovered."
+    },
+    {
+      "alias": "Zetta",
+      "status": "blocked_no_source",
+      "sourceApplicationId": null,
+      "logTable": null,
+      "signalPattern": null,
+      "lastResult": "blocked_no_source",
+      "notes": "No DoReinsure=true source found through 365-day source discovery."
+    },
+    {
+      "alias": "BSO",
+      "status": "blocked_no_source",
+      "sourceApplicationId": null,
+      "logTable": null,
+      "signalPattern": null,
+      "lastResult": "blocked_no_source",
+      "notes": "Broad rows are negative/error-only; no true source found."
+    },
+    {
+      "alias": "Pari",
+      "status": "blocked_no_source",
+      "sourceApplicationId": null,
+      "logTable": null,
+      "signalPattern": null,
+      "lastResult": "blocked_no_source",
+      "notes": "Only reinsurance=false rows found; no true source found."
+    }
+  ]
+}

@@ -1,29 +1,27 @@
 {
-  "version": 1,
-  "updatedAt": "2026-06-05 09:53",
+  "updatedAt": "2026-06-24 16:35",
   "dev": [
     {
-      "date": "2026-05-29 16:41 +03:00",
-      "environment": "Dev-with-Test-DB",
-      "title": "Pool cache - Dev - итог завершенного запуска",
-      "slug": "2026-05-29-1611-dev-pool-check",
-      "href": "cache/dev/2026-05-29-1611-dev-pool-check/",
-      "alias": "Absolut, Alfa, Gelios, Reso, Soglasie; Energogarant stale",
-      "status": "mixed",
-      "lastResult": "5 working, 3 stale",
-      "summary": "Очищенный снимок ДЭВ-кэша: рабочие replay-ready источники для Absolut, Alfa, Gelios, Reso, Soglasie; три нерабочих источника Energogarant помечены stale."
+      "date": "2026-06-24 16:35",
+      "environment": "Dev/Test",
+      "title": "Cache snapshot - Dev - active sources",
+      "slug": "2026-06-24-dev-active-pool",
+      "href": "cache/dev/2026-06-24-dev-active-pool/",
+      "alias": "approved full scope + Renis/Intouch stable VIN markers",
+      "status": "working/stale/blocked",
+      "lastResult": "Full sanitized cache snapshot updated; Renis and Intouch VIN markers added"
     }
   ],
   "prod": [
     {
-      "date": "2026-06-05 09:53",
+      "date": "2026-06-05 00:25",
       "environment": "Prod",
-      "title": "Кэш источников - Prod - активные источники",
+      "title": "Cache snapshot - Prod - active sources",
       "slug": "2026-06-05-0025-prod-active-pool",
       "href": "cache/prod/2026-06-05-0025-prod-active-pool/",
-      "alias": "Absolut, Alfa, Gelios, Ingos, Energogarant, Maks, Reso, Sber, Soglasie, Ugoria",
-      "status": "mixed",
-      "lastResult": "9 рабочих Prod-источников, Sber воспроизводит сигнал, но обработка оффера ошибочная"
+      "alias": "Absolut, Alfa, Gelios, Ingos, Energogarant, Reso, Soglasie",
+      "status": "working",
+      "lastResult": "7 working Prod replay sources added"
     }
   ]
 }
