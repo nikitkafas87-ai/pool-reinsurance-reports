@@ -5,55 +5,65 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ДЭВ проверка перестраховочного пула - итог</title>
 <style>
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:#f5f7fa;color:#172033}
-main{max-width:1280px;margin:0 auto;padding:28px 20px 44px}
-h1{font-size:26px;margin:0 0 8px}h2{font-size:18px;margin:28px 0 10px}
-.meta{color:#667085;margin:0 0 18px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
-.stat,.section{background:#fff;border:1px solid #e3e7ed;border-radius:8px;padding:14px}.stat b{display:block;font-size:22px;margin-bottom:4px}.stat span{font-size:12px;color:#667085}
-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #e3e7ed;border-radius:8px;overflow:hidden;margin-bottom:14px}
-th{background:#243447;color:#fff;text-align:left;font-size:12px;padding:10px;white-space:nowrap}
-td{font-size:13px;padding:10px;border-top:1px solid #eef1f5;vertical-align:top}
-code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:#eef2f6;border-radius:4px;padding:1px 4px}
-.pill{display:inline-block;border-radius:999px;padding:3px 8px;font-size:12px;background:#edf2f7;color:#344054;white-space:nowrap}
-.passed{background:#e7f7ed;color:#126b39}.blocked{background:#fff4df;color:#8a5a00}.failed{background:#fdecec;color:#a12626}
-.note{border-left:4px solid #d9822b;background:#fff8eb;padding:10px 12px;border-radius:6px}
-ul{padding-left:20px}
-@media(max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}table{display:block;overflow-x:auto}}
+
+:root{
+  color-scheme:light;
+  --bg:#f4f7fb; --panel:#ffffff; --ink:#172033; --muted:#667085; --line:#dfe6ef;
+  --header:#243447; --header-2:#162335; --ok:#147a4f; --ok-bg:#e6f7ee;
+  --warn:#9b6a19; --warn-bg:#fff4df; --bad:#ad3030; --bad-bg:#fdecec;
+  --info:#315d9c; --info-bg:#e9f1ff; --shadow:0 12px 30px rgba(23,32,51,.08);
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:linear-gradient(180deg,#eef3f9 0,#f7f9fc 260px,#f4f7fb 100%);color:var(--ink);line-height:1.45}
+body:before{content:"";position:fixed;inset:0 0 auto;height:240px;background:linear-gradient(135deg,#172033 0,#243447 58%,#315d9c 100%);z-index:-2}
+body:after{content:"";position:fixed;inset:0 0 auto;height:240px;background:radial-gradient(circle at 82% 18%,rgba(255,255,255,.16),transparent 28%);z-index:-1}
+main,.wrap{max-width:1360px;margin:0 auto;padding:28px 20px 46px} header{max-width:1360px;margin:0 auto;padding:30px 20px 18px;color:#fff;background:transparent;border:0} body > h1:first-child{max-width:1360px;margin:0 auto 10px;padding:30px 20px 0;color:#fff} body > h1:first-child + p{max-width:1360px;margin:0 auto;padding:0 20px;color:rgba(255,255,255,.82)} body > h1:first-child + p + p{max-width:1360px;margin:10px auto 0;padding:0 20px;color:rgba(255,255,255,.92)} body > h1:first-child + p + p a{color:#dbeafe;font-weight:700}
+h1{font-size:28px;line-height:1.15;margin:0 0 10px;letter-spacing:0;color:inherit} main > h1:first-child, main > .summary-strip + h1{color:#fff} main > h1:first-child + .meta, main > .summary-strip + h1 + .meta{color:rgba(255,255,255,.82)} h2{font-size:18px;margin:30px 0 12px;color:#172033} p{margin:8px 0;color:var(--muted)} header p, header .meta{color:rgba(255,255,255,.82)} .meta{color:var(--muted);margin:0 0 18px}
+a{color:#245aa6;text-decoration:none} a:hover{text-decoration:underline}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:18px 0 22px}.stat,.metric{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px;box-shadow:var(--shadow);overflow:hidden}.stat:before,.metric:before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:#315d9c}.stat:nth-child(2):before,.metric:nth-child(2):before{background:#147a4f}.stat:nth-child(3):before,.metric:nth-child(3):before{background:#d88a1d}.stat:nth-child(4):before,.metric:nth-child(4):before{background:#ad3030}.stat b,.metric b{display:block;font-size:25px;line-height:1.1;margin-bottom:6px;color:#162335}.stat span,.metric span{display:block;font-size:12px;color:var(--muted)}
+.section,section,.note,.report-card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px;box-shadow:var(--shadow)}section{margin-top:22px}.note{border-left:4px solid #d88a1d;background:#fffaf0;color:#4c350f}.note code{background:#fff0c6}
+.table-shell{position:relative;margin:0 0 18px;background:var(--panel);border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow);overflow:hidden}.table-wrap{overflow:auto;background:transparent;border:0;border-radius:0;box-shadow:none;margin:0}.table-scroll{overflow:auto;max-height:72vh}.table-tools{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;border-bottom:1px solid var(--line);background:#fff}.table-title{font-size:13px;font-weight:700;color:#344054;white-space:nowrap}.table-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}.table-search{width:240px;min-height:34px;border:1px solid #cfd8e3;border-radius:8px;padding:7px 10px;font:inherit;font-size:13px;background:#fff;color:var(--ink)}.table-search:focus{outline:2px solid rgba(49,93,156,.22);border-color:#315d9c}.filter-btn{min-height:34px;border:1px solid #cfd8e3;border-radius:999px;background:#fff;color:#344054;padding:6px 10px;font:inherit;font-size:12px;font-weight:700;cursor:pointer;transition:background .18s,border-color .18s,color .18s}.filter-btn:hover{background:#f2f6fb}.filter-btn.active{background:#243447;border-color:#243447;color:#fff}
+table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;min-width:980px;margin:0;border:0;border-radius:0;overflow:visible}th{position:sticky;top:0;z-index:1;background:var(--header);color:#fff;text-align:left;font-size:12px;font-weight:700;padding:11px 10px;white-space:nowrap;border:0;text-transform:none}td{font-size:13px;padding:10px;border-top:1px solid #eef1f5;vertical-align:top}tbody tr{transition:background .15s}tbody tr:hover{background:#f7fbff}tbody tr[hidden]{display:none}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:#eef2f6;border:1px solid #dfe6ef;border-radius:5px;padding:1px 5px;word-break:break-word}.pill,.badge{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 9px;font-size:12px;font-weight:700;white-space:nowrap}.pill:before,.badge:before{content:"";width:7px;height:7px;border-radius:999px;background:currentColor}.пройдено,.ok{background:var(--ok-bg);color:var(--ok)}.заблокировано,.warn{background:var(--warn-bg);color:var(--warn)}.ошибка,.bad{background:var(--bad-bg);color:var(--bad)}.manual{background:#eef1f6;color:#59637a}.устарел{background:var(--warn-bg);color:var(--warn)}
+ul{padding-left:20px}li{margin:7px 0}.summary-strip{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 20px;padding-top:2px}.summary-chip{background:rgba(255,255,255,.9);border:1px solid rgba(255,255,255,.35);color:#172033;border-radius:999px;padding:7px 11px;font-size:12px;font-weight:700;box-shadow:0 8px 20px rgba(23,32,51,.08)}
+@media(max-width:900px){header,main{padding-left:14px;padding-right:14px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.table-tools{align-items:flex-start;flex-direction:column}.table-actions{justify-content:flex-start}.table-search{width:min(100%,320px)}h1{font-size:24px}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}.filter-btn{padding:6px 8px}.table-search{width:100%}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.filter-btn,tbody tr{transition:none}}
+
 </style>
 </head>
 <body>
 <main>
+<div class="summary-strip"><span class="summary-chip">Единый стиль отчётов</span><span class="summary-chip">Интерактивные таблицы</span><span class="summary-chip">Публичные данные очищены</span></div>
 <h1>ДЭВ проверка перестраховочного пула: итог одного запуска</h1>
-<p class="meta">Период работы: 2026-05-29 15:05-16:41 +03:00. Среда: Dev-with-Test-DB. Базы: <code>InsappLogTest</code>, <code>InsappCoreTest</code>. Кэш: <code>active-source-cache.test.json</code>.</p>
+<p class="meta">Период работы: 2026-05-29 15:05-16:41 +03:00. Среда: дев с тестовыми БД. Базы: <code>InsappLogTest</code>, <code>InsappCoreTest</code>. Кэш: <code>active-source-cache.test.json</code>.</p>
 
 <div class="grid">
   <div class="stat"><b>22</b><span>СК в утвержденном списке</span></div>
   <div class="stat"><b>5</b><span>активно воспроизведены с положительным признаком</span></div>
   <div class="stat"><b>1</b><span>активно исчерпала 3 попытки без признака</span></div>
-  <div class="stat"><b>manual_check_required</b><span>общий статус по полному списку</span></div>
+  <div class="stat"><b>требуется ручная проверка</b><span>общий статус по полному списку</span></div>
 </div>
 
 <h2>Итог</h2>
 <div class="section">
-  <p>Активным методом закрыты все СК, по которым в этом прогоне были свежие исторические заявки с положительным признаком пула. <code>Absolut</code>, <code>Alfa</code>, <code>Gelios</code>, <code>Reso</code>, <code>Soglasie</code> прошли. <code>Energogarant</code> не воспроизвел положительный признак после трех валидных попыток и получил статус <code>failed_pool_not_reproduced</code>.</p>
-  <p>Общий статус всего запуска остается <code>manual_check_required</code>, потому что по части из 22 утвержденных СК не найден подтвержденный положительный источник для активного клонирования, а по <code>Energogarant</code> активное воспроизведение не подтвердило исторический признак.</p>
+  <p>Активным методом закрыты все СК, по которым в этом прогоне были свежие исторические заявки с положительным признаком пула. <code>Absolut</code>, <code>Alfa</code>, <code>Gelios</code>, <code>Reso</code>, <code>Soglasie</code> прошли. <code>Energogarant</code> не воспроизвел положительный признак после трех валидных попыток и получил статус <code>пул не воспроизведен</code>.</p>
+  <p>Общий статус всего запуска остается <code>требуется ручная проверка</code>, потому что по части из 22 утвержденных СК не найден подтвержденный положительный источник для активного клонирования, а по <code>Energogarant</code> активное воспроизведение не подтвердило исторический признак.</p>
   <p>Отчет обновлен как единая итоговая картина запуска. Отдельные промежуточные отчеты для частичных этапов не создавались.</p>
 </div>
 
 <h2>Активные успешные проверки</h2>
 <table>
-<thead><tr><th>СК</th><th>Источник</th><th>Новая заявка</th><th>API шаги</th><th>Точный признак</th><th>Core обработка</th><th>Итог</th></tr></thead>
+<thead><tr><th>СК</th><th>Источник</th><th>Новая заявка</th><th>API шаги</th><th>Точный признак</th><th>Ядро обработка</th><th>Итог</th></tr></thead>
 <tbody>
-<tr><td>Absolut</td><td><code>08debd78-85e4-e64c-bee7-4317b405f3b7</code></td><td><code>08debd7a-4a80-8045-bee7-4317b405fa40</code></td><td>New → SendOsagoApplication → SendToInsurers</td><td><code>reinsurance=true</code></td><td><code>OfferStatusTypeId=3</code>, <code>OfferTypeId=4</code>, ожидаемый отказ</td><td><span class="pill passed">passed</span></td></tr>
-<tr><td>Alfa</td><td><code>08debd5c-1138-0e89-bee7-4316cc091392</code></td><td><code>08debd83-c1b8-c2bb-bee7-430ff000f316</code></td><td>New → SetStatusWidgetDisplayed → SendOsagoApplication → SendToInsurers</td><td><code>"reinsurance":true</code></td><td><code>OfferStatusTypeId=5</code>, <code>OfferTypeId=7</code>, вмененный кросс <code>UpsaleType=4</code>, <code>IsOptional=false</code></td><td><span class="pill passed">passed</span></td></tr>
-<tr><td>Gelios</td><td><code>08debcc2-e6be-072c-bee7-4316cc074b3e</code></td><td><code>08debd87-3424-7139-bee7-432494039a23</code></td><td>New → SetStatusWidgetDisplayed → SendOsagoApplication → SendToInsurers</td><td><code>"isReinsured":true</code></td><td><code>OfferStatusTypeId=5</code>, <code>OfferTypeId=7</code>, вмененный кросс <code>UpsaleType=3</code>, <code>IsOptional=false</code></td><td><span class="pill passed">passed</span></td></tr>
-<tr><td>Reso</td><td><code>08debd5c-1138-0e89-bee7-4316cc091392</code></td><td><code>08debd83-c1b8-c2bb-bee7-430ff000f316</code></td><td>New → SetStatusWidgetDisplayed → SendOsagoApplication → SendToInsurers</td><td><code>Calculate2Response/ns2:Commission=0.0</code></td><td><code>OfferStatusTypeId=5</code>, <code>OfferTypeId=7</code>, вмененный кросс <code>UpsaleType=16</code>, <code>IsOptional=false</code></td><td><span class="pill passed">passed</span></td></tr>
-<tr><td>Soglasie</td><td><code>08debbdd-bb4d-c3e1-bee7-43277c009ebd</code></td><td><code>08debd87-3bcb-46b9-bee7-432494039c90</code></td><td>New → SetStatusWidgetDisplayed → SendOsagoApplication → SendToInsurers</td><td><code>&lt;param&gt;&lt;id&gt;6463&lt;/id&gt;...&lt;result&gt;1&lt;/result&gt;&lt;/param&gt;</code></td><td><code>OfferStatusTypeId=5</code>, <code>OfferTypeId=7</code>, вмененный кросс <code>UpsaleType=18</code>, <code>IsOptional=false</code></td><td><span class="pill passed">passed</span></td></tr>
+<tr><td>Absolut</td><td><code>08debd78-85e4-e64c-bee7-4317b405f3b7</code></td><td><code>08debd7a-4a80-8045-bee7-4317b405fa40</code></td><td>New → SendOsagoApplication → SendToInsurers</td><td><code>reinsurance=true</code></td><td><code>OfferStatusTypeId=3</code>, <code>OfferTypeId=4</code>, ожидаемый отказ</td><td><span class="pill пройдено">пройдено</span></td></tr>
+<tr><td>Alfa</td><td><code>08debd5c-1138-0e89-bee7-4316cc091392</code></td><td><code>08debd83-c1b8-c2bb-bee7-430ff000f316</code></td><td>New → SetStatusWidgetDisplayed → SendOsagoApplication → SendToInsurers</td><td><code>"reinsurance":true</code></td><td><code>OfferStatusTypeId=5</code>, <code>OfferTypeId=7</code>, вмененный кросс <code>UpsaleType=4</code>, <code>IsOptional=false</code></td><td><span class="pill пройдено">пройдено</span></td></tr>
+<tr><td>Gelios</td><td><code>08debcc2-e6be-072c-bee7-4316cc074b3e</code></td><td><code>08debd87-3424-7139-bee7-432494039a23</code></td><td>New → SetStatusWidgetDisplayed → SendOsagoApplication → SendToInsurers</td><td><code>"isReinsured":true</code></td><td><code>OfferStatusTypeId=5</code>, <code>OfferTypeId=7</code>, вмененный кросс <code>UpsaleType=3</code>, <code>IsOptional=false</code></td><td><span class="pill пройдено">пройдено</span></td></tr>
+<tr><td>Reso</td><td><code>08debd5c-1138-0e89-bee7-4316cc091392</code></td><td><code>08debd83-c1b8-c2bb-bee7-430ff000f316</code></td><td>New → SetStatusWidgetDisplayed → SendOsagoApplication → SendToInsurers</td><td><code>Calculate2Response/ns2:Commission=0.0</code></td><td><code>OfferStatusTypeId=5</code>, <code>OfferTypeId=7</code>, вмененный кросс <code>UpsaleType=16</code>, <code>IsOptional=false</code></td><td><span class="pill пройдено">пройдено</span></td></tr>
+<tr><td>Soglasie</td><td><code>08debbdd-bb4d-c3e1-bee7-43277c009ebd</code></td><td><code>08debd87-3bcb-46b9-bee7-432494039c90</code></td><td>New → SetStatusWidgetDisplayed → SendOsagoApplication → SendToInsurers</td><td><code>&lt;param&gt;&lt;id&gt;6463&lt;/id&gt;...&lt;result&gt;1&lt;/result&gt;&lt;/param&gt;</code></td><td><code>OfferStatusTypeId=5</code>, <code>OfferTypeId=7</code>, вмененный кросс <code>UpsaleType=18</code>, <code>IsOptional=false</code></td><td><span class="pill пройдено">пройдено</span></td></tr>
 </tbody>
 </table>
 
 <h2>Energogarant: три валидные попытки</h2>
-<div class="note">Исторические источники <code>Energogarant</code> содержали <code>is_reinsurance=true</code>, но свежие активные копии дошли до СК и все три раза получили ошибку адреса/закрытого региона без положительного признака. Эти источники сохранены в кэше как <code>stale</code> без тел анкет.</div>
+<div class="note">Исторические источники <code>Energogarant</code> содержали <code>is_reinsurance=true</code>, но свежие активные копии дошли до СК и все три раза получили ошибку адреса/закрытого региона без положительного признака. Эти источники сохранены в кэше как <code>устарел</code> без тел анкет.</div>
 <table>
 <thead><tr><th>#</th><th>Источник</th><th>Новая заявка</th><th>API</th><th>Лог СК</th><th>Ответ СК</th><th>Итог</th></tr></thead>
 <tbody>
@@ -69,8 +79,8 @@ ul{padding-left:20px}
 <tbody>
 <tr><td>Public API</td><td>Для <code>Gelios</code>, <code>Soglasie</code> и трех попыток <code>Energogarant</code> строки <code>New</code>, <code>SendOsagoApplication</code>, <code>SendToInsurers</code> проверены в <code>PublicApiLogs</code> по полным новым <code>ApplicationId</code>, все с <code>200 - OK</code>.</td></tr>
 <tr><td>Логи СК</td><td><code>Gelios</code>: <code>"isReinsured":true</code>; <code>Soglasie</code>: <code>param/id=6463/result=1</code>; <code>Energogarant</code>: три ответа без <code>"is_reinsurance":true</code>.</td></tr>
-<tr><td>Core Offers/Upsales</td><td><code>Gelios</code> и <code>Soglasie</code> одобрены только с обязательными кроссами; <code>Energogarant</code> по трем активным попыткам отклонен в Core.</td></tr>
-<tr><td>Кэш</td><td>Рабочие replay-ready источники сохранены для <code>Absolut</code>, <code>Alfa</code>, <code>Gelios</code>, <code>Reso</code>, <code>Soglasie</code>; нерабочие источники <code>Energogarant</code> помечены как <code>stale</code>.</td></tr>
+<tr><td>Ядро Offers/Upsales</td><td><code>Gelios</code> и <code>Soglasie</code> одобрены только с обязательными кроссами; <code>Energogarant</code> по трем активным попыткам отклонен в Core.</td></tr>
+<tr><td>Кэш</td><td>Рабочие replay-ready источники сохранены для <code>Absolut</code>, <code>Alfa</code>, <code>Gelios</code>, <code>Reso</code>, <code>Soglasie</code>; нерабочие источники <code>Energogarant</code> помечены как <code>устарел</code>.</td></tr>
 </tbody>
 </table>
 
@@ -78,28 +88,28 @@ ul{padding-left:20px}
 <table>
 <thead><tr><th>СК</th><th>Что известно по итогам запуска</th><th>Статус</th></tr></thead>
 <tbody>
-<tr><td>Absolut</td><td>Active passed; рабочий кэш есть.</td><td><span class="pill passed">passed</span></td></tr>
-<tr><td>Alfa</td><td>Active passed; рабочий кэш есть.</td><td><span class="pill passed">passed</span></td></tr>
-<tr><td>AlfaDec</td><td>Подтвержденный положительный источник не найден.</td><td><span class="pill blocked">blocked_no_source</span></td></tr>
-<tr><td>astrovolga</td><td>Найден только отрицательный <code>transferToPool:false</code>.</td><td><span class="pill blocked">blocked_no_source</span></td></tr>
-<tr><td>Energogarant</td><td>Исторический положительный источник есть, но 3 валидные активные попытки вернули ошибку СК без положительного признака.</td><td><span class="pill failed">failed_pool_not_reproduced</span></td></tr>
-<tr><td>Gelios</td><td>Active passed; рабочий кэш есть.</td><td><span class="pill passed">passed</span></td></tr>
-<tr><td>Ingos</td><td>Источник по известному точному правилу не найден.</td><td><span class="pill blocked">blocked_no_source</span></td></tr>
-<tr><td>Intouch</td><td>Источник по известному точному правилу не найден; таблица медленная.</td><td><span class="pill blocked">blocked_no_source</span></td></tr>
-<tr><td>Maks</td><td>Источник по известному точному правилу не найден.</td><td><span class="pill blocked">blocked_no_source</span></td></tr>
-<tr><td>Renis</td><td>Источник по известному точному правилу не найден; таблица медленная.</td><td><span class="pill blocked">blocked_no_source</span></td></tr>
-<tr><td>Reso</td><td>Active passed; рабочий кэш есть.</td><td><span class="pill passed">passed</span></td></tr>
-<tr><td>Rgs</td><td>Подтвержденный положительный источник не найден.</td><td><span class="pill blocked">blocked_no_source</span></td></tr>
-<tr><td>Sber</td><td>Подтвержденный положительный источник не найден.</td><td><span class="pill blocked">blocked_no_source</span></td></tr>
-<tr><td>Sogaz</td><td>Подтвержденный положительный источник не найден.</td><td><span class="pill blocked">blocked_no_source</span></td></tr>
-<tr><td>Soglasie</td><td>Active passed; рабочий кэш есть.</td><td><span class="pill passed">passed</span></td></tr>
-<tr><td>Sovkom</td><td>Источник по известному точному правилу не найден.</td><td><span class="pill blocked">blocked_no_source</span></td></tr>
-<tr><td>Tinkoff</td><td>Подтвержденный положительный источник не найден.</td><td><span class="pill blocked">blocked_no_source</span></td></tr>
-<tr><td>Ugoria</td><td>Источник по известному точному правилу категории не найден.</td><td><span class="pill blocked">blocked_no_source</span></td></tr>
-<tr><td>Vsk</td><td>Подтвержденный положительный источник не найден.</td><td><span class="pill blocked">blocked_no_source</span></td></tr>
-<tr><td>Zetta</td><td>Источник по известному точному правилу не найден.</td><td><span class="pill blocked">blocked_no_source</span></td></tr>
-<tr><td>BSO</td><td>Найдены только <code>is_reinsurance:"false"</code> и ошибки <code>reinsurance resolving error</code>.</td><td><span class="pill blocked">blocked_no_source</span></td></tr>
-<tr><td>Pari</td><td>Найден только отрицательный <code>reinsurance:false</code>.</td><td><span class="pill blocked">blocked_no_source</span></td></tr>
+<tr><td>Absolut</td><td>Active пройдено; рабочий кэш есть.</td><td><span class="pill пройдено">пройдено</span></td></tr>
+<tr><td>Alfa</td><td>Active пройдено; рабочий кэш есть.</td><td><span class="pill пройдено">пройдено</span></td></tr>
+<tr><td>AlfaDec</td><td>Подтвержденный положительный источник не найден.</td><td><span class="pill заблокировано">нет источника</span></td></tr>
+<tr><td>astrovolga</td><td>Найден только отрицательный <code>transferToPool:false</code>.</td><td><span class="pill заблокировано">нет источника</span></td></tr>
+<tr><td>Energogarant</td><td>Исторический положительный источник есть, но 3 валидные активные попытки вернули ошибку СК без положительного признака.</td><td><span class="pill ошибка">пул не воспроизведен</span></td></tr>
+<tr><td>Gelios</td><td>Active пройдено; рабочий кэш есть.</td><td><span class="pill пройдено">пройдено</span></td></tr>
+<tr><td>Ingos</td><td>Источник по известному точному правилу не найден.</td><td><span class="pill заблокировано">нет источника</span></td></tr>
+<tr><td>Intouch</td><td>Источник по известному точному правилу не найден; таблица медленная.</td><td><span class="pill заблокировано">нет источника</span></td></tr>
+<tr><td>Maks</td><td>Источник по известному точному правилу не найден.</td><td><span class="pill заблокировано">нет источника</span></td></tr>
+<tr><td>Renis</td><td>Источник по известному точному правилу не найден; таблица медленная.</td><td><span class="pill заблокировано">нет источника</span></td></tr>
+<tr><td>Reso</td><td>Active пройдено; рабочий кэш есть.</td><td><span class="pill пройдено">пройдено</span></td></tr>
+<tr><td>Rgs</td><td>Подтвержденный положительный источник не найден.</td><td><span class="pill заблокировано">нет источника</span></td></tr>
+<tr><td>Sber</td><td>Подтвержденный положительный источник не найден.</td><td><span class="pill заблокировано">нет источника</span></td></tr>
+<tr><td>Sogaz</td><td>Подтвержденный положительный источник не найден.</td><td><span class="pill заблокировано">нет источника</span></td></tr>
+<tr><td>Soglasie</td><td>Active пройдено; рабочий кэш есть.</td><td><span class="pill пройдено">пройдено</span></td></tr>
+<tr><td>Sovkom</td><td>Источник по известному точному правилу не найден.</td><td><span class="pill заблокировано">нет источника</span></td></tr>
+<tr><td>Tinkoff</td><td>Подтвержденный положительный источник не найден.</td><td><span class="pill заблокировано">нет источника</span></td></tr>
+<tr><td>Ugoria</td><td>Источник по известному точному правилу категории не найден.</td><td><span class="pill заблокировано">нет источника</span></td></tr>
+<tr><td>Vsk</td><td>Подтвержденный положительный источник не найден.</td><td><span class="pill заблокировано">нет источника</span></td></tr>
+<tr><td>Zetta</td><td>Источник по известному точному правилу не найден.</td><td><span class="pill заблокировано">нет источника</span></td></tr>
+<tr><td>BSO</td><td>Найдены только <code>is_reinsurance:"false"</code> и ошибки <code>reinsurance resolving error</code>.</td><td><span class="pill заблокировано">нет источника</span></td></tr>
+<tr><td>Pari</td><td>Найден только отрицательный <code>reinsurance:false</code>.</td><td><span class="pill заблокировано">нет источника</span></td></tr>
 </tbody>
 </table>
 
@@ -110,5 +120,73 @@ ul{padding-left:20px}
 <li>Кэш разделен по средам: этот прогон использует только <code>active-source-cache.test.json</code>.</li>
 </ul>
 </main>
+
+<script>
+(function(){
+  function statusOf(row){
+    var text=(row.textContent||'').toLowerCase();
+    if(text.includes('пул не воспроизвед')||text.includes('ошибка')) return 'bad';
+    if(text.includes('нет источника')||text.includes('заблок')) return 'warn';
+    if(text.includes('устарел')) return 'stale';
+    if(text.includes('рабочий')||text.includes('пройдено')) return 'ok';
+    return 'all';
+  }
+  function enhance(table, index){
+    if(table.dataset.enhanced) return;
+    table.dataset.enhanced='true';
+    var shell=table.closest('.table-shell');
+    if(!shell){
+      shell=document.createElement('div');
+      shell.className='table-shell';
+      var parent=table.parentNode;
+      parent.insertBefore(shell, table);
+      var scroll=document.createElement('div');
+      scroll.className='table-scroll';
+      shell.appendChild(scroll);
+      scroll.appendChild(table);
+    } else if(!table.closest('.table-scroll')){
+      var scrollExisting=document.createElement('div');
+      scrollExisting.className='table-scroll';
+      table.parentNode.insertBefore(scrollExisting, table);
+      scrollExisting.appendChild(table);
+    }
+    var rows=[].slice.call(table.querySelectorAll('tbody tr'));
+    if(!rows.length) return;
+    var tools=document.createElement('div');
+    tools.className='table-tools';
+    var title=document.createElement('div');
+    title.className='table-title';
+    title.textContent='Строк: '+rows.length;
+    var actions=document.createElement('div');
+    actions.className='table-actions';
+    var search=document.createElement('input');
+    search.className='table-search';
+    search.type='search';
+    search.placeholder='Поиск по таблице';
+    search.setAttribute('aria-label','Поиск по таблице');
+    actions.appendChild(search);
+    var filters=[['all','Все'],['ok','Пройдено'],['warn','Нет источника'],['bad','Ошибка'],['stale','Устарел']];
+    var active='all';
+    filters.forEach(function(item){
+      var btn=document.createElement('button');
+      btn.type='button'; btn.className='filter-btn'+(item[0]==='all'?' active':''); btn.textContent=item[1];
+      btn.addEventListener('click',function(){active=item[0]; actions.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active')}); btn.classList.add('active'); apply();});
+      actions.appendChild(btn);
+    });
+    tools.appendChild(title); tools.appendChild(actions); shell.insertBefore(tools, shell.firstChild);
+    search.addEventListener('input',apply);
+    function apply(){
+      var query=search.value.trim().toLowerCase(); var shown=0;
+      rows.forEach(function(row){
+        var rowStatus=statusOf(row); var byStatus=active==='all'||rowStatus===active; var byText=!query||(row.textContent||'').toLowerCase().includes(query);
+        var visible=byStatus&&byText; row.hidden=!visible; if(visible) shown++;
+      });
+      title.textContent='Показано: '+shown+' из '+rows.length;
+    }
+  }
+  document.querySelectorAll('table').forEach(enhance);
+})();
+</script>
+
 </body>
 </html>

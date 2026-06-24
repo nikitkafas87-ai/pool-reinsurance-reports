@@ -4,34 +4,34 @@
   "dev": [
     {
       "date": "2026-05-29 16:11 +03:00",
-      "environment": "Dev-with-Test-DB",
-      "title": "Pool check - Dev - итог завершенного запуска",
+      "environment": "Дев, тестовые БД",
+      "title": "Проверка пула ОСАГО - дев - итог завершенного запуска",
       "slug": "2026-05-29-1611-dev-pool-check",
       "href": "reports/dev/2026-05-29-1611-dev-pool-check/",
-      "insurers": "22 approved insurers",
-      "status": "manual_check_required",
-      "summary": "Единый итоговый отчет: 5 активных положительных проверок прошли; Energogarant после 3 валидных попыток не воспроизвел положительный признак; по остальным СК нет подтвержденного источника или только отрицательные признаки."
+      "insurers": "22 утвержденные СК",
+      "status": "требуется ручная проверка",
+      "summary": "Единый итоговый отчет: 5 активных положительных проверок прошли; Энергогарант после 3 валидных попыток не воспроизвел положительный признак; по остальным СК нет подтвержденного источника или только отрицательные признаки."
     },
     {
       "date": "2026-06-24 16:35",
-      "environment": "Dev/Test",
-      "title": "Pool check - Dev - active full scope",
+      "environment": "Дев/тест",
+      "title": "Проверка пула ОСАГО - дев - полный активный прогон",
       "slug": "2026-06-24-dev-active-pool",
       "href": "reports/dev/2026-06-24-dev-active-pool/",
-      "insurers": "approved full scope",
-      "status": "failed_pool_not_reproduced",
-      "summary": "9 passed, 1 failed_pool_not_reproduced, 12 blocked_no_source, 0 manual_check_required"
+      "insurers": "полный утвержденный список СК",
+      "status": "пул не воспроизведен",
+      "summary": "9 пройдено, 1 пул не воспроизведен, 12 без источника, 0 ручных проверок"
     }
   ],
   "prod": [
     {
       "date": "2026-06-05 09:53",
-      "environment": "Prod",
-      "title": "Пул ОСАГО - Prod - активный полный список",
+      "environment": "Прод",
+      "title": "Пул ОСАГО - прод - активный полный список",
       "slug": "2026-06-05-0025-prod-active-pool",
       "href": "reports/prod/2026-06-05-0025-prod-active-pool/",
       "insurers": "утвержденный список СК",
-      "status": "failed_offer_handling",
+      "status": "ошибка обработки оффера",
       "summary": "9 пройдено, 1 пул не воспроизвелся, 1 ошибка обработки оффера, 11 без источника для активного прогона"
     }
   ]

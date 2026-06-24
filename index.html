@@ -5,38 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Пул ОСАГО - отчеты</title>
 <style>
+
 *{box-sizing:border-box}
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:#f4f6f8;color:#172033}
-.wrap{max-width:1120px;margin:0 auto;padding:28px 20px 40px}
-.top{display:flex;justify-content:space-between;gap:16px;align-items:flex-end;margin-bottom:18px}
-h1{margin:0;font-size:24px;line-height:1.2}
-.meta{margin:6px 0 0;color:#667085;font-size:13px}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}
-.tab{border:1px solid #d7dde5;background:#fff;color:#29364a;border-radius:7px;padding:9px 13px;font-size:14px;cursor:pointer}
-.tab.active{background:#243447;color:#fff;border-color:#243447}
-.panel{display:none}
-.panel.active{display:block}
-.summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:14px}
-.stat{background:#fff;border:1px solid #e3e7ed;border-radius:8px;padding:12px}
-.stat b{display:block;font-size:20px;margin-bottom:3px}
-.stat span{font-size:12px;color:#667085}
-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #e3e7ed;border-radius:8px;overflow:hidden}
-th{background:#243447;color:#fff;text-align:left;font-size:12px;font-weight:650;padding:11px 12px;white-space:nowrap}
-td{font-size:13px;padding:11px 12px;border-top:1px solid #eef1f5;vertical-align:top}
-tr:hover td{background:#f9fbfd}
-a{color:#1d5fd1;text-decoration:none}
-a:hover{text-decoration:underline}
-.pill{display:inline-block;border-radius:999px;padding:3px 8px;font-size:12px;background:#edf2f7;color:#344054}
-.passed{background:#e7f7ed;color:#126b39}
-.failed{background:#fdecec;color:#a12626}
-.blocked{background:#fff4df;color:#8a5a00}
-.empty{background:#fff;border:1px dashed #cfd6df;border-radius:8px;padding:22px;color:#667085;text-align:center}
-.foot{margin-top:18px;color:#667085;font-size:12px}
-@media(max-width:780px){
-  .top{display:block}
-  .summary{grid-template-columns:repeat(2,minmax(0,1fr))}
-  table{display:block;overflow-x:auto}
-}
+:root{color-scheme:light;--bg:#f4f7fb;--panel:#fff;--ink:#172033;--muted:#667085;--line:#dfe6ef;--header:#243447;--ok:#147a4f;--ok-bg:#e6f7ee;--warn:#9b6a19;--warn-bg:#fff4df;--bad:#ad3030;--bad-bg:#fdecec;--shadow:0 12px 30px rgba(23,32,51,.08)}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:linear-gradient(180deg,#eef3f9 0,#f7f9fc 260px,#f4f7fb 100%);color:var(--ink);line-height:1.45}
+body:before{content:"";position:fixed;inset:0 0 auto;height:245px;background:linear-gradient(135deg,#172033 0,#243447 58%,#315d9c 100%);z-index:-2}
+body:after{content:"";position:fixed;inset:0 0 auto;height:245px;background:radial-gradient(circle at 82% 18%,rgba(255,255,255,.16),transparent 28%);z-index:-1}
+.wrap{max-width:1360px;margin:0 auto;padding:30px 20px 46px}.top{display:flex;justify-content:space-between;gap:16px;align-items:flex-end;margin-bottom:18px;color:#fff}h1{margin:0;font-size:28px;line-height:1.15;letter-spacing:0}.meta{margin:7px 0 0;color:rgba(255,255,255,.82);font-size:14px}.top #updated{white-space:nowrap}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 22px}.tab{min-height:38px;border:1px solid rgba(255,255,255,.42);background:rgba(255,255,255,.9);color:#29364a;border-radius:999px;padding:9px 14px;font-size:14px;font-weight:700;cursor:pointer;transition:background .18s,border-color .18s,color .18s}.tab:hover{background:#fff}.tab.active{background:#243447;color:#fff;border-color:#243447}.panel{display:none}.panel.active{display:block}.summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:18px}.stat{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px;box-shadow:var(--shadow);overflow:hidden}.stat:before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:#315d9c}.stat:nth-child(2):before{background:#147a4f}.stat:nth-child(3):before{background:#ad3030}.stat:nth-child(4):before{background:#d88a1d}.stat b{display:block;font-size:25px;line-height:1.1;margin-bottom:6px;color:#162335}.stat span{font-size:12px;color:var(--muted)}.table-shell{background:var(--panel);border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow);overflow:hidden}.table-tools{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;border-bottom:1px solid var(--line);background:#fff}.table-title{font-size:13px;font-weight:700;color:#344054;white-space:nowrap}.table-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}.table-search{width:250px;min-height:34px;border:1px solid #cfd8e3;border-radius:8px;padding:7px 10px;font:inherit;font-size:13px}.table-search:focus{outline:2px solid rgba(49,93,156,.22);border-color:#315d9c}.filter-btn{min-height:34px;border:1px solid #cfd8e3;border-radius:999px;background:#fff;color:#344054;padding:6px 10px;font:inherit;font-size:12px;font-weight:700;cursor:pointer}.filter-btn:hover{background:#f2f6fb}.filter-btn.active{background:#243447;border-color:#243447;color:#fff}.table-scroll{overflow:auto;max-height:72vh}table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;min-width:1020px}th{position:sticky;top:0;z-index:1;background:var(--header);color:#fff;text-align:left;font-size:12px;font-weight:700;padding:11px 12px;white-space:nowrap}td{font-size:13px;padding:11px 12px;border-top:1px solid #eef1f5;vertical-align:top}tbody tr:hover{background:#f7fbff}tbody tr[hidden]{display:none}a{color:#245aa6;text-decoration:none;font-weight:700}a:hover{text-decoration:underline}.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 9px;font-size:12px;font-weight:700;white-space:nowrap;background:#edf2f7;color:#344054}.pill:before{content:"";width:7px;height:7px;border-radius:999px;background:currentColor}.passed{background:var(--ok-bg);color:var(--ok)}.failed{background:var(--bad-bg);color:var(--bad)}.blocked{background:var(--warn-bg);color:var(--warn)}.empty{background:#fff;border:1px dashed #cfd6df;border-radius:8px;padding:22px;color:#667085;text-align:center;box-shadow:var(--shadow)}.foot{margin-top:18px;color:#667085;font-size:12px}.summary-strip{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 20px}.summary-chip{background:rgba(255,255,255,.9);border:1px solid rgba(255,255,255,.35);color:#172033;border-radius:999px;padding:7px 11px;font-size:12px;font-weight:700;box-shadow:0 8px 20px rgba(23,32,51,.08)}
+@media(max-width:780px){.top{display:block}.top #updated{white-space:normal}.summary{grid-template-columns:repeat(2,minmax(0,1fr))}.table-tools{align-items:flex-start;flex-direction:column}.table-actions{justify-content:flex-start}.table-search{width:min(100%,320px)}}@media(max-width:560px){.summary{grid-template-columns:1fr}.table-search{width:100%}}
+
 </style>
 </head>
 <body>
@@ -48,12 +25,13 @@ a:hover{text-decoration:underline}
     </div>
     <p class="meta" id="updated">Обновление: -</p>
   </div>
+  <div class="summary-strip"><span class="summary-chip">Единый стиль отчётов</span><span class="summary-chip">Интерактивный индекс</span><span class="summary-chip">Исторические разделы сохранены</span></div>
 
   <nav class="tabs" aria-label="Разделы">
-    <button class="tab active" data-tab="devReports">ДЭВ отчеты</button>
-    <button class="tab" data-tab="prodReports">ПРОД отчеты</button>
-    <button class="tab" data-tab="devCache">ДЭВ кеш</button>
-    <button class="tab" data-tab="prodCache">ПРОД кеш</button>
+    <button class="tab active" data-tab="devReports">Дев-отчеты</button>
+    <button class="tab" data-tab="prodReports">Прод-отчеты</button>
+    <button class="tab" data-tab="devCache">Дев-кеш</button>
+    <button class="tab" data-tab="prodCache">Прод-кеш</button>
   </nav>
 
   <section class="panel active" id="devReports"></section>
@@ -73,22 +51,22 @@ const esc = value => String(value ?? "").replace(/[&<>"']/g, ch => ({
 
 function statusClass(status) {
   const value = String(status || "").toLowerCase();
-  if (value === "passed" || value === "working") return "passed";
-  if (value.startsWith("failed") || value === "stale" || value === "invalid") return "failed";
-  if (value.startsWith("blocked") || value === "needsrefresh" || value === "manual_check_required") return "blocked";
+  if (value.includes("пройден") || value.includes("рабоч")) return "passed";
+  if (value.includes("ошиб") || value.includes("не воспроизвед") || value.includes("устар")) return "failed";
+  if (value.includes("блок") || value.includes("источник") || value.includes("руч")) return "blocked";
   return "";
 }
 
 function statBlock(items) {
   const total = items.length;
-  const passed = items.filter(x => x.status === "passed" || x.status === "working").length;
-  const failed = items.filter(x => String(x.status || "").startsWith("failed") || x.status === "stale" || x.status === "invalid").length;
-  const blocked = items.filter(x => String(x.status || "").startsWith("blocked") || x.status === "needsRefresh" || x.status === "manual_check_required").length;
+  const passed = items.filter(x => statusClass(x.status) === "passed").length;
+  const failed = items.filter(x => statusClass(x.status) === "failed").length;
+  const blocked = items.filter(x => statusClass(x.status) === "blocked").length;
   return `<div class="summary">
     <div class="stat"><b>${total}</b><span>Всего</span></div>
-    <div class="stat"><b>${passed}</b><span>Успешно / рабочие</span></div>
-    <div class="stat"><b>${failed}</b><span>Ошибки / устарели</span></div>
-    <div class="stat"><b>${blocked}</b><span>Блокировки / ручная проверка</span></div>
+    <div class="stat"><b>${passed}</b><span>Пройдено / рабочие</span></div>
+    <div class="stat"><b>${failed}</b><span>Ошибки / устаревшие</span></div>
+    <div class="stat"><b>${blocked}</b><span>Блокеры / ручная проверка</span></div>
   </div>`;
 }
 
@@ -103,10 +81,10 @@ function reportTable(items) {
     <td><span class="pill ${statusClass(item.status)}">${esc(item.status || "")}</span></td>
     <td>${esc(item.summary || "")}</td>
   </tr>`).join("");
-  return `<table>
+  return `<div class="table-shell"><div class="table-scroll"><table>
     <thead><tr><th>#</th><th>Отчет</th><th>Дата</th><th>Среда</th><th>СК</th><th>Статус</th><th>Итог</th></tr></thead>
     <tbody>${rows}</tbody>
-  </table>`;
+  </table></div></div>`;
 }
 
 function cacheTable(items) {
@@ -120,10 +98,68 @@ function cacheTable(items) {
     <td><span class="pill ${statusClass(item.status)}">${esc(item.status || "")}</span></td>
     <td>${esc(item.lastResult || "")}</td>
   </tr>`).join("");
-  return `<table>
+  return `<div class="table-shell"><div class="table-scroll"><table>
     <thead><tr><th>#</th><th>Снимок</th><th>Дата</th><th>Среда</th><th>СК</th><th>Статус</th><th>Последний результат</th></tr></thead>
     <tbody>${rows}</tbody>
-  </table>`;
+  </table></div></div>`;
+}
+
+
+function rowStatus(row) {
+  const value = String(row.textContent || "").toLowerCase();
+  if (value.includes("ошиб") || value.includes("не воспроизвед") || value.includes("устар")) return "failed";
+  if (value.includes("блок") || value.includes("источник") || value.includes("руч")) return "blocked";
+  if (value.includes("пройден") || value.includes("рабоч")) return "passed";
+  return "all";
+}
+
+function enhanceTables() {
+  document.querySelectorAll(".table-shell").forEach(shell => {
+    if (shell.dataset.enhanced) return;
+    shell.dataset.enhanced = "true";
+    const table = shell.querySelector("table");
+    const rows = Array.from(table.querySelectorAll("tbody tr"));
+    const tools = document.createElement("div");
+    tools.className = "table-tools";
+    const title = document.createElement("div");
+    title.className = "table-title";
+    const actions = document.createElement("div");
+    actions.className = "table-actions";
+    const search = document.createElement("input");
+    search.className = "table-search";
+    search.type = "search";
+    search.placeholder = "Поиск по таблице";
+    search.setAttribute("aria-label", "Поиск по таблице");
+    actions.appendChild(search);
+    let active = "all";
+    [["all","Все"],["passed","Пройдено"],["blocked","Блокеры"],["failed","Ошибки"]].forEach(([key, label]) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = `filter-btn ${key === "all" ? "active" : ""}`;
+      button.textContent = label;
+      button.addEventListener("click", () => {
+        active = key;
+        actions.querySelectorAll(".filter-btn").forEach(x => x.classList.remove("active"));
+        button.classList.add("active");
+        apply();
+      });
+      actions.appendChild(button);
+    });
+    tools.append(title, actions);
+    shell.prepend(tools);
+    search.addEventListener("input", apply);
+    function apply() {
+      const query = search.value.trim().toLowerCase();
+      let shown = 0;
+      rows.forEach(row => {
+        const visible = (active === "all" || rowStatus(row) === active) && (!query || row.textContent.toLowerCase().includes(query));
+        row.hidden = !visible;
+        if (visible) shown += 1;
+      });
+      title.textContent = `Показано: ${shown} из ${rows.length}`;
+    }
+    apply();
+  });
 }
 
 function render() {
@@ -131,6 +167,7 @@ function render() {
   document.getElementById("prodReports").innerHTML = statBlock(state.reports.prod) + reportTable(state.reports.prod);
   document.getElementById("devCache").innerHTML = statBlock(state.cache.dev) + cacheTable(state.cache.dev);
   document.getElementById("prodCache").innerHTML = statBlock(state.cache.prod) + cacheTable(state.cache.prod);
+  enhanceTables();
 }
 
 async function loadJson(path, fallback) {

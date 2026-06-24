@@ -5,35 +5,112 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Prod снимок кэша - 2026-06-05 09:53</title>
   <style>
-    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f4f7fb; color: #172033; }
-    header { padding: 28px 36px; background: #142033; color: white; }
-    main { padding: 24px 32px; }
-    h1 { margin: 0 0 8px; }
-    .meta { margin: 0 0 16px; color: #5c6a80; }
-    .table-wrap { overflow-x: auto; background: white; border: 1px solid #d8e0eb; }
-    table { width: 100%; border-collapse: collapse; min-width: 1100px; }
-    th, td { padding: 11px 12px; border-bottom: 1px solid #d8e0eb; vertical-align: top; font-size: 13px; }
-    th { text-align: left; background: #eef3f8; }
-    .alias { font-weight: 700; }
-    .pill { display: inline-block; padding: 4px 9px; border-radius: 999px; font-weight: 700; font-size: 12px; }
-    .ok { background: #dff5e7; color: #176239; }
-    .warn { background: #fff1c9; color: #806000; }
-    .bad { background: #ffe1df; color: #9f2418; }
-  </style>
+
+:root{
+  color-scheme:light;
+  --bg:#f4f7fb; --panel:#ffffff; --ink:#172033; --muted:#667085; --line:#dfe6ef;
+  --header:#243447; --header-2:#162335; --ok:#147a4f; --ok-bg:#e6f7ee;
+  --warn:#9b6a19; --warn-bg:#fff4df; --bad:#ad3030; --bad-bg:#fdecec;
+  --info:#315d9c; --info-bg:#e9f1ff; --shadow:0 12px 30px rgba(23,32,51,.08);
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:linear-gradient(180deg,#eef3f9 0,#f7f9fc 260px,#f4f7fb 100%);color:var(--ink);line-height:1.45}
+body:before{content:"";position:fixed;inset:0 0 auto;height:240px;background:linear-gradient(135deg,#172033 0,#243447 58%,#315d9c 100%);z-index:-2}
+body:after{content:"";position:fixed;inset:0 0 auto;height:240px;background:radial-gradient(circle at 82% 18%,rgba(255,255,255,.16),transparent 28%);z-index:-1}
+main,.wrap{max-width:1360px;margin:0 auto;padding:28px 20px 46px} header{max-width:1360px;margin:0 auto;padding:30px 20px 18px;color:#fff;background:transparent;border:0} body > h1:first-child{max-width:1360px;margin:0 auto 10px;padding:30px 20px 0;color:#fff} body > h1:first-child + p{max-width:1360px;margin:0 auto;padding:0 20px;color:rgba(255,255,255,.82)} body > h1:first-child + p + p{max-width:1360px;margin:10px auto 0;padding:0 20px;color:rgba(255,255,255,.92)} body > h1:first-child + p + p a{color:#dbeafe;font-weight:700}
+h1{font-size:28px;line-height:1.15;margin:0 0 10px;letter-spacing:0;color:inherit} main > h1:first-child, main > .summary-strip + h1{color:#fff} main > h1:first-child + .meta, main > .summary-strip + h1 + .meta{color:rgba(255,255,255,.82)} h2{font-size:18px;margin:30px 0 12px;color:#172033} p{margin:8px 0;color:var(--muted)} header p, header .meta{color:rgba(255,255,255,.82)} .meta{color:var(--muted);margin:0 0 18px}
+a{color:#245aa6;text-decoration:none} a:hover{text-decoration:underline}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:18px 0 22px}.stat,.metric{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px;box-shadow:var(--shadow);overflow:hidden}.stat:before,.metric:before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:#315d9c}.stat:nth-child(2):before,.metric:nth-child(2):before{background:#147a4f}.stat:nth-child(3):before,.metric:nth-child(3):before{background:#d88a1d}.stat:nth-child(4):before,.metric:nth-child(4):before{background:#ad3030}.stat b,.metric b{display:block;font-size:25px;line-height:1.1;margin-bottom:6px;color:#162335}.stat span,.metric span{display:block;font-size:12px;color:var(--muted)}
+.section,section,.note,.report-card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px;box-shadow:var(--shadow)}section{margin-top:22px}.note{border-left:4px solid #d88a1d;background:#fffaf0;color:#4c350f}.note code{background:#fff0c6}
+.table-shell{position:relative;margin:0 0 18px;background:var(--panel);border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow);overflow:hidden}.table-wrap{overflow:auto;background:transparent;border:0;border-radius:0;box-shadow:none;margin:0}.table-scroll{overflow:auto;max-height:72vh}.table-tools{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;border-bottom:1px solid var(--line);background:#fff}.table-title{font-size:13px;font-weight:700;color:#344054;white-space:nowrap}.table-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}.table-search{width:240px;min-height:34px;border:1px solid #cfd8e3;border-radius:8px;padding:7px 10px;font:inherit;font-size:13px;background:#fff;color:var(--ink)}.table-search:focus{outline:2px solid rgba(49,93,156,.22);border-color:#315d9c}.filter-btn{min-height:34px;border:1px solid #cfd8e3;border-radius:999px;background:#fff;color:#344054;padding:6px 10px;font:inherit;font-size:12px;font-weight:700;cursor:pointer;transition:background .18s,border-color .18s,color .18s}.filter-btn:hover{background:#f2f6fb}.filter-btn.active{background:#243447;border-color:#243447;color:#fff}
+table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;min-width:980px;margin:0;border:0;border-radius:0;overflow:visible}th{position:sticky;top:0;z-index:1;background:var(--header);color:#fff;text-align:left;font-size:12px;font-weight:700;padding:11px 10px;white-space:nowrap;border:0;text-transform:none}td{font-size:13px;padding:10px;border-top:1px solid #eef1f5;vertical-align:top}tbody tr{transition:background .15s}tbody tr:hover{background:#f7fbff}tbody tr[hidden]{display:none}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:#eef2f6;border:1px solid #dfe6ef;border-radius:5px;padding:1px 5px;word-break:break-word}.pill,.badge{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 9px;font-size:12px;font-weight:700;white-space:nowrap}.pill:before,.badge:before{content:"";width:7px;height:7px;border-radius:999px;background:currentColor}.пройдено,.ok{background:var(--ok-bg);color:var(--ok)}.заблокировано,.warn{background:var(--warn-bg);color:var(--warn)}.ошибка,.bad{background:var(--bad-bg);color:var(--bad)}.manual{background:#eef1f6;color:#59637a}.устарел{background:var(--warn-bg);color:var(--warn)}
+ul{padding-left:20px}li{margin:7px 0}.summary-strip{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 20px;padding-top:2px}.summary-chip{background:rgba(255,255,255,.9);border:1px solid rgba(255,255,255,.35);color:#172033;border-radius:999px;padding:7px 11px;font-size:12px;font-weight:700;box-shadow:0 8px 20px rgba(23,32,51,.08)}
+@media(max-width:900px){header,main{padding-left:14px;padding-right:14px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.table-tools{align-items:flex-start;flex-direction:column}.table-actions{justify-content:flex-start}.table-search{width:min(100%,320px)}h1{font-size:24px}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}.filter-btn{padding:6px 8px}.table-search{width:100%}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.filter-btn,tbody tr{transition:none}}
+
+</style>
 </head>
 <body>
   <header>
     <h1>Prod снимок кэша источников</h1>
-    <p>Очищенные метаданные, сформировано 2026-06-05 09:53 MSK</p>
-  </header>
+    <p>Очищенные метаданные, сформировано 2026-06-05 09:53 МСК</p>
+  <div class="summary-strip"><span class="summary-chip">Единый стиль отчётов</span><span class="summary-chip">Интерактивные таблицы</span><span class="summary-chip">Публичные данные очищены</span></div></header>
   <main>
-    <p class="meta">В снимке опубликованы только метаданные 10 Prod-источников: 9 рабочих replay-источников и Sber-источник, который воспроизводит <code>reinsured=true</code>, но падает на обработке оффера. Сырые тела запросов, base64-пейлоады, API-ключи и персональные данные исключены.</p>
+    <p class="meta">В снимке опубликованы только метаданные 10 прод-источников: 9 рабочих источник для воспроизведенияов и Sber-источник, который воспроизводит <code>reinsured=true</code>, но падает на обработке оффера. Сырые тела запросов, base64-пейлоады, API-ключи и персональные данные исключены.</p>
     <div class="table-wrap">
       <table>
         <thead><tr><th>СК</th><th>Статус</th><th>Источник ApplicationId</th><th>Дата сигнала источника</th><th>Лог</th><th>Признак</th><th>InsurerId</th><th>Последняя свежая ApplicationId</th><th>Результат</th></tr></thead>
-        <tbody><tr><td class="alias">Absolut</td><td><span class="pill ok">Рабочий источник</span></td><td>08DEC273-2D82-85D4-25C3-3E23588FF675</td><td>2026-06-04T19:55:11.9562431Z</td><td>AbsolutLogs</td><td>reinsurance=true</td><td>1F836F31-CF6A-4324-B513-462D4DBEA401</td><td>08dec277-30b2-5ad0-25c3-3e2358976d17</td><td>passed</td></tr><tr><td class="alias">Alfa</td><td><span class="pill ok">Рабочий источник</span></td><td>08DEC273-43FA-F2E6-25C3-3E2358902B01</td><td>2026-06-04T19:55:47.8176852Z</td><td>AlfaLogs</td><td>reinsurance=true</td><td>CDA9423C-A34D-4752-87D3-47DEFEC5CB56</td><td>08dec27c-ea7a-a877-25c3-3e23589e7d64</td><td>passed</td></tr><tr><td class="alias">Energogarant</td><td><span class="pill ok">Рабочий источник</span></td><td>08DEC26F-D068-F1B6-25C3-3E23588831D1</td><td>2026-06-04T19:53:38.0893945Z</td><td>EnergogarantLogs</td><td>is_reinsurance=true</td><td>0AD811E1-724B-4502-BFDD-CCE6D0D1ECA5</td><td>08dec27d-3879-f0c4-25c3-3e23589ebf85</td><td>passed</td></tr><tr><td class="alias">Gelios</td><td><span class="pill ok">Рабочий источник</span></td><td>08DEC273-551A-8285-25C3-3E23589041A6</td><td>2026-06-04T19:56:15.9807462Z</td><td>GeliosLogs</td><td>isReinsured=true</td><td>ADBD4CE5-8177-4FB0-AA9A-A22E6A9E884F</td><td>08dec27d-25a1-1649-25c3-3e23589ea533</td><td>passed</td></tr><tr><td class="alias">Ingos</td><td><span class="pill ok">Рабочий источник</span></td><td>08DEC273-5E40-C1DE-25C3-3E2358905D72</td><td>2026-06-04T19:56:34.0846909Z</td><td>IngosLogs</td><td>warnings уровень 10 on agreement/create</td><td>AEB63341-4C3B-4C05-BE2D-F0BC5A4B5E71</td><td>08dec276-d429-c44b-25c3-3e235896ccce</td><td>passed</td></tr><tr><td class="alias">Maks</td><td><span class="pill ok">Рабочий источник</span></td><td>08DEC2CE-0102-5855-25C3-3E23581DD99E</td><td>2026-06-05T06:46:34.7745380Z</td><td>MaksLogs</td><td>escaped XML re=Y</td><td>4BADA4F8-3EB6-4372-BE71-59591D37455C</td><td>08dec2ce-8e9b-79d1-25c3-3e2358206126</td><td>passed</td></tr><tr><td class="alias">Reso</td><td><span class="pill ok">Рабочий источник</span></td><td>08DEC273-5E40-C1DE-25C3-3E2358905D72</td><td>2026-06-04T19:56:29.2912007Z</td><td>ResoLogs</td><td>Calculate2Response Commission=0.0</td><td>25EA32F4-0337-45B7-8C9A-50D3D4A84471</td><td>08dec276-d429-c44b-25c3-3e235896ccce</td><td>passed</td></tr><tr><td class="alias">Sber</td><td><span class="pill bad">Сигнал есть, обработка ошибочная</span></td><td>08DEC283-9C16-A0C9-25C3-3E2358A49D8C</td><td>2026-06-04T21:52:50.1120075Z</td><td>SberLogs</td><td>reinsured=true</td><td>7AB8ABDC-C8B1-49BB-9272-4247B3A16FD9</td><td>08dec2cd-d728-d25c-25c3-3e23581d2493</td><td>failed_offer_handling</td></tr><tr><td class="alias">Soglasie</td><td><span class="pill ok">Рабочий источник</span></td><td>08DEC1F1-68C9-F932-25C3-3E24A0712016</td><td>2026-06-04T04:26:12.9577483Z</td><td>SoglasieLogs</td><td>param id=6463 result=1</td><td>FBCFD2D2-6722-4348-A1B3-B94D51491CBF</td><td>08dec27e-8d8a-c27e-25c3-3e2358a06252</td><td>passed</td></tr><tr><td class="alias">Ugoria</td><td><span class="pill ok">Рабочий источник</span></td><td>08DEC270-AE4F-9CE8-25C3-3E23588A5075</td><td>2026-06-04T19:46:24.7718149Z</td><td>UgoriaLogs</td><td>data.return.category in R/R1/M</td><td>3ECF7469-079E-42A7-9C55-FBA2291DACBC</td><td>08dec282-49d0-10f7-25c3-3e2358a3795d</td><td>passed</td></tr></tbody>
+        <tbody><tr><td class="alias">Absolut</td><td><span class="pill ok">Рабочий источник</span></td><td>08DEC273-2D82-85D4-25C3-3E23588FF675</td><td>2026-06-04T19:55:11.9562431Z</td><td>AbsolutLogs</td><td>reinsurance=true</td><td>1F836F31-CF6A-4324-B513-462D4DBEA401</td><td>08dec277-30b2-5ad0-25c3-3e2358976d17</td><td>пройдено</td></tr><tr><td class="alias">Alfa</td><td><span class="pill ok">Рабочий источник</span></td><td>08DEC273-43FA-F2E6-25C3-3E2358902B01</td><td>2026-06-04T19:55:47.8176852Z</td><td>AlfaLogs</td><td>reinsurance=true</td><td>CDA9423C-A34D-4752-87D3-47DEFEC5CB56</td><td>08dec27c-ea7a-a877-25c3-3e23589e7d64</td><td>пройдено</td></tr><tr><td class="alias">Energogarant</td><td><span class="pill ok">Рабочий источник</span></td><td>08DEC26F-D068-F1B6-25C3-3E23588831D1</td><td>2026-06-04T19:53:38.0893945Z</td><td>EnergogarantLogs</td><td>is_reinsurance=true</td><td>0AD811E1-724B-4502-BFDD-CCE6D0D1ECA5</td><td>08dec27d-3879-f0c4-25c3-3e23589ebf85</td><td>пройдено</td></tr><tr><td class="alias">Gelios</td><td><span class="pill ok">Рабочий источник</span></td><td>08DEC273-551A-8285-25C3-3E23589041A6</td><td>2026-06-04T19:56:15.9807462Z</td><td>GeliosLogs</td><td>isReinsured=true</td><td>ADBD4CE5-8177-4FB0-AA9A-A22E6A9E884F</td><td>08dec27d-25a1-1649-25c3-3e23589ea533</td><td>пройдено</td></tr><tr><td class="alias">Ingos</td><td><span class="pill ok">Рабочий источник</span></td><td>08DEC273-5E40-C1DE-25C3-3E2358905D72</td><td>2026-06-04T19:56:34.0846909Z</td><td>IngosLogs</td><td>warnings уровень 10 on agreement/create</td><td>AEB63341-4C3B-4C05-BE2D-F0BC5A4B5E71</td><td>08dec276-d429-c44b-25c3-3e235896ccce</td><td>пройдено</td></tr><tr><td class="alias">Maks</td><td><span class="pill ok">Рабочий источник</span></td><td>08DEC2CE-0102-5855-25C3-3E23581DD99E</td><td>2026-06-05T06:46:34.7745380Z</td><td>MaksLogs</td><td>escaped XML re=Y</td><td>4BADA4F8-3EB6-4372-BE71-59591D37455C</td><td>08dec2ce-8e9b-79d1-25c3-3e2358206126</td><td>пройдено</td></tr><tr><td class="alias">Reso</td><td><span class="pill ok">Рабочий источник</span></td><td>08DEC273-5E40-C1DE-25C3-3E2358905D72</td><td>2026-06-04T19:56:29.2912007Z</td><td>ResoLogs</td><td>Calculate2Response Commission=0.0</td><td>25EA32F4-0337-45B7-8C9A-50D3D4A84471</td><td>08dec276-d429-c44b-25c3-3e235896ccce</td><td>пройдено</td></tr><tr><td class="alias">Sber</td><td><span class="pill bad">Сигнал есть, обработка ошибочная</span></td><td>08DEC283-9C16-A0C9-25C3-3E2358A49D8C</td><td>2026-06-04T21:52:50.1120075Z</td><td>SberLogs</td><td>reinsured=true</td><td>7AB8ABDC-C8B1-49BB-9272-4247B3A16FD9</td><td>08dec2cd-d728-d25c-25c3-3e23581d2493</td><td>ошибка обработки оффера</td></tr><tr><td class="alias">Soglasie</td><td><span class="pill ok">Рабочий источник</span></td><td>08DEC1F1-68C9-F932-25C3-3E24A0712016</td><td>2026-06-04T04:26:12.9577483Z</td><td>SoglasieLogs</td><td>param id=6463 result=1</td><td>FBCFD2D2-6722-4348-A1B3-B94D51491CBF</td><td>08dec27e-8d8a-c27e-25c3-3e2358a06252</td><td>пройдено</td></tr><tr><td class="alias">Ugoria</td><td><span class="pill ok">Рабочий источник</span></td><td>08DEC270-AE4F-9CE8-25C3-3E23588A5075</td><td>2026-06-04T19:46:24.7718149Z</td><td>UgoriaLogs</td><td>data.return.category in R/R1/M</td><td>3ECF7469-079E-42A7-9C55-FBA2291DACBC</td><td>08dec282-49d0-10f7-25c3-3e2358a3795d</td><td>пройдено</td></tr></tbody>
       </table>
     </div>
   </main>
+
+<script>
+(function(){
+  function statusOf(row){
+    var text=(row.textContent||'').toLowerCase();
+    if(text.includes('пул не воспроизвед')||text.includes('ошибка')) return 'bad';
+    if(text.includes('нет источника')||text.includes('заблок')) return 'warn';
+    if(text.includes('устарел')) return 'stale';
+    if(text.includes('рабочий')||text.includes('пройдено')) return 'ok';
+    return 'all';
+  }
+  function enhance(table, index){
+    if(table.dataset.enhanced) return;
+    table.dataset.enhanced='true';
+    var shell=table.closest('.table-shell');
+    if(!shell){
+      shell=document.createElement('div');
+      shell.className='table-shell';
+      var parent=table.parentNode;
+      parent.insertBefore(shell, table);
+      var scroll=document.createElement('div');
+      scroll.className='table-scroll';
+      shell.appendChild(scroll);
+      scroll.appendChild(table);
+    } else if(!table.closest('.table-scroll')){
+      var scrollExisting=document.createElement('div');
+      scrollExisting.className='table-scroll';
+      table.parentNode.insertBefore(scrollExisting, table);
+      scrollExisting.appendChild(table);
+    }
+    var rows=[].slice.call(table.querySelectorAll('tbody tr'));
+    if(!rows.length) return;
+    var tools=document.createElement('div');
+    tools.className='table-tools';
+    var title=document.createElement('div');
+    title.className='table-title';
+    title.textContent='Строк: '+rows.length;
+    var actions=document.createElement('div');
+    actions.className='table-actions';
+    var search=document.createElement('input');
+    search.className='table-search';
+    search.type='search';
+    search.placeholder='Поиск по таблице';
+    search.setAttribute('aria-label','Поиск по таблице');
+    actions.appendChild(search);
+    var filters=[['all','Все'],['ok','Пройдено'],['warn','Нет источника'],['bad','Ошибка'],['stale','Устарел']];
+    var active='all';
+    filters.forEach(function(item){
+      var btn=document.createElement('button');
+      btn.type='button'; btn.className='filter-btn'+(item[0]==='all'?' active':''); btn.textContent=item[1];
+      btn.addEventListener('click',function(){active=item[0]; actions.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active')}); btn.classList.add('active'); apply();});
+      actions.appendChild(btn);
+    });
+    tools.appendChild(title); tools.appendChild(actions); shell.insertBefore(tools, shell.firstChild);
+    search.addEventListener('input',apply);
+    function apply(){
+      var query=search.value.trim().toLowerCase(); var shown=0;
+      rows.forEach(function(row){
+        var rowStatus=statusOf(row); var byStatus=active==='all'||rowStatus===active; var byText=!query||(row.textContent||'').toLowerCase().includes(query);
+        var visible=byStatus&&byText; row.hidden=!visible; if(visible) shown++;
+      });
+      title.textContent='Показано: '+shown+' из '+rows.length;
+    }
+  }
+  document.querySelectorAll('table').forEach(enhance);
+})();
+</script>
+
 </body>
 </html>
