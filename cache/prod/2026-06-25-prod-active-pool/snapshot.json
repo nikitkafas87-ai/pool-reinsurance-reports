@@ -1,0 +1,166 @@
+{
+  "version": 1,
+  "environment": "Prod",
+  "updatedAt": "2026-06-25 17:30 +03:00",
+  "summary": {
+    "workingSources": 10,
+    "staleOrFailedSources": 2,
+    "noReplayReadySourceOrManual": 11
+  },
+  "entries": [
+    {
+      "alias": "Absolut",
+      "status": "working",
+      "lastResult": "passed",
+      "sourceApplicationId": "08DED2B9-4D68-F260-25C3-3E3A380569D5",
+      "note": "AbsolutLogs: reinsurance=\"true\"; Core OfferTypeId=4, OfferStatusTypeId=3, Premium=30912.94."
+    },
+    {
+      "alias": "Alfa",
+      "status": "working",
+      "lastResult": "passed",
+      "sourceApplicationId": "08DEC273-43FA-F2E6-25C3-3E2358902B01",
+      "note": "AlfaLogs: reinsurance=true; Core OfferTypeId=7, OfferStatusTypeId=5; required cross UpsaleType=4, IsOptional=false."
+    },
+    {
+      "alias": "AlfaDec",
+      "status": "not_promoted",
+      "lastResult": "manual_check_required",
+      "sourceApplicationId": null,
+      "note": "В pool-rules нет утвержденного Prod positive-маркера/source для активного replay; pool не проверялся активным вызовом."
+    },
+    {
+      "alias": "astrovolga",
+      "status": "not_promoted",
+      "lastResult": "failed_pool_not_reproduced",
+      "sourceApplicationId": "08DED2A5-E21A-F303-25C3-3E347815F824; +3 свежих кандидата",
+      "note": "4 valid replays returned transferToPool=false and Core OfferTypeId=1. Additional exact-source search in AstroVolgaLogs for 2026-06-03..2026-06-25 and Core pool-like offer search found no extra replay-ready sources."
+    },
+    {
+      "alias": "Energogarant",
+      "status": "working",
+      "lastResult": "passed",
+      "sourceApplicationId": "08DED2BA-86F6-E1B9-25C3-3E3A380BD5F1",
+      "note": "Dynamic replay reproduced is_reinsurance=true; Core OfferTypeId=4, OfferStatusTypeId=3, no upsales; handling is correct decline."
+    },
+    {
+      "alias": "Gelios",
+      "status": "working",
+      "lastResult": "passed",
+      "sourceApplicationId": "08DEC273-551A-8285-25C3-3E23589041A6",
+      "note": "GeliosLogs: isReinsured=true; Core OfferTypeId=7, OfferStatusTypeId=5; required cross UpsaleType=3, IsOptional=false."
+    },
+    {
+      "alias": "Ingos",
+      "status": "working",
+      "lastResult": "passed",
+      "sourceApplicationId": "08DEC273-5E40-C1DE-25C3-3E2358905D72",
+      "note": "IngosLogs: warning level 10, no base level; Core OfferTypeId=4, OfferStatusTypeId=3."
+    },
+    {
+      "alias": "Intouch",
+      "status": "not_promoted",
+      "lastResult": "blocked_no_source",
+      "sourceApplicationId": null,
+      "note": "Сегодняшний exact-search по isReinsurance/isExtraPool=true вернул 0 строк; replay-ready source отсутствует."
+    },
+    {
+      "alias": "Maks",
+      "status": "working",
+      "lastResult": "passed",
+      "sourceApplicationId": "08DED2BC-1898-9A49-25C3-3E3A3813124A",
+      "note": "Dynamic replay reproduced Maks pool signal &lt;re>Y&lt;/re>; Core OfferTypeId=7, OfferStatusTypeId=5; required cross UpsaleType=20 IsOptional=false."
+    },
+    {
+      "alias": "Renis",
+      "status": "not_promoted",
+      "lastResult": "blocked_no_source",
+      "sourceApplicationId": null,
+      "note": "Безопасный поиск с 12:00 по getAccountStatus?accountNumber= и isReinsurance/isExtraPool=true вернул 0 строк."
+    },
+    {
+      "alias": "Reso",
+      "status": "working",
+      "lastResult": "passed",
+      "sourceApplicationId": "08DEC273-5E40-C1DE-25C3-3E2358905D72",
+      "note": "ResoLogs: Calculate2Response + Commission=0.0; Core OfferTypeId=4, OfferStatusTypeId=3."
+    },
+    {
+      "alias": "Rgs",
+      "status": "not_promoted",
+      "lastResult": "manual_check_required",
+      "sourceApplicationId": null,
+      "note": "По правилу от 2026-06-24 пул у РГС принудительно заблокирован андеррайтерами, включая Prod/Test; active replay/source discovery пропущены."
+    },
+    {
+      "alias": "Sber",
+      "status": "working",
+      "lastResult": "passed",
+      "sourceApplicationId": "08DEC283-9C16-A0C9-25C3-3E2358A49D8C",
+      "note": "SberLogs: reinsured=true; Core OfferTypeId=4, OfferStatusTypeId=3."
+    },
+    {
+      "alias": "Sogaz",
+      "status": "not_promoted",
+      "lastResult": "manual_check_required",
+      "sourceApplicationId": null,
+      "note": "В pool-rules нет утвержденного Prod positive-маркера/source для активного replay; pool не проверялся активным вызовом."
+    },
+    {
+      "alias": "Soglasie",
+      "status": "working",
+      "lastResult": "passed",
+      "sourceApplicationId": "08DED2BB-BFFC-F135-25C3-3E3A38116344",
+      "note": "SoglasieLogs: param 6463 + result=1; Core OfferTypeId=4, OfferStatusTypeId=3."
+    },
+    {
+      "alias": "Sovkom",
+      "status": "not_promoted",
+      "lastResult": "blocked_no_source",
+      "sourceApplicationId": null,
+      "note": "14-day exact-search key=reinsurancePool + value=true вернул 0 строк; replay-ready source отсутствует."
+    },
+    {
+      "alias": "Tinkoff",
+      "status": "not_promoted",
+      "lastResult": "manual_check_required",
+      "sourceApplicationId": null,
+      "note": "В pool-rules нет утвержденного Prod positive-маркера/source для активного replay; pool не проверялся активным вызовом."
+    },
+    {
+      "alias": "Ugoria",
+      "status": "working",
+      "lastResult": "passed",
+      "sourceApplicationId": "08DEC270-AE4F-9CE8-25C3-3E23588A5075",
+      "note": "UgoriaLogs: policy info category=R; Core OfferTypeId=15, OfferStatusTypeId=4."
+    },
+    {
+      "alias": "Vsk",
+      "status": "not_promoted",
+      "lastResult": "blocked_no_source",
+      "sourceApplicationId": null,
+      "note": "Сегодняшний exact-search по isReinsurance=true вернул 0 строк; 14-day direct search timeout, replay-ready source отсутствует."
+    },
+    {
+      "alias": "Zetta",
+      "status": "not_promoted",
+      "lastResult": "blocked_no_source",
+      "sourceApplicationId": null,
+      "note": "Сегодняшний exact-search по DoReinsure=true вернул 0 строк; 14-day direct search timeout, replay-ready source отсутствует."
+    },
+    {
+      "alias": "BSO",
+      "status": "not_promoted",
+      "lastResult": "blocked_no_source",
+      "sourceApplicationId": null,
+      "note": "Сегодня candidate-true is_reinsurance/reinsurance=true не найден; false/error-only по правилам не являются positive."
+    },
+    {
+      "alias": "Pari",
+      "status": "not_promoted",
+      "lastResult": "blocked_no_source",
+      "sourceApplicationId": null,
+      "note": "Сегодня candidate-true reinsurance=true не найден; reinsurance=false по правилам не является positive."
+    }
+  ]
+}

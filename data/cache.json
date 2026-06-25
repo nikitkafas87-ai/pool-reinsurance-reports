@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-25 12:00",
+  "updatedAt": "2026-06-25 17:30",
   "dev": [
     {
       "date": "2026-05-29 16:41 +03:00",
@@ -55,6 +55,17 @@
       "alias": "Absolut, Alfa, Gelios, Ingos, Энергогарант, Maks, Reso, Sber, Soglasie, Ugoria",
       "status": "смешанный статус",
       "lastResult": "9 рабочих прод-источников, Sber воспроизводит сигнал, но обработка оффера ошибочная"
+    },
+    {
+      "date": "2026-06-25 17:30",
+      "environment": "Прод",
+      "title": "Снимок кеша - прод - активный прогон",
+      "slug": "2026-06-25-prod-active-pool",
+      "href": "cache/prod/2026-06-25-prod-active-pool/",
+      "alias": "10 рабочих источников; устаревшие: старые Absolut, Energogarant, Soglasie; AstroVolga без working source",
+      "status": "смешанный статус",
+      "lastResult": "10 рабочих источников, 2 устаревших/не воспроизведенных, 11 без replay-ready source или ручная проверка; AstroVolga дополнительно проверена до 2026-06-03",
+      "summary": "Очищенный снимок Prod cache и результатов discovery без request body/API keys; дополнительный поиск AstroVolga не нашел новых источников."
     }
   ]
 }
