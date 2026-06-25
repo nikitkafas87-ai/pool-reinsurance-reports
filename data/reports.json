@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-24 18:20",
+  "updatedAt": "2026-06-25 12:00",
   "dev": [
     {
       "date": "2026-05-29 16:11 +03:00",
@@ -31,6 +31,16 @@
       "insurers": "Vsk",
       "status": "ошибка обработки оффера",
       "summary": "VIN Z8TXTGF2WHM035428 воспроизвел isReinsurance=true в VskLogs, но Core offer остался OfferStatusTypeId=5 и OfferTypeId=1."
+    },
+    {
+      "date": "2026-06-25 12:00",
+      "environment": "Дев/тест",
+      "title": "Проверка пула ОСАГО - AlfaDec - InsuranceBonus и КАСКОGO",
+      "slug": "2026-06-25-alfadec-pool-kaskogo",
+      "href": "reports/dev/2026-06-25-alfadec-pool-kaskogo/",
+      "insurers": "AlfaDec",
+      "status": "нет источника для воспроизведения",
+      "summary": "Кодовая логика commentList &PP& -> ReinsuranceWithUpsales/KaskoGo реализована, но в InsappLogTest за год не найден ответ AlfaDec с InsuranceBonus>0 и &PP& в commentList; свежие non-pool sample без KaskoGo."
     }
   ],
   "prod": [

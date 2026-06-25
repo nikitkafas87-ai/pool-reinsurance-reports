@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-24 18:20",
+  "updatedAt": "2026-06-25 12:00",
   "dev": [
     {
       "date": "2026-05-29 16:41 +03:00",
@@ -32,6 +32,17 @@
       "alias": "Vsk",
       "status": "не промотирован в working",
       "lastResult": "Положительный признак воспроизведен, но self-check по обработке оффера не пройден"
+    },
+    {
+      "date": "2026-06-25 12:00",
+      "environment": "Дев/тест",
+      "title": "Снимок кеша - AlfaDec - InsuranceBonus и КАСКОGO",
+      "slug": "2026-06-25-alfadec-pool-kaskogo",
+      "href": "cache/dev/2026-06-25-alfadec-pool-kaskogo/",
+      "alias": "AlfaDec",
+      "status": "нет replay-ready источника",
+      "lastResult": "нет источника для активного воспроизведения: cache не обновлялся, источник с &PP& не найден",
+      "summary": "Очищенный снимок: для AlfaDec нет usable cache entries, DB source discovery не нашел положительный ответ с InsuranceBonus>0 и commentList &PP&."
     }
   ],
   "prod": [

@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "environment": "Дев/тест",
+  "updatedAt": "2026-06-25 12:00 +03:00",
+  "alias": "AlfaDec",
+  "strictStatus": "нет источника для активного воспроизведения",
+  "publicStatus": "нет источника для активного воспроизведения",
+  "sourceCache": {
+    "checked": "references/active-source-cache.test.json",
+    "usableAlfaDecEntries": 0,
+    "updated": false,
+    "reason": "В кеше нет replay-ready записей AlfaDec; DB source discovery не нашел ответа с InsuranceBonus>0 и commentList &PP&."
+  },
+  "logSummary": {
+    "database": "InsappLogTest",
+    "table": "AlfaDecLogs",
+    "period": "2025-06-25 00:00 +03:00 - 2026-06-26 00:00 +03:00",
+    "totalRows": 3691,
+    "hasInsuranceBonusRows": 1498,
+    "hasCommentListRows": 84,
+    "hasAnyPPRows": 36,
+    "hasPPAndInsuranceBonusRows": 0
+  },
+  "coreSamples": [
+    {
+      "applicationId": "08ded28e-ea53-3666-bee7-431b04039228",
+      "offerStatusTypeId": 5,
+      "offerTypeId": 1,
+      "premiumAmount": 8970.15,
+      "hasKaskoGoUpsale": false
+    },
+    {
+      "applicationId": "08ded290-6d23-a7e9-bee7-431b04040417",
+      "offerStatusTypeId": 5,
+      "offerTypeId": 1,
+      "premiumAmount": 2583.18,
+      "hasKaskoGoUpsale": false
+    },
+    {
+      "applicationId": "08ded290-796d-8455-bee7-431b0404071e",
+      "offerStatusTypeId": 5,
+      "offerTypeId": 1,
+      "premiumAmount": 2583.18,
+      "hasKaskoGoUpsale": false
+    },
+    {
+      "applicationId": "08ded291-2b19-7fb5-bee7-431b04041f25",
+      "offerStatusTypeId": 5,
+      "offerTypeId": 1,
+      "premiumAmount": 2583.18,
+      "hasKaskoGoUpsale": false
+    }
+  ],
+  "implementationEvidence": [
+    {
+      "file": "Insapp.Services/Integration/Osago/Insurers/AlfaDec/AlfaDecMapper.cs",
+      "lines": "404-445",
+      "result": "InsuranceBonus==0 rejects; commentList containing &PP& sets OfferType.ReinsuranceWithUpsales"
+    },
+    {
+      "file": "Insapp.Services/Integration/Osago/Insurers/AlfaDec/AlfaDecMapper.cs",
+      "lines": "465-478",
+      "result": "Upsale status fill creates required KaskoGo upsale"
+    }
+  ]
+}
