@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "environment": "Дев/тест",
+  "updatedAt": "2026-06-26 14:45 +03:00",
+  "insurer": {
+    "alias": "Pari",
+    "name": "ПАРИ",
+    "insurerId": "79c59d23-23dd-474f-911b-3e45ecef7faa",
+    "logTable": "PariLogs"
+  },
+  "source": {
+    "type": "insurer_provided_data",
+    "fileName": "reins.json",
+    "status": "рабочий источник",
+    "containsRawSecrets": false,
+    "containsRequestBodies": false
+  },
+  "activeRun": {
+    "applicationId": "08ded376-5ee1-83ef-bee7-43366c0780a5",
+    "offerId": "08ded376-614b-872c-bee7-43366c07815d",
+    "insurerApplicationId": "3fd48d54-228a-4709-8084-ae1ea3f09d4c",
+    "vin": "XWEPH81ABM0052262",
+    "licensePlate": "О312РХ32",
+    "premiumAmount": 10108.37,
+    "positiveSignal": {
+      "method": "GET",
+      "url": "https://pari-osago-test.skpari.ru/contracts/info/3fd48d54-228a-4709-8084-ae1ea3f09d4c",
+      "field": "reinsurance",
+      "value": true,
+      "observedAt": "2026-06-26T14:31:47.8592734+03:00"
+    },
+    "coreHandling": {
+      "offerStatusTypeId": 4,
+      "offerTypeId": 4,
+      "offerTypeName": "Reinsurance",
+      "errorMessage": null
+    },
+    "verdict": "пройдено"
+  },
+  "invalidAttempts": [
+    {
+      "applicationId": "08ded376-1fc1-fe7a-bee7-43366c077f3f",
+      "reason": "валидация: не хватало обязательных DaData-полей адреса"
+    },
+    {
+      "applicationId": "08ded376-504a-82d4-bee7-43366c078048",
+      "reason": "валидация: Owner.MiddleName должен содержать кириллицу"
+    }
+  ],
+  "notes": [
+    "Положительный признак ПАРИ появляется на /contracts/info/{id}, а не на /contracts/calculate/{id}.",
+    "Публичный snapshot не содержит API-ключи, Basic Auth, паспортные данные, телефон, email или сырые тела запросов."
+  ]
+}

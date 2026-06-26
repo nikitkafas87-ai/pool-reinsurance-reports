@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Снимок кеша - ПАРИ</title>
+<style>
+*{box-sizing:border-box}:root{--bg:#f4f7fb;--panel:#fff;--ink:#172033;--muted:#667085;--line:#dfe6ef;--header:#243447;--ok:#147a4f;--ok-bg:#e6f7ee;--warn:#9b6a19;--warn-bg:#fff4df;--info:#315d9c;--info-bg:#e9f1ff;--shadow:0 12px 30px rgba(23,32,51,.08)}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:linear-gradient(180deg,#eef3f9 0,#f7f9fc 260px,#f4f7fb 100%);color:var(--ink);line-height:1.45}body:before{content:"";position:fixed;inset:0 0 auto;height:245px;background:linear-gradient(135deg,#172033 0,#243447 58%,#315d9c 100%);z-index:-1}.wrap{max-width:1120px;margin:0 auto;padding:30px 20px 46px}.top{display:flex;justify-content:space-between;gap:16px;align-items:flex-end;margin-bottom:18px;color:#fff}h1{margin:0;font-size:28px;line-height:1.15;letter-spacing:0}.meta{margin:7px 0 0;color:rgba(255,255,255,.82);font-size:14px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0}.card{background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px;box-shadow:var(--shadow);border-top:4px solid var(--info)}.card b{display:block;font-size:22px}.card span{font-size:12px;color:var(--muted)}.panel{background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px;box-shadow:var(--shadow);margin-top:14px}.table-shell{background:var(--panel);border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow);overflow:hidden;margin-top:14px}.table-tools{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;border-bottom:1px solid var(--line);background:#fff}.table-title{font-size:13px;font-weight:700;color:#344054}.table-search{width:250px;min-height:34px;border:1px solid #cfd8e3;border-radius:8px;padding:7px 10px;font:inherit;font-size:13px}.table-scroll{overflow:auto}table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;min-width:760px}th{position:sticky;top:0;background:var(--header);color:#fff;text-align:left;font-size:12px;padding:11px 12px;white-space:nowrap}td{font-size:13px;padding:11px 12px;border-top:1px solid #eef1f5;vertical-align:top}tbody tr:hover{background:#f7fbff}.pill{display:inline-flex;align-items:center;border-radius:999px;padding:4px 9px;font-size:12px;font-weight:700;white-space:nowrap}.passed{background:var(--ok-bg);color:var(--ok)}.warn{background:var(--warn-bg);color:var(--warn)}code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;background:#eef2f6;border:1px solid #dfe6ef;border-radius:5px;padding:1px 5px}a{color:#245aa6;text-decoration:none;font-weight:700}@media(max-width:780px){.top{display:block}.grid{grid-template-columns:1fr}.table-tools{align-items:flex-start;flex-direction:column}.table-search{width:100%}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<div class="top"><div><h1>Снимок кеша - ПАРИ</h1><p class="meta">Очищенный источник активного pool-воспроизведения</p></div><p class="meta">Обновление: 2026-06-26 14:45</p></div>
+<div class="grid"><div class="card"><b>Pari</b><span>СК ПАРИ</span></div><div class="card"><b>рабочий</b><span>Статус источника</span></div><div class="card"><b>без секретов</b><span>Публичный snapshot</span></div></div>
+<div class="panel"><b>Суть:</b> источник сформирован из данных СК ПАРИ в <code>reins.json</code>. Он воспроизводит <code>"reinsurance":true</code> на <code>/contracts/info/{id}</code> и подтверждает обработку Core как <code>OfferTypeId=4</code>. Сырые тела запросов и персональные документы в публичный snapshot не включены.</div>
+<div class="table-shell"><div class="table-scroll"><table><thead><tr><th>Параметр</th><th>Значение</th><th>Статус</th></tr></thead><tbody>
+<tr><td>ApplicationId</td><td><code>08ded376-5ee1-83ef-bee7-43366c0780a5</code></td><td><span class="pill passed">успешно</span></td></tr>
+<tr><td>OfferId</td><td><code>08ded376-614b-872c-bee7-43366c07815d</code></td><td><span class="pill passed">найден</span></td></tr>
+<tr><td>InsurerApplicationId</td><td><code>3fd48d54-228a-4709-8084-ae1ea3f09d4c</code></td><td><span class="pill passed">найден</span></td></tr>
+<tr><td>Pool-сигнал</td><td><code>GET /contracts/info/{id}</code> -> <code>"reinsurance":true</code></td><td><span class="pill passed">подтвержден</span></td></tr>
+<tr><td>Обработка Core</td><td><code>OfferStatusTypeId=4</code>, <code>OfferTypeId=4</code></td><td><span class="pill passed">пройдено</span></td></tr>
+<tr><td>Невалидные попытки</td><td>2 попытки остановлены на валидации до валидного расчёта</td><td><span class="pill warn">не считались</span></td></tr>
+</tbody></table></div></div>
+<p class="panel"><a href="snapshot.json">Открыть snapshot.json</a></p>
+</main>
+<script>
+document.querySelectorAll('.table-shell').forEach(shell=>{const rows=[...shell.querySelectorAll('tbody tr')];const tools=document.createElement('div');tools.className='table-tools';const title=document.createElement('div');title.className='table-title';const input=document.createElement('input');input.className='table-search';input.type='search';input.placeholder='Поиск по таблице';tools.append(title,input);shell.prepend(tools);input.oninput=apply;function apply(){const q=input.value.toLowerCase().trim();let shown=0;rows.forEach(r=>{const v=!q||r.textContent.toLowerCase().includes(q);r.hidden=!v;if(v)shown++});title.textContent=`Показано: ${shown} из ${rows.length}`}apply()});
+</script>
+</body>
+</html>

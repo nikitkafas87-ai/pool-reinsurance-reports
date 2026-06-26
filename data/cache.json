@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-26 12:10",
+  "updatedAt": "2026-06-26 14:45",
   "dev": [
     {
       "date": "2026-05-29 16:41 +03:00",
@@ -54,6 +54,17 @@
       "status": "рабочий источник",
       "lastResult": "Источник 08ded2bd-8005-77a0-bee7-432bf806a50d добавлен как working после успешного replay",
       "summary": "Очищенный снимок cache без request bodies/API keys; свежая позитивная заявка 08ded361-9e2e-ef67-bee7-4312f00787fb."
+    },
+    {
+      "date": "2026-06-26 14:45",
+      "environment": "Дев/тест",
+      "title": "Снимок кеша - ПАРИ - reinsurance=true",
+      "slug": "2026-06-26-1445-pari-pool-reinsurance",
+      "href": "cache/dev/2026-06-26-1445-pari-pool-reinsurance/",
+      "alias": "Pari",
+      "status": "рабочий источник",
+      "lastResult": "Данные reins.json воспроизвели reinsurance=true на /contracts/info/{id}; Core offer получил OfferTypeId=4.",
+      "summary": "Очищенный snapshot без request bodies/API keys и персональных документов; ApplicationId 08ded376-5ee1-83ef-bee7-43366c0780a5."
     }
   ],
   "prod": [
