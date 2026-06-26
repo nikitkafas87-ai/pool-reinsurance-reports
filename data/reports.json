@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-25 17:30",
+  "updatedAt": "2026-06-26 12:10",
   "dev": [
     {
       "date": "2026-05-29 16:11 +03:00",
@@ -41,6 +41,16 @@
       "insurers": "AlfaDec",
       "status": "нет источника для воспроизведения",
       "summary": "Кодовая логика commentList &PP& -> ReinsuranceWithUpsales/KaskoGo реализована, но в InsappLogTest за год не найден ответ AlfaDec с InsuranceBonus>0 и &PP& в commentList; свежие non-pool sample без KaskoGo."
+    },
+    {
+      "date": "2026-06-26 12:10",
+      "environment": "Дев/тест",
+      "title": "Проверка пула ОСАГО - Энергогарант",
+      "slug": "2026-06-26-energogarant-dev-pool",
+      "href": "reports/dev/2026-06-26-energogarant-dev-pool/",
+      "insurers": "Energogarant",
+      "status": "пройдено",
+      "summary": "Активный replay воспроизвел is_reinsurance=true; Core обработал оффер как pool/reinsurance: OfferStatusTypeId=3, OfferTypeId=4."
     }
   ],
   "prod": [
