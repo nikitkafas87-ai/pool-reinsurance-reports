@@ -64,7 +64,7 @@
       "alias": "Pari",
       "status": "рабочий источник",
       "lastResult": "Данные reins.json воспроизвели reinsurance=true на /contracts/info/{id}; Core offer получил OfferTypeId=4.",
-      "summary": "Очищенный snapshot без request bodies/API keys и персональных документов; ApplicationId 08ded376-5ee1-83ef-bee7-43366c0780a5."
+      "summary": "Расширенный snapshot содержит структуру policyOsago, vehicleData, participants, documents и address; ПДн, request bodies/API keys и секреты скрыты. ApplicationId 08ded376-5ee1-83ef-bee7-43366c0780a5."
     }
   ],
   "prod": [

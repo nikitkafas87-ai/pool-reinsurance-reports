@@ -60,7 +60,7 @@
       "href": "reports/dev/2026-06-26-1445-pari-pool-reinsurance/",
       "insurers": "Pari",
       "status": "пройдено",
-      "summary": "Данные из reins.json воспроизвели pool-кейс ПАРИ: на GET /contracts/info/{id} получено reinsurance=true; Core обработал оффер как Reinsurance: OfferStatusTypeId=4, OfferTypeId=4."
+      "summary": "Данные из reins.json воспроизвели pool-кейс ПАРИ: на GET /contracts/info/{id} получено reinsurance=true; Core обработал оффер как Reinsurance: OfferStatusTypeId=4, OfferTypeId=4. Отчёт расширен составом входных полей; ПДн и секреты скрыты."
     }
   ],
   "prod": [

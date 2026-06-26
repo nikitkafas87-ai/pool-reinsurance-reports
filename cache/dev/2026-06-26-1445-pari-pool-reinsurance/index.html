@@ -15,6 +15,10 @@
 <div class="panel"><b>Суть:</b> источник сформирован из данных СК ПАРИ в <code>reins.json</code>. Он воспроизводит <code>"reinsurance":true</code> на <code>/contracts/info/{id}</code> и подтверждает обработку Core как <code>OfferTypeId=4</code>. Сырые тела запросов и персональные документы в публичный snapshot не включены.</div>
 <div class="table-shell"><div class="table-scroll"><table><thead><tr><th>Параметр</th><th>Значение</th><th>Статус</th></tr></thead><tbody>
 <tr><td>ApplicationId</td><td><code>08ded376-5ee1-83ef-bee7-43366c0780a5</code></td><td><span class="pill passed">успешно</span></td></tr>
+<tr><td>Полис</td><td><code>policyBeginDate=2026-06-30T00:00:00</code>, <code>policyEndDate=2027-06-29T23:59:59</code>, <code>usingPurpose=PERSONAL</code></td><td><span class="pill passed">сохранено</span></td></tr>
+<tr><td>ТС</td><td><code>Kia Sportage</code>, <code>VIN XWEPH81ABM0052262</code>, <code>ГРЗ О312РХ32</code>, <code>2021</code>, <code>150 л.с.</code></td><td><span class="pill passed">сохранено</span></td></tr>
+<tr><td>Участники и документы</td><td>Структура holder/owner/driver сохранена в snapshot; ФИО, телефон, email, даты рождения и номера документов замаскированы</td><td><span class="pill warn">ПДн скрыты</span></td></tr>
+<tr><td>Адрес</td><td><code>Республика Дагестан</code>, <code>Хасавюрт</code>, <code>addressFias=211ba360-4505-4bf9-ab91-cd2cb8265075</code>; улица и дом скрыты</td><td><span class="pill warn">частично скрыто</span></td></tr>
 <tr><td>OfferId</td><td><code>08ded376-614b-872c-bee7-43366c07815d</code></td><td><span class="pill passed">найден</span></td></tr>
 <tr><td>InsurerApplicationId</td><td><code>3fd48d54-228a-4709-8084-ae1ea3f09d4c</code></td><td><span class="pill passed">найден</span></td></tr>
 <tr><td>Pool-сигнал</td><td><code>GET /contracts/info/{id}</code> -> <code>"reinsurance":true</code></td><td><span class="pill passed">подтвержден</span></td></tr>

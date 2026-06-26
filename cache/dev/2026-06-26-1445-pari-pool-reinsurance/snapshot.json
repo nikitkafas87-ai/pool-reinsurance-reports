@@ -13,7 +13,115 @@
     "fileName": "reins.json",
     "status": "рабочий источник",
     "containsRawSecrets": false,
-    "containsRequestBodies": false
+    "containsRequestBodies": false,
+    "personalDataMode": "masked_public_snapshot"
+  },
+  "inputData": {
+    "policyOsago": {
+      "policyBeginDate": "2026-06-30T00:00:00",
+      "policyEndDate": "2027-06-29T23:59:59",
+      "policySignDate": "2026-06-27T16:10:54",
+      "utilisationPeriod1Begin": "2026-06-30T00:00:00",
+      "utilisationPeriod1End": "2027-06-29T23:59:59",
+      "usingPurpose": "PERSONAL"
+    },
+    "vehicleData": {
+      "brandName": "Kia",
+      "modelName": "Sportage",
+      "docModelName": "Kia Sportage",
+      "licensePlate": "О312РХ32",
+      "vin": "XWEPH81ABM0052262",
+      "vehicleType": "04",
+      "vehicleCategory": "B",
+      "modification": "011900254137040101030000127148",
+      "productionYear": "2021-01-01",
+      "powerHp": 150.0,
+      "passengerCapacity": 5,
+      "mappedPublicApiBrandId": 108,
+      "mappedPublicApiModelId": 2257,
+      "mappedPariModelId": "002541",
+      "mappedPariModelName": "Sportage",
+      "vehicleDocument": {
+        "countryCode": "643",
+        "docType": 31,
+        "docSeries": "99**",
+        "docNumber": "58****",
+        "issueDate": "2021-09-18",
+        "maskReason": "номер документа ТС не публикуется в открытом Pages"
+      }
+    },
+    "participants": {
+      "holderOwnerDriverSamePerson": true,
+      "holder": {
+        "personType": "physical",
+        "phone": "скрыто",
+        "email": "скрыто",
+        "lastName": "скрыто",
+        "firstName": "скрыто",
+        "birthDate": "скрыто"
+      },
+      "owner": {
+        "personType": "physical",
+        "phone": "скрыто",
+        "email": "скрыто",
+        "lastName": "скрыто",
+        "firstName": "скрыто",
+        "birthDate": "скрыто",
+        "publicApiMiddleNameUsedForValidation": "Петрович"
+      },
+      "driversCount": 1,
+      "driver": {
+        "lastName": "скрыто",
+        "firstName": "скрыто",
+        "birthDate": "скрыто",
+        "firstLicensedDate": "2007-12-21"
+      }
+    },
+    "personDocuments": {
+      "identityCard": {
+        "docType": 12,
+        "countryCode": "643",
+        "docSeries": "15**",
+        "docNumber": "32****",
+        "issueDate": "2004-11-01",
+        "maskReason": "паспортные данные не публикуются в открытом Pages"
+      },
+      "driverLicense": {
+        "docType": 20,
+        "countryCode": "643",
+        "docSeries": "99**",
+        "docNumber": "12****",
+        "issueDate": "2017-12-21",
+        "firstLicensedDate": "2007-12-21",
+        "maskReason": "номер ВУ не публикуется в открытом Pages"
+      }
+    },
+    "address": {
+      "region": "Республика Дагестан",
+      "city": "Хасавюрт",
+      "streetAndHouse": "скрыто",
+      "addressFias": "211ba360-4505-4bf9-ab91-cd2cb8265075",
+      "regionFiasId": "0bb7fa19-736d-49cf-ad0e-9774c4dae09b",
+      "regionKladrId": "0500000000000",
+      "cityFiasId": "b10ca6a7-e9c0-4382-b939-4787aaf43a58",
+      "cityKladrId": "0500000900000",
+      "dadataCompletion": "недостающие обязательные DaData-поля дозаполнены из справочника адресов"
+    },
+    "redaction": {
+      "publiclyHiddenFields": [
+        "phone",
+        "email",
+        "lastName",
+        "firstName",
+        "birthDate",
+        "passport docSeries/docNumber",
+        "driverLicense docSeries/docNumber",
+        "full street and house",
+        "raw request bodies",
+        "apiKey",
+        "Basic Auth"
+      ]
+    }
   },
   "activeRun": {
     "applicationId": "08ded376-5ee1-83ef-bee7-43366c0780a5",
