@@ -92,7 +92,7 @@
       "href": "reports/prod/2026-07-20-ugoria-approved-pool/",
       "insurers": "Ugoria; в отчёте приведён полный утверждённый scope",
       "status": "ошибка обработки оффера",
-      "summary": "Две заявки шли через InitOsagoDirectPayment: обработчик зафиксировал Error только в OsagoInitDirectPaymentStatus, но для ApplicationTypeId=1 не изменил основной OfferStatusTypeId=5. Обычный GetOsagoPaymentLink корректно переводит остальные пул-офферы в OfferStatusTypeId=4."
+      "summary": "Две заявки шли через InitOsagoDirectPayment: обработчик зафиксировал Error только в OsagoInitDirectPaymentStatus, но для ApplicationTypeId=1 не изменил основной OfferStatusTypeId=5. Условие для PreparedProlongation добавлено в INS-3188 ради неактуальности и выгрузки автопролонгаций при сохранении прежнего поведения остальных процессов."
     }
   ]
 }
