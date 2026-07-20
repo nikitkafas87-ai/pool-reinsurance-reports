@@ -1,0 +1,34 @@
+{
+  "environment": "Прод",
+  "checkedAt": "2026-07-20T18:00:00+03:00",
+  "mode": "целевой пассивный разбор",
+  "cacheFile": "active-source-cache.prod.json",
+  "cacheUpdated": false,
+  "results": [
+    {
+      "alias": "Ugoria",
+      "insurerId": "3ECF7469-079E-42A7-9C55-FBA2291DACBC",
+      "status": "ошибка обработки оффера",
+      "offers": [
+        {
+          "applicationId": "08DEE667-E82B-EF30-25C3-3E165C3E6334",
+          "offerId": "08DEE667-E854-731B-25C3-3E165C3E6458",
+          "poolCategory": "R",
+          "offerTypeId": 15,
+          "offerStatusTypeId": 5,
+          "expectedOfferStatusTypeId": 4,
+          "isPaid": false
+        },
+        {
+          "applicationId": "08DEE66B-22FD-C52B-25C3-3E165C4D0310",
+          "offerId": "08DEE66B-231B-17FE-25C3-3E165C4D03EA",
+          "poolCategory": "R",
+          "offerTypeId": 15,
+          "offerStatusTypeId": 5,
+          "expectedOfferStatusTypeId": 4,
+          "isPaid": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Пул ОСАГО — Ugoria: два одобренных оффера</title>
+  <style>
+    :root{--ink:#17263b;--band:#172a42;--bg:#f4f7fb;--line:#dbe4ef;--good:#16734a;--bad:#ad3434;--muted:#5d6c7e;--warn:#9a670d}
+    *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+    header{padding:30px max(22px,calc((100vw - 1320px)/2));background:linear-gradient(120deg,#122238,#274363);color:#fff} h1{margin:0;font-size:27px}.lead{margin:8px 0 0;color:#d9e6f3}
+    main{max-width:1320px;margin:auto;padding:22px}.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0 0 16px}.metric,.card{background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 2px 7px #24364b0a}.metric{padding:15px}.metric b{font-size:27px;display:block}.metric span{color:var(--muted);font-size:13px}.card{padding:18px;margin:14px 0}h2{font-size:19px;margin:0 0 10px}.danger{border-left:5px solid var(--bad);background:#fff7f7}.danger strong{color:var(--bad)}.small{color:var(--muted);font-size:13px}
+    .controls{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-bottom:12px}.search{min-width:245px;padding:9px 11px;border:1px solid var(--line);border-radius:8px}.filter{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 10px;cursor:pointer}.filter.active{background:var(--band);border-color:var(--band);color:#fff}
+    .shell{overflow:auto;border:1px solid var(--line);border-radius:10px}table{border-collapse:collapse;width:100%;min-width:900px}th{position:sticky;top:0;background:var(--band);color:#fff;text-align:left;padding:10px;font-size:12px}td{padding:10px;border-top:1px solid #e8eef5;vertical-align:top;font-size:13px}tbody tr:hover{background:#f7faff}.pill{display:inline-block;padding:3px 8px;border-radius:999px;font-weight:700;font-size:12px}.bad{background:#fde8e8;color:var(--bad)}.ok{background:#e7f5ec;color:var(--good)}.neutral{background:#edf1f5;color:#4d5a69}code{font-size:12px;white-space:nowrap}.hidden{display:none}@media(max-width:760px){.metrics{grid-template-columns:1fr 1fr}header{padding:24px 16px}main{padding:16px}}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Пул ОСАГО — Prod: два одобренных оффера Ugoria</h1>
+    <p class="lead">Целевой пассивный разбор интервала 20.07.2026, 17:00–18:00 МСК. Отчёт очищен: без API-ключей, query-параметров URL, тел запросов и ПДн.</p>
+  </header>
+  <main>
+    <section class="metrics">
+      <div class="metric"><b>2</b><span>положительных пул-сигнала</span></div>
+      <div class="metric"><b>2</b><span>оффера ошибочно одобрены</span></div>
+      <div class="metric"><b>0</b><span>оплаченных полисов</span></div>
+      <div class="metric"><b>15</b><span>OfferTypeId у обоих</span></div>
+    </section>
+    <section class="card danger"><strong>Итог: ошибка обработки оффера.</strong> Для обоих предложений в <code>UgoriaLogs</code> получена точная категория пула <code>R</code>, но в Core сохранён <code>OfferStatusTypeId=5</code> (одобрен). По правилу Ugoria после пула оффер должен перейти в ошибку — <code>OfferStatusTypeId=4</code>.</section>
+    <section class="card">
+      <h2>Два оффера</h2>
+      <div class="controls"><input id="offer-search" class="search" placeholder="Поиск по заявке, офферу, типу…"><button class="filter active" data-filter="all">Все</button><button class="filter" data-filter="bad">Ошибка</button></div>
+      <div class="shell"><table id="offer-table"><thead><tr><th>Время создания</th><th>ApplicationId</th><th>OfferId</th><th>Премия</th><th>Пул-сигнал</th><th>Core</th><th>Вердикт</th></tr></thead><tbody>
+        <tr data-status="bad"><td>17:05:08.7057692</td><td><code>08DEE667-E82B-EF30-25C3-3E165C3E6334</code></td><td><code>08DEE667-E854-731B-25C3-3E165C3E6458</code></td><td>7 455,75 ₽</td><td><code>R</code> в 17:06:00.0117708</td><td><code>OfferTypeId=15</code><br><code>OfferStatusTypeId=5</code><br>выбран, не оплачен</td><td><span class="pill bad">ошибка</span></td></tr>
+        <tr data-status="bad"><td>17:28:15.8056447</td><td><code>08DEE66B-22FD-C52B-25C3-3E165C4D0310</code></td><td><code>08DEE66B-231B-17FE-25C3-3E165C4D03EA</code></td><td>7 455,75 ₽</td><td><code>R</code> в 17:28:48.1838572</td><td><code>OfferTypeId=15</code><br><code>OfferStatusTypeId=5</code><br>выбран, не оплачен</td><td><span class="pill bad">ошибка</span></td></tr>
+      </tbody></table></div>
+    </section>
+    <section class="card">
+      <h2>Подтверждения</h2>
+      <ul><li>Точный <code>InsurerId</code> Ugoria: <code>3ECF7469-079E-42A7-9C55-FBA2291DACBC</code>.</li><li>У обоих заявок сначала была категория <code>A</code>, затем на endpoint <code>/policy/{policyId}/info</code> — <code>R</code>; категория <code>R</code> является положительным пул-признаком.</li><li>В <code>PublicApiLogs</code> после выбора оффера были успешные вызовы <code>InitOsagoDirectPayment</code>. Ожидаемой бизнес-ошибки для пула не зафиксировано.</li><li>В <code>Applications</code>: <code>SelectedOfferId</code> совпадает с указанным OfferId, <code>IsPaid=false</code>.</li></ul>
+      <p class="small">Источник: read-only выборки из InsappLogProd и InsappCoreProd. Полный поиск по последним двум дням в UgoriaLogs не выполнялся: его план содержал небезопасный Clustered Index Scan; проверка ограничена двумя офферами из заданного часа.</p>
+    </section>
+    <section class="card">
+      <h2>Утверждённый scope</h2>
+      <div class="controls"><input id="scope-search" class="search" placeholder="Поиск СК…"><button class="filter active" data-scope="all">Все</button><button class="filter" data-scope="checked">Проверено</button></div>
+      <div class="shell"><table id="scope-table"><thead><tr><th>СК</th><th>Таблица</th><th>Статус в этом запуске</th></tr></thead><tbody>
+        <tr data-scope="unchecked"><td>Absolut</td><td>AbsolutLogs</td><td><span class="pill neutral">не входила в целевой разбор</span></td></tr><tr data-scope="unchecked"><td>Alfa</td><td>AlfaLogs</td><td><span class="pill neutral">не входила в целевой разбор</span></td></tr><tr data-scope="unchecked"><td>AlfaDec</td><td>AlfaDecLogs</td><td><span class="pill neutral">не входила в целевой разбор</span></td></tr><tr data-scope="unchecked"><td>astrovolga</td><td>AstroVolgaLogs</td><td><span class="pill neutral">не входила в целевой разбор</span></td></tr><tr data-scope="unchecked"><td>Energogarant</td><td>EnergogarantLogs</td><td><span class="pill neutral">не входила в целевой разбор</span></td></tr><tr data-scope="unchecked"><td>Gelios</td><td>GeliosLogs</td><td><span class="pill neutral">не входила в целевой разбор</span></td></tr><tr data-scope="unchecked"><td>Ingos</td><td>IngosLogs</td><td><span class="pill neutral">не входила в целевой разбор</span></td></tr><tr data-scope="unchecked"><td>Intouch</td><td>InTouchLogs</td><td><span class="pill neutral">не входила в целевой разбор</span></td></tr><tr data-scope="unchecked"><td>Maks</td><td>MaksLogs</td><td><span class="pill neutral">не входила в целевой разбор</span></td></tr><tr data-scope="unchecked"><td>Renis</td><td>RenessansLogs</td><td><span class="pill neutral">не входила в целевой разбор</span></td></tr><tr data-scope="unchecked"><td>Reso</td><td>ResoLogs</td><td><span class="pill neutral">не входила в целевой разбор</span></td></tr><tr data-scope="unchecked"><td>Rgs</td><td>RosgosstrahLogs</td><td><span class="pill neutral">не входила в целевой разбор</span></td></tr><tr data-scope="unchecked"><td>Sber</td><td>SberLogs</td><td><span class="pill neutral">не входила в целевой разбор</span></td></tr><tr data-scope="unchecked"><td>Sogaz</td><td>SogazLogs</td><td><span class="pill neutral">не входила в целевой разбор</span></td></tr><tr data-scope="unchecked"><td>Soglasie</td><td>SoglasieLogs</td><td><span class="pill neutral">не входила в целевой разбор</span></td></tr><tr data-scope="unchecked"><td>Sovkom</td><td>SovcomLogs</td><td><span class="pill neutral">не входила в целевой разбор</span></td></tr><tr data-scope="unchecked"><td>Tinkoff</td><td>TinkoffLogs</td><td><span class="pill neutral">не входила в целевой разбор</span></td></tr><tr data-scope="checked"><td>Ugoria</td><td>UgoriaLogs</td><td><span class="pill bad">2 оффера: ошибка обработки</span></td></tr><tr data-scope="unchecked"><td>Vsk</td><td>VskLogs</td><td><span class="pill neutral">не входила в целевой разбор</span></td></tr><tr data-scope="unchecked"><td>Zetta</td><td>ZettaLogs</td><td><span class="pill neutral">не входила в целевой разбор</span></td></tr><tr data-scope="unchecked"><td>BSO</td><td>BSOLogs</td><td><span class="pill neutral">не входила в целевой разбор</span></td></tr><tr data-scope="unchecked"><td>Pari</td><td>PariLogs</td><td><span class="pill neutral">не входила в целевой разбор</span></td></tr>
+      </tbody></table></div>
+    </section>
+  </main>
+  <script>
+    function wire(tableId,inputId,buttons,kind){let mode='all',input=document.getElementById(inputId),rows=[...document.querySelectorAll('#'+tableId+' tbody tr')];function draw(){let q=input.value.toLowerCase();rows.forEach(r=>r.classList.toggle('hidden',!(r.textContent.toLowerCase().includes(q)&&(mode==='all'||r.dataset[kind]===mode))))}input.addEventListener('input',draw);document.querySelectorAll(buttons).forEach(b=>b.addEventListener('click',()=>{mode=b.dataset[kind];document.querySelectorAll(buttons).forEach(x=>x.classList.toggle('active',x===b));draw()}))}
+    wire('offer-table','offer-search','[data-filter]','status'); wire('scope-table','scope-search','[data-scope]','scope');
+  </script>
+</body>
+</html>
