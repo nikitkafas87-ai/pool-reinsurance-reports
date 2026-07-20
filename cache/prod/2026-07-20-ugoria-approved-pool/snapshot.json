@@ -1,6 +1,6 @@
 {
   "environment": "Прод",
-  "checkedAt": "2026-07-20T18:00:00+03:00",
+  "checkedAt": "2026-07-20T18:24:00+03:00",
   "mode": "целевой пассивный разбор",
   "cacheFile": "active-source-cache.prod.json",
   "cacheUpdated": false,
@@ -17,6 +17,9 @@
           "offerTypeId": 15,
           "offerStatusTypeId": 5,
           "expectedOfferStatusTypeId": 4,
+          "isDirectPayment": true,
+          "osagoInitDirectPaymentStatus": 3,
+          "applicationTypeId": 1,
           "isPaid": false
         },
         {
@@ -26,9 +29,13 @@
           "offerTypeId": 15,
           "offerStatusTypeId": 5,
           "expectedOfferStatusTypeId": 4,
+          "isDirectPayment": true,
+          "osagoInitDirectPaymentStatus": 3,
+          "applicationTypeId": 1,
           "isPaid": false
         }
-      ]
+      ],
+      "rootCause": "Ветка InitOsagoDirectPayment фиксирует Error в статусе подготовки прямой оплаты, но меняет основной OfferStatus только для PreparedProlongation; новые заявки сохраняют OfferStatusTypeId=5."
     }
   ]
 }

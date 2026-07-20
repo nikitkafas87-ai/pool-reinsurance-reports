@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-20 18:00",
+  "updatedAt": "2026-07-20 18:24",
   "dev": [
     {
       "date": "2026-05-29 16:41 +03:00",
@@ -97,8 +97,8 @@
       "href": "cache/prod/2026-07-20-ugoria-approved-pool/",
       "alias": "Ugoria",
       "status": "кеш не изменялся",
-      "lastResult": "Пассивный разбор выявил два оффера category=R с ошибочной обработкой; активный replay не запускался.",
-      "summary": "Очищенный снимок: использован Prod-кеш как справочник, без изменения статусов и без публикации payload/API-ключей."
+      "lastResult": "Два прямых платежа получили Error в OsagoInitDirectPaymentStatus, но основной OfferStatusTypeId остался 5 из-за условия только для PreparedProlongation.",
+      "summary": "Очищенный снимок дополнен подтверждённой причиной расхождения статусов; Prod-кеш не изменялся, payload и API-ключи не опубликованы."
     }
   ]
 }

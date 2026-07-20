@@ -25,7 +25,7 @@
       <div class="metric"><b>0</b><span>оплаченных полисов</span></div>
       <div class="metric"><b>15</b><span>OfferTypeId у обоих</span></div>
     </section>
-    <section class="card danger"><strong>Итог: ошибка обработки оффера.</strong> Для обоих предложений в <code>UgoriaLogs</code> получена точная категория пула <code>R</code>, но в Core сохранён <code>OfferStatusTypeId=5</code> (одобрен). По правилу Ugoria после пула оффер должен перейти в ошибку — <code>OfferStatusTypeId=4</code>.</section>
+    <section class="card danger"><strong>Итог: ошибка обработки оффера.</strong> Для обоих предложений в <code>UgoriaLogs</code> получена точная категория пула <code>R</code>, а <code>InitOsagoDirectPayment</code> завершился статусом <code>Error</code>. При этом в Core изменился только <code>OsagoInitDirectPaymentStatus=3</code>, а основной <code>OfferStatusTypeId=5</code> (одобрен) сохранился. По правилу Ugoria оффер должен перейти в ошибку — <code>OfferStatusTypeId=4</code>.</section>
     <section class="card">
       <h2>Два оффера</h2>
       <div class="controls"><input id="offer-search" class="search" placeholder="Поиск по заявке, офферу, типу…"><button class="filter active" data-filter="all">Все</button><button class="filter" data-filter="bad">Ошибка</button></div>
@@ -35,9 +35,15 @@
       </tbody></table></div>
     </section>
     <section class="card">
+      <h2>Почему эти два отличаются от остальных</h2>
+      <p>В интервале найдено 15 пулоподобных офферов Ugoria. Тринадцать обычных заявок шли по цепочке <code>SelectOffer → GetOsagoPaymentLink</code>: после category=<code>R</code> запрос ссылки завершался бизнес-ошибкой, <code>OsagoPaymentLinkStatus</code> становился равен 3, а основной оффер — <code>OfferStatusTypeId=4</code>.</p>
+      <p>Две проблемные заявки имеют <code>IsDirectPayment=true</code> и идут через <code>InitOsagoDirectPayment</code>. В обработчике ошибки этой ветки <code>InitDirectPaymentStatusType=Error</code> устанавливается всегда, но основной <code>OfferStatus</code> меняется только для <code>ApplicationType.PreparedProlongation</code>. Обе заявки имеют <code>ApplicationTypeId=1</code> (новая заявка), поэтому условие не выполнилось и статус 5 остался прежним.</p>
+      <p><strong>Корневая причина:</strong> ветка прямой оплаты не синхронизирует ошибку подготовки договора с основным статусом обычного нового оффера. Это общее поведение обработчика, которое для пул-кейса Ugoria нарушает ожидаемую бизнес-логику.</p>
+    </section>
+    <section class="card">
       <h2>Подтверждения</h2>
-      <ul><li>Точный <code>InsurerId</code> Ugoria: <code>3ECF7469-079E-42A7-9C55-FBA2291DACBC</code>.</li><li>У обоих заявок сначала была категория <code>A</code>, затем на endpoint <code>/policy/{policyId}/info</code> — <code>R</code>; категория <code>R</code> является положительным пул-признаком.</li><li>В <code>PublicApiLogs</code> после выбора оффера были успешные вызовы <code>InitOsagoDirectPayment</code>. Ожидаемой бизнес-ошибки для пула не зафиксировано.</li><li>В <code>Applications</code>: <code>SelectedOfferId</code> совпадает с указанным OfferId, <code>IsPaid=false</code>.</li></ul>
-      <p class="small">Источник: read-only выборки из InsappLogProd и InsappCoreProd. Полный поиск по последним двум дням в UgoriaLogs не выполнялся: его план содержал небезопасный Clustered Index Scan; проверка ограничена двумя офферами из заданного часа.</p>
+      <ul><li>Точный <code>InsurerId</code> Ugoria: <code>3ECF7469-079E-42A7-9C55-FBA2291DACBC</code>.</li><li>У обеих заявок категория на <code>/policy/{policyId}/info</code> сменилась с <code>A</code> на <code>R</code>; категория <code>R</code> является положительным пул-признаком.</li><li><code>InitOsagoDirectPayment</code> прошёл состояния <code>Processing → Error</code>, но основной статус оффера не изменился.</li><li>Контрольная обычная заявка <code>08DEE66A-1223-A64F-25C3-3E165C482291</code> с тем же <code>OfferTypeId=15</code> корректно получила <code>OfferStatusTypeId=4</code> через <code>GetOsagoPaymentLink</code>.</li><li>В <code>Applications</code>: оба проблемных оффера выбраны, <code>IsDirectPayment=true</code>, <code>ApplicationTypeId=1</code>, <code>IsPaid=false</code>.</li></ul>
+      <p class="small">Источники: read-only выборки из InsappLogProd и InsappCoreProd; локальный код Insapp, ветка develop, commit 60FE1646989AB9050693F9948C88C465F16246F7. Проверка ограничена интервалом 20.07.2026 17:00:00–18:00:00 МСК.</p>
     </section>
     <section class="card">
       <h2>Утверждённый scope</h2>
