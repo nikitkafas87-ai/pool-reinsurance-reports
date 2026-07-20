@@ -97,8 +97,8 @@
       "href": "cache/prod/2026-07-20-ugoria-approved-pool/",
       "alias": "Ugoria",
       "status": "кеш не изменялся",
-      "lastResult": "Для обычной оплаты подтверждено OfferStatusTypeId=4 при бизнес-ошибке; два прямых платежа сохранили OfferStatusTypeId=5 из-за условия PreparedProlongation.",
-      "summary": "Очищенный снимок дополнен сравнением обработчиков обычной и прямой оплаты. Prod-кеш не изменялся."
+      "lastResult": "Для обычной оплаты подтверждено Failed, OfferStatusTypeId=4, с преобразованием в Rejected для партнёра; два прямых платежа сохранили OfferStatusTypeId=5.",
+      "summary": "Очищенный снимок дополнен моделью внутренних и партнёрских статусов. Prod-кеш не изменялся."
     }
   ]
 }
