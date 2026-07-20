@@ -97,8 +97,8 @@
       "href": "cache/prod/2026-07-20-ugoria-approved-pool/",
       "alias": "Ugoria",
       "status": "кеш не изменялся",
-      "lastResult": "Два прямых платежа получили Error в OsagoInitDirectPaymentStatus, но основной OfferStatusTypeId остался 5; узкое условие PreparedProlongation пришло из INS-3188.",
-      "summary": "Очищенный снимок дополнен мотивацией условия: неактуальность и партнёрская выгрузка автопролонгаций без изменения прежнего поведения остальных процессов. Prod-кеш не изменялся."
+      "lastResult": "Для обычной оплаты подтверждено OfferStatusTypeId=4 при бизнес-ошибке; два прямых платежа сохранили OfferStatusTypeId=5 из-за условия PreparedProlongation.",
+      "summary": "Очищенный снимок дополнен сравнением обработчиков обычной и прямой оплаты. Prod-кеш не изменялся."
     }
   ]
 }

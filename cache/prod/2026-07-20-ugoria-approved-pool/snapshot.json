@@ -35,7 +35,7 @@
           "isPaid": false
         }
       ],
-      "rootCause": "Ветка InitOsagoDirectPayment фиксирует Error в статусе подготовки прямой оплаты, но меняет основной OfferStatus только для PreparedProlongation; это условие добавлено в INS-3188 для неактуальности и партнёрской выгрузки автопролонгаций с сохранением прежнего поведения остальных процессов. Новые заявки сохраняют OfferStatusTypeId=5."
+      "rootCause": "Ветка InitOsagoDirectPayment фиксирует Error в статусе подготовки прямой оплаты, но меняет основной OfferStatus только для PreparedProlongation; это условие добавлено в INS-3188 для неактуальности и партнёрской выгрузки автопролонгаций. Ветка обычной оплаты ProcessType.Basic при бизнес-ошибке безусловно устанавливает OfferStatusTypeId=4 и не проверяет ApplicationType."
     }
   ]
 }
