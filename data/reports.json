@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-20 18:24",
+  "updatedAt": "2026-07-21 13:44",
   "dev": [
     {
       "date": "2026-05-29 16:11 +03:00",
@@ -61,6 +61,16 @@
       "insurers": "Pari",
       "status": "пройдено",
       "summary": "Данные из reins.json воспроизвели pool-кейс ПАРИ: на GET /contracts/info/{id} получено reinsurance=true; Core обработал оффер как Reinsurance: OfferStatusTypeId=4, OfferTypeId=4. Отчёт расширен составом входных полей; ПДн и секреты скрыты."
+    },
+    {
+      "date": "2026-07-21 13:44",
+      "environment": "Тест",
+      "title": "INS-3716 - Ugoria - типы офферов и оплата",
+      "slug": "2026-07-21-ins-3716-ugoria-test",
+      "href": "reports/dev/2026-07-21-ins-3716-ugoria-test/",
+      "insurers": "Ugoria; в отчёте приведён полный утверждённый scope",
+      "status": "требуется ручная проверка",
+      "summary": "New, ChangeInsurer и Prolongation подтверждены в Core. Basic и DirectPayment остановлены ошибками тестового сервиса Ugoria; ссылок нет, ErrorLogs пуст. Код пишет SegmentationRejected=9, хотя INS-3716 требует OfferStatusTypeId=3."
     }
   ],
   "prod": [

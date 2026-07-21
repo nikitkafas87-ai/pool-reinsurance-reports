@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-20 18:24",
+  "updatedAt": "2026-07-21 13:44",
   "dev": [
     {
       "date": "2026-05-29 16:41 +03:00",
@@ -65,6 +65,17 @@
       "status": "рабочий источник",
       "lastResult": "Данные reins.json воспроизвели reinsurance=true на /contracts/info/{id}; Core offer получил OfferTypeId=4.",
       "summary": "Расширенный snapshot содержит структуру policyOsago, vehicleData, participants, documents и address; ПДн, request bodies/API keys и секреты скрыты. ApplicationId 08ded376-5ee1-83ef-bee7-43366c0780a5."
+    },
+    {
+      "date": "2026-07-21 13:44",
+      "environment": "Тест",
+      "title": "Снимок источников Ugoria для INS-3716",
+      "slug": "2026-07-21-ins-3716-ugoria-test",
+      "href": "cache/dev/2026-07-21-ins-3716-ugoria-test/",
+      "alias": "Ugoria",
+      "status": "нет рабочего pool-источника",
+      "lastResult": "Три OfferType подтверждены, но положительный pool-сигнал и ссылка не получены из-за состояния тестового сервиса Ugoria.",
+      "summary": "Исходный active-source-cache.test.json не изменялся. Новая working-запись не создана, обязательный self-check не пройден."
     }
   ],
   "prod": [

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Снимок источников Ugoria для INS-3716</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#f4f7fb;color:#17263b;font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}header{background:linear-gradient(120deg,#122238,#274363);color:#fff;padding:30px max(22px,calc((100vw - 1150px)/2))}h1{margin:0;font-size:26px}main{max-width:1150px;margin:auto;padding:22px}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.metric,.card{background:#fff;border:1px solid #dbe4ef;border-radius:12px;padding:16px;margin-bottom:14px}.metric b{font-size:27px;display:block}.metric span{color:#5d6c7e;font-size:13px}.shell{overflow:auto;border:1px solid #dbe4ef;border-radius:10px}table{border-collapse:collapse;width:100%;min-width:760px}th{position:sticky;top:0;background:#172a42;color:#fff;text-align:left;padding:10px;font-size:12px}td{padding:10px;border-top:1px solid #e8eef5;font-size:13px;vertical-align:top}.pill{display:inline-block;padding:3px 8px;border-radius:999px;background:#edf1f5;color:#4d5a69;font-weight:700;font-size:12px}.warn{background:#fff0c9;color:#9a670d}.search{min-width:245px;padding:9px 11px;border:1px solid #dbe4ef;border-radius:8px;margin:0 0 12px}code{font-size:12px}@media(max-width:760px){.metrics{grid-template-columns:1fr}header{padding:24px 16px}main{padding:16px}}
+  </style>
+</head>
+<body>
+  <header><h1>Снимок источников Ugoria для INS-3716</h1><p>Тестовая среда, 21.07.2026. Без API-ключей, тел запросов и персональных данных.</p></header>
+  <main>
+    <section class="metrics"><div class="metric"><b>0</b><span>replay-ready pool-источников</span></div><div class="metric"><b>3</b><span>найденных OfferType</span></div><div class="metric"><b>0</b><span>изменений исходного кеша</span></div></section>
+    <section class="card">
+      <p><code>active-source-cache.test.json</code> прочитан. Записи Ugoria, которая прошла бы обязательный self-check с категорией <code>R</code>, <code>R1</code> или <code>M</code>, нет. Новая working-запись не создавалась.</p>
+      <input id="q" class="search" placeholder="Поиск по таблице">
+      <div class="shell"><table id="t"><thead><tr><th>Источник</th><th>Тип</th><th>Результат</th><th>Решение по кешу</th></tr></thead><tbody>
+        <tr><td><code>08DEE664-1CAA-3227-BEE7-43325401CB3F</code></td><td>New</td><td>Non-pool <code>A/A1</code>, сбой <code>direct_acquiring</code></td><td><span class="pill warn">не добавлен</span></td></tr>
+        <tr><td><code>08DEE708-1C8C-B235-BEE7-43284C07675A</code></td><td>ChangeInsurer</td><td>Non-pool <code>A1</code>, <code>Service unavailable</code></td><td><span class="pill warn">не добавлен</span></td></tr>
+        <tr><td><code>08DED1C9-37B7-47B8-BEE7-434134028869</code></td><td>Prolongation</td><td>DirectPayment завершился <code>Error</code>, <code>Service unavailable</code></td><td><span class="pill warn">не добавлен</span></td></tr>
+        <tr><td><code>08DEE712-09DA-0FA6-BEE7-4328700752CF</code></td><td>Новый синтетический</td><td>Ugoria отклонила расчёт до оплаты</td><td><span class="pill warn">не добавлен</span></td></tr>
+      </tbody></table></div>
+    </section>
+  </main>
+  <script>let q=document.getElementById('q');q.addEventListener('input',()=>document.querySelectorAll('#t tbody tr').forEach(r=>r.style.display=r.textContent.toLowerCase().includes(q.value.toLowerCase())?'':'none'));</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+{
+  "environment": "Тест",
+  "checkedAt": "2026-07-21T13:44:00+03:00",
+  "mode": "целевая активная проверка Ugoria",
+  "cacheFile": "active-source-cache.test.json",
+  "cacheUpdated": false,
+  "strictPoolStatus": "требуется ручная проверка",
+  "poolSignalReproduced": false,
+  "insurerId": "3ECF7469-079E-42A7-9C55-FBA2291DACBC",
+  "offerTypeCounts": {
+    "period": "2026-06-21T00:00:00+03:00/2026-07-21T23:59:59+03:00",
+    "new": 2683,
+    "prolongation": 4,
+    "changeInsurer": 749
+  },
+  "sources": [
+    {
+      "applicationId": "08DEE664-1CAA-3227-BEE7-43325401CB3F",
+      "offerId": "08DEE664-1D05-7046-BEE7-43325401CC1F",
+      "offerTypeId": 1,
+      "offerStatusTypeId": 4,
+      "osagoPaymentLinkStatus": 3,
+      "result": "Non-pool A/A1; сервис acquiring не инициализирован",
+      "promotedToWorking": false
+    },
+    {
+      "applicationId": "08DEE708-1C8C-B235-BEE7-43284C07675A",
+      "offerId": "08DEE708-1CBE-52EA-BEE7-43284C076879",
+      "offerTypeId": 3,
+      "offerStatusTypeId": 4,
+      "osagoPaymentLinkStatus": 3,
+      "result": "Non-pool A1; Service unavailable при создании договора",
+      "promotedToWorking": false
+    },
+    {
+      "applicationId": "08DED1C9-37B7-47B8-BEE7-434134028869",
+      "offerId": "08DED1C9-3AEE-4D3D-BEE7-43413402894A",
+      "offerTypeId": 2,
+      "offerStatusTypeId": 5,
+      "osagoInitDirectPaymentStatus": 3,
+      "result": "DirectPayment Error; Service unavailable при создании договора",
+      "promotedToWorking": false
+    }
+  ],
+  "selfCheck": {
+    "positivePoolSignal": false,
+    "coreOfferVerified": true,
+    "paymentLinkReceived": false,
+    "errorLogsCount": 0,
+    "passed": false
+  }
+}
