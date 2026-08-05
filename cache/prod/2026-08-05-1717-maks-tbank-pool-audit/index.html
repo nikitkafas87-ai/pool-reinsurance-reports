@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>МАКС — безопасный снимок Prod-кеша</title>
+  <style>*{box-sizing:border-box}:root{--bg:#f4f7fb;--panel:#fff;--ink:#172033;--muted:#667085;--line:#dfe6ef;--header:#243447;--ok:#147a4f;--warn:#9b6a19;--shadow:0 12px 30px rgba(23,32,51,.08)}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}.hero{background:linear-gradient(135deg,#172033,#315d9c);color:#fff;padding:36px max(20px,calc((100% - 1080px)/2))}.hero h1{margin:0;font-size:28px}.hero p{color:#dce8f7}.wrap{max-width:1080px;margin:auto;padding:24px 20px 48px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);padding:20px}.tools{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:12px 0}.search{width:min(100%,340px);padding:9px 11px;border:1px solid #cbd5e1;border-radius:8px}.search:focus{outline:3px solid #315d9c33}.table-shell{overflow:auto;border:1px solid var(--line);border-radius:8px}table{width:100%;border-collapse:separate;border-spacing:0;min-width:900px}th{position:sticky;top:0;background:var(--header);color:#fff;text-align:left;padding:10px;font-size:12px}td{padding:10px;border-top:1px solid #eef1f5;vertical-align:top}.working{color:var(--ok);font-weight:800}.stale{color:var(--warn);font-weight:800}.muted{color:var(--muted)}code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px}</style>
+</head>
+<body>
+  <header class="hero"><h1>МАКС — безопасный снимок Prod-кеша</h1><p>Состояние источников после точечной проверки заявок Т‑Банка · 5 августа 2026 года, 17:17 МСК</p></header>
+  <main class="wrap">
+    <section class="panel">
+      <h2>Кеш не изменялся</h2>
+      <p>Проверялись существующие заявки, поэтому replay-ready данные не использовались и статусы источников не менялись. Снимок содержит только безопасные метаданные.</p>
+      <div class="tools"><span class="muted" id="shown">Показано: 2 из 2</span><input id="q" class="search" type="search" placeholder="Поиск по источникам" aria-label="Поиск по источникам"></div>
+      <div class="table-shell"><table id="sources"><thead><tr><th>Статус</th><th>Source ApplicationId</th><th>Дата сигнала</th><th>Таблица / правило</th><th>InsurerId</th><th>Последний результат</th></tr></thead><tbody>
+        <tr><td class="working">рабочий</td><td><code>08DED2BC-1898-9A49-25C3-3E3A3813124A</code></td><td>25.06.2026 16:17:57 +03:00</td><td><code>MaksLogs</code><br><code>&lt;re&gt;Y&lt;/re&gt;</code></td><td><code>4BADA4F8-3EB6-4372-BE71-59591D37455C</code></td><td>Активное воспроизведение ранее подтвердило пул и обязательный <code>UpsaleType=20 / IsOptional=0</code>.</td></tr>
+        <tr><td class="stale">устаревший</td><td><code>08DEC2CE-0102-5855-25C3-3E23581DD99E</code></td><td>05.06.2026 09:46:34 +03:00</td><td><code>MaksLogs</code><br>экранированный XML <code>re=Y</code></td><td><code>4BADA4F8-3EB6-4372-BE71-59591D37455C</code></td><td>Повтор вернул МАКС 404; источник заменён рабочим.</td></tr>
+      </tbody></table></div>
+      <p class="muted">Тела анкет, API-ключи, base64-поля и персональные данные исключены.</p>
+    </section>
+  </main>
+  <script>const q=document.querySelector('#q'),rows=[...document.querySelectorAll('#sources tbody tr')],shown=document.querySelector('#shown');function apply(){const s=q.value.trim().toLowerCase();let n=0;rows.forEach(r=>{const v=!s||r.textContent.toLowerCase().includes(s);r.hidden=!v;if(v)n++});shown.textContent=`Показано: ${n} из ${rows.length}`}q.addEventListener('input',apply);</script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>МАКС — проверка признака пула по заявкам Т-Банка</title>
+  <style>
+    *{box-sizing:border-box}:root{--bg:#f4f7fb;--panel:#fff;--ink:#172033;--muted:#667085;--line:#dfe6ef;--header:#243447;--blue:#315d9c;--ok:#147a4f;--ok-bg:#e6f7ee;--shadow:0 12px 30px rgba(23,32,51,.08)}body{margin:0;background:linear-gradient(180deg,#eef3f9,#f7f9fc 260px,#f4f7fb);color:var(--ink);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}.hero{background:linear-gradient(135deg,#172033,#243447 58%,#315d9c);color:#fff;padding:36px max(20px,calc((100% - 1180px)/2))}.hero h1{margin:0;font-size:30px;line-height:1.2}.hero p{margin:8px 0 0;color:#dce8f7}.wrap{max-width:1180px;margin:auto;padding:24px 20px 48px}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.card,.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow)}.card{padding:16px;border-top:4px solid var(--blue)}.card.ok{border-top-color:var(--ok)}.card b{display:block;font-size:25px}.card span{color:var(--muted);font-size:13px}.panel{margin-top:18px;padding:20px}.verdict{border-left:4px solid var(--ok);background:var(--ok-bg);padding:14px 16px;border-radius:7px}.pill{display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:5px 10px;background:var(--ok-bg);color:var(--ok);font-size:13px;font-weight:800}.pill:before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}.tools{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:12px 0}.search{width:min(100%,360px);padding:9px 11px;border:1px solid #cbd5e1;border-radius:8px;font:inherit}.search:focus{outline:3px solid rgba(49,93,156,.22);border-color:var(--blue)}.table-shell{overflow:auto;max-height:66vh;border:1px solid var(--line);border-radius:8px}table{width:100%;border-collapse:separate;border-spacing:0;min-width:900px}th{position:sticky;top:0;background:var(--header);color:#fff;text-align:left;padding:10px 12px;font-size:12px}td{padding:10px 12px;border-top:1px solid #eef1f5;font-size:13px}tbody tr:hover{background:#f7fbff}code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px}.scope{display:grid;grid-template-columns:190px 1fr;gap:8px 16px}.scope dt{font-weight:800}.scope dd{margin:0}.muted{color:var(--muted)}@media(max-width:760px){.cards{grid-template-columns:repeat(2,1fr)}.scope{grid-template-columns:1fr}.hero h1{font-size:24px}}@media(max-width:480px){.cards{grid-template-columns:1fr}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <h1>МАКС — признак перестраховочного пула в заявках Т‑Банка</h1>
+    <p>Прод · точечная пассивная проверка · период логов 22–30 июля 2026 года, МСК (+03:00)</p>
+  </header>
+  <main class="wrap">
+    <section class="cards" aria-label="Ключевые показатели">
+      <div class="card"><b>26</b><span>заявок МАКС проверено</span></div>
+      <div class="card ok"><b>0</b><span>ответов с точным признаком <code>&lt;re&gt;Y&lt;/re&gt;</code></span></div>
+      <div class="card"><b>26</b><span>ответов с явным <code>&lt;re&gt;N&lt;/re&gt;</code></span></div>
+      <div class="card"><b>0</b><span>обязательных кроссов <code>UpsaleType=20</code></span></div>
+    </section>
+
+    <section class="panel">
+      <span class="pill">Признак пула отсутствует</span>
+      <h2>Итог</h2>
+      <div class="verdict">Ни одна из 26 заявок не является пуловой по правилу МАКС. Во всех заявках страховая явно вернула отрицательный флаг <code>&lt;re&gt;N&lt;/re&gt;</code>; положительного <code>&lt;re&gt;Y&lt;/re&gt;</code> нет. «Ошибка 0» относится к этапу выпуска и сама по себе не является признаком пула.</div>
+    </section>
+
+    <section class="panel">
+      <h2>Может ли причина быть в данных анкеты</h2>
+      <p><strong>Да, для части заявок это подтверждено.</strong> Расчётный маршрут <code>CALC_KBM → SAVE_OSAGO</code> завершался успешно, а окончательная проверка выполнялась отдельно на <code>ISSUE_OSAGO</code>.</p>
+      <table><thead><tr><th>Группа</th><th>Количество</th><th>Что подтверждено</th></tr></thead><tbody>
+        <tr><td>Непрозрачная <code>Ошибка 0</code></td><td>22</td><td>МАКС не назвал поле или правило. В запросах присутствуют <code>contract_id</code>, даты, владелец, страхователь, ТС, водители, документы, КБМ и премия. Во всех 22 дата заключения совпадает с датой выпуска, дата начала полиса не находится в прошлом.</td></tr>
+        <tr><td>Ошибка адреса</td><td>1</td><td><code>ORA-20217</code>: не заполнено обязательное поле «Адрес регистрации по ГАР» для физического лица.</td></tr>
+        <tr><td>Мощность ТС</td><td>2</td><td><code>ORA-20217</code>: переданная мощность и мощность по ФОИВ относятся к разным диапазонам справочника.</td></tr>
+        <tr><td>Транспортная ошибка</td><td>1</td><td><code>502 Bad Gateway</code> от шлюза МАКС; это не ошибка анкеты.</td></tr>
+      </tbody></table>
+      <h3>Обнаруженное различие между сохранением и выпуском</h3>
+      <p>Во всех 26 запросах <code>SAVE_OSAGO</code> передаётся <code>kasko_prg=1162</code>, а во всех 27 попытках <code>ISSUE_OSAGO</code> тег <code>kasko_prg</code> отсутствует. Основные блоки данных при этом присутствуют. Это не доказывает причину <code>Ошибка 0</code>, но требует сверки со спецификацией МАКС: сохранение и выпуск выполняются с разной конфигурацией кросс-программы.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Проверенные источники и правила</h2>
+      <dl class="scope">
+        <dt>Логи</dt><dd><code>InsappLogProd.dbo.MaksLogs</code>, фильтр по 26 точным <code>ApplicationId</code> и периоду <code>2026-07-22T00:00:00+03:00</code> — <code>2026-07-31T00:00:00+03:00</code>.</dd>
+        <dt>Положительный сигнал</dt><dd><code>ResponseBody LIKE N'%&lt;re&gt;Y&lt;/re&gt;%'</code>.</dd>
+        <dt>Отрицательный сигнал</dt><dd><code>ResponseBody LIKE N'%&lt;re&gt;N&lt;/re&gt;%'</code>.</dd>
+        <dt>Офферы</dt><dd><code>InsappCoreProd.dbo.Offers</code>, точный <code>InsurerId=4BADA4F8-3EB6-4372-BE71-59591D37455C</code>.</dd>
+        <dt>Кроссы</dt><dd><code>InsappCoreProd.dbo.Upsales</code>; допустимая выдача пулового оффера МАКС требует <code>UpsaleType=20</code> и <code>IsOptional=0</code>.</dd>
+        <dt>Остальной scope</dt><dd>Absolut, Alfa, AlfaDec, astrovolga, Energogarant, Gelios, Ingos, Intouch, Renis, Reso, Rgs, Sber, Sogaz, Soglasie, Sovkom, Tinkoff, Ugoria, Vsk, Zetta, BSO и Pari не проверялись: пользователь ограничил эту проверку заявками МАКС.</dd>
+      </dl>
+    </section>
+
+    <section class="panel">
+      <h2>Результаты по заявкам</h2>
+      <div class="tools"><span class="muted" id="shown">Показано: 26 из 26</span><input class="search" id="q" type="search" placeholder="Поиск по ApplicationId" aria-label="Поиск по ApplicationId"></div>
+      <div class="table-shell">
+        <table id="apps">
+          <thead><tr><th>ApplicationId</th><th>Точный сигнал пула</th><th>Ответ МАКС</th><th>OfferTypeId</th><th>OfferStatusTypeId</th><th>Обязательный кросс</th></tr></thead>
+          <tbody>
+            <tr><td><code>08dee838-4dcc-8e27-25c3-3e3a4c23148d</code></td><td>нет</td><td><code>re=N</code>; <code>502 Bad Gateway</code></td><td>1</td><td>4</td><td>нет</td></tr>
+            <tr><td><code>08dee87d-d6f7-47fc-25c3-3e3a4c87d951</code></td><td>нет</td><td><code>re=N</code>; Ошибка 0</td><td>1</td><td>4</td><td>нет</td></tr>
+            <tr><td><code>08dee89d-2e06-a283-25c3-3e3a4c2c322a</code></td><td>нет</td><td><code>re=N</code>; Ошибка 0</td><td>1</td><td>4</td><td>нет</td></tr>
+            <tr><td><code>08dee950-25b4-148a-25c3-3e3a4c5ee376</code></td><td>нет</td><td><code>re=N</code>; Ошибка 0</td><td>1</td><td>4</td><td>нет</td></tr>
+            <tr><td><code>08dee977-d845-fd55-25c3-3e3a4c2f0ecd</code></td><td>нет</td><td><code>re=N</code>; адрес регистрации по ГАР</td><td>1</td><td>4</td><td>нет</td></tr>
+            <tr><td><code>08dee983-3fc6-a2da-25c3-3e3a4c5f31c4</code></td><td>нет</td><td><code>re=N</code>; Ошибка 0</td><td>1</td><td>4</td><td>нет</td></tr>
+            <tr><td><code>08dee997-5e0e-8a7c-25c3-3e3a4cadb40a</code></td><td>нет</td><td><code>re=N</code>; Ошибка 0</td><td>1</td><td>4</td><td>нет</td></tr>
+            <tr><td><code>08dee998-7c1e-2fd6-25c3-3e3a4cb1c7c6</code></td><td>нет</td><td><code>re=N</code>; Ошибка 0</td><td>1</td><td>4</td><td>нет</td></tr>
+            <tr><td><code>08dee999-ad84-d245-25c3-3e3a4cb5b0e1</code></td><td>нет</td><td><code>re=N</code>; Ошибка 0</td><td>1</td><td>4</td><td>нет</td></tr>
+            <tr><td><code>08dee99e-7cf5-bea0-25c3-3e3a4cc6ecf1</code></td><td>нет</td><td><code>re=N</code>; Ошибка 0</td><td>1</td><td>4</td><td>нет</td></tr>
+            <tr><td><code>08dee9ab-26f3-9e95-25c3-3e3a4cedde0d</code></td><td>нет</td><td><code>re=N</code>; Ошибка 0</td><td>1</td><td>4</td><td>нет</td></tr>
+            <tr><td><code>08deea54-0a72-59ce-25c3-3e3a4c941fe4</code></td><td>нет</td><td><code>re=N</code>; мощность не совпала с ФОИВ</td><td>1</td><td>4</td><td>нет</td></tr>
+            <tr><td><code>08deea54-6e34-38b6-25c3-3e3a4c9563eb</code></td><td>нет</td><td><code>re=N</code>; мощность не совпала с ФОИВ</td><td>1</td><td>4</td><td>нет</td></tr>
+            <tr><td><code>08deeaff-d257-761b-25c3-3e27a40136d1</code></td><td>нет</td><td><code>re=N</code>; Ошибка 0</td><td>1</td><td>4</td><td>нет</td></tr>
+            <tr><td><code>08deeb11-edb3-90b3-25c3-3e27a4460f95</code></td><td>нет</td><td><code>re=N</code>; Ошибка 0</td><td>1</td><td>4</td><td>нет</td></tr>
+            <tr><td><code>08deeb26-0a2c-8b5c-25c3-3e27a48be21f</code></td><td>нет</td><td><code>re=N</code>; Ошибка 0</td><td>1</td><td>4</td><td>нет</td></tr>
+            <tr><td><code>08deeb67-db83-a1eb-25c3-3e27a4182e92</code></td><td>нет</td><td><code>re=N</code>; Ошибка 0</td><td>1</td><td>4</td><td>нет</td></tr>
+            <tr><td><code>08deebc1-9e12-72c9-25c3-3e27a4160581</code></td><td>нет</td><td><code>re=N</code>; Ошибка 0</td><td>1</td><td>4</td><td>нет</td></tr>
+            <tr><td><code>08deebc6-5d4a-0786-25c3-3e27a431774b</code></td><td>нет</td><td><code>re=N</code>; Ошибка 0</td><td>1</td><td>4</td><td>нет</td></tr>
+            <tr><td><code>08deec4b-a697-5740-25c3-3e27a4bbe4f5</code></td><td>нет</td><td><code>re=N</code>; Ошибка 0</td><td>1</td><td>4</td><td>нет</td></tr>
+            <tr><td><code>08deec56-46d0-fdeb-25c3-3e27a4cb55d4</code></td><td>нет</td><td><code>re=N</code>; Ошибка 0</td><td>1</td><td>4</td><td>нет</td></tr>
+            <tr><td><code>08deec56-8afd-8935-25c3-3e27a4cbdf6b</code></td><td>нет</td><td><code>re=N</code>; Ошибка 0</td><td>1</td><td>4</td><td>нет</td></tr>
+            <tr><td><code>08deec61-21ef-db01-25c3-3e27a4e3db44</code></td><td>нет</td><td><code>re=N</code>; Ошибка 0</td><td>1</td><td>4</td><td>нет</td></tr>
+            <tr><td><code>08deed23-e934-793a-25c3-3e27a45136a8</code></td><td>нет</td><td><code>re=N</code>; Ошибка 0</td><td>1</td><td>4</td><td>нет</td></tr>
+            <tr><td><code>08deed6c-0281-6f3a-25c3-3e27a498d73d</code></td><td>нет</td><td><code>re=N</code>; Ошибка 0</td><td>1</td><td>4</td><td>нет</td></tr>
+            <tr><td><code>08deed6c-d922-64f5-25c3-3e27a49cb056</code></td><td>нет</td><td><code>re=N</code>; Ошибка 0</td><td>1</td><td>4</td><td>нет</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <p class="muted">Проверка не создавала новых заявок и не изменяла Prod-кеш. ПДн, API-ключи и сырые тела запросов не публикуются.</p>
+  </main>
+  <script>const q=document.querySelector('#q'),rows=[...document.querySelectorAll('#apps tbody tr')],shown=document.querySelector('#shown');function apply(){const s=q.value.trim().toLowerCase();let n=0;rows.forEach(r=>{const v=!s||r.textContent.toLowerCase().includes(s);r.hidden=!v;if(v)n++});shown.textContent=`Показано: ${n} из ${rows.length}`}q.addEventListener('input',apply);</script>
+</body>
+</html>
