@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-05 17:17",
+  "updatedAt": "2026-08-12 10:53",
   "dev": [
     {
       "date": "2026-05-29 16:11 +03:00",
@@ -71,6 +71,16 @@
       "insurers": "Ugoria; в отчёте приведён полный утверждённый scope",
       "status": "требуется ручная проверка",
       "summary": "New, ChangeInsurer и Prolongation подтверждены в Core. Basic и DirectPayment остановлены ошибками тестового сервиса Ugoria; ссылок нет, ErrorLogs пуст. Код пишет SegmentationRejected=9, хотя INS-3716 требует OfferStatusTypeId=3."
+    },
+    {
+      "date": "2026-08-12 10:53",
+      "environment": "ДЭВ/тест",
+      "title": "Проверка пула ОСАГО — полный активный прогон",
+      "slug": "2026-08-12-1053-full-dev-pool",
+      "href": "reports/dev/2026-08-12-1053-full-dev-pool/",
+      "insurers": "22 утверждённые СК",
+      "status": "пул не воспроизведён",
+      "summary": "9 проверок пройдено; Vsk не воспроизвёл пул после трёх ответов 503; для 6 СК нет источника, ещё 6 требуют ручной проверки."
     }
   ],
   "prod": [

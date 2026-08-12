@@ -1,0 +1,26 @@
+{
+  "версия": 1,
+  "среда": "ДЭВ с тестовыми базами",
+  "обновлено": "2026-08-12T10:53:00+03:00",
+  "сводка": {
+    "рабочие": 9,
+    "устаревшие": 5,
+    "всего": 14
+  },
+  "источники": [
+    {"страховщик":"Absolut","статус":"рабочий","sourceApplicationId":"08debd78-85e4-e64c-bee7-4317b405f3b7","lastPositiveNewApplicationId":"08def845-d730-527b-bee7-4345b4062e13","признак":"reinsurance=true"},
+    {"страховщик":"Alfa","статус":"рабочий","sourceApplicationId":"08debd5c-1138-0e89-bee7-4316cc091392","lastPositiveNewApplicationId":"08def845-c4dc-7a80-bee7-4345b4061b2b","признак":"reinsurance=true"},
+    {"страховщик":"Reso","статус":"рабочий","sourceApplicationId":"08debd5c-1138-0e89-bee7-4316cc091392","lastPositiveNewApplicationId":"08def845-c4dc-7a80-bee7-4345b4061b2b","признак":"Calculate2Response Commission=0.0"},
+    {"страховщик":"Gelios","статус":"рабочий","sourceApplicationId":"08debcc2-e6be-072c-bee7-4316cc074b3e","lastPositiveNewApplicationId":"08def845-c6c3-8d35-bee7-4345b4061c0d","признак":"isReinsured=true"},
+    {"страховщик":"Soglasie","статус":"рабочий","sourceApplicationId":"08debbdd-bb4d-c3e1-bee7-43277c009ebd","lastPositiveNewApplicationId":"08def845-c862-312e-bee7-4345b4061f33","признак":"param id=6463 result=1"},
+    {"страховщик":"Energogarant","статус":"устарел","sourceApplicationId":"08debd60-6da3-610e-bee7-4316cc093330","причина":"ошибка страховщика"},
+    {"страховщик":"Energogarant","статус":"устарел","sourceApplicationId":"08debd5f-d59c-3a30-bee7-4316cc09291e","причина":"ошибка страховщика"},
+    {"страховщик":"Energogarant","статус":"устарел","sourceApplicationId":"08debd5f-3c38-2112-bee7-4316cc092535","причина":"ошибка страховщика"},
+    {"страховщик":"astrovolga","статус":"рабочий","sourceApplicationId":"08DEC7D4-5B3E-48E8-BEE7-43231C02CEFA","lastPositiveNewApplicationId":"08def845-ca54-9f1b-bee7-4345b40621dd","признак":"transferToPool=true"},
+    {"страховщик":"Maks","статус":"рабочий","sourceApplicationId":"08DEC6FB-1410-F85A-BEE7-43069C0183BE","lastPositiveNewApplicationId":"08def845-cbd7-1c9e-bee7-4345b406243b","признак":"re=Y"},
+    {"страховщик":"Energogarant","статус":"устарел","sourceApplicationId":"08ded2bd-8005-77a0-bee7-432bf806a50d","lastTriedNewApplicationId":"08def845-cdb9-9fb9-bee7-4345b40626ab","причина":"сегментация тестовой учётной записи не настроена"},
+    {"страховщик":"Intouch","статус":"рабочий","sourceApplicationId":"08def846-14af-2235-bee7-4345b406335e","lastPositiveNewApplicationId":"08def846-14af-2235-bee7-4345b406335e","признак":"isReinsurance=true или isExtraPool=true"},
+    {"страховщик":"Renis","статус":"рабочий","sourceApplicationId":"08def846-14af-2235-bee7-4345b406335e","lastPositiveNewApplicationId":"08def846-14af-2235-bee7-4345b406335e","признак":"getAccountStatus: isReinsurance=true или isExtraPool=true"},
+    {"страховщик":"Vsk","статус":"устарел","sourceApplicationId":"08def846-1613-25b2-bee7-4345b406355e","lastTriedNewApplicationId":"08def846-8c41-af72-bee7-4345b4064704","причина":"три ответа 503 ServiceUnavailable, положительный сигнал не воспроизведён"}
+  ]
+}
