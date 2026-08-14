@@ -1,0 +1,15 @@
+{
+  "environment": "prod",
+  "insurer": "Ugoria",
+  "status": "working",
+  "sourceApplicationId": "08DEC270-AE4F-9CE8-25C3-3E23588A5075",
+  "sourceSignalDate": "2026-06-04T19:46:24.7718149Z",
+  "logTable": "UgoriaLogs",
+  "signalPattern": "data.return.category in R/R1/M",
+  "insurerId": "3ECF7469-079E-42A7-9C55-FBA2291DACBC",
+  "lastUsedAt": "2026-06-25T16:35:00+03:00",
+  "lastResult": "passed",
+  "lastPositiveAt": "2026-06-25T16:34:34.2996567+03:00",
+  "lastPositiveNewApplicationId": "08ded2be-65cf-2a42-25c3-3e3a381ee340",
+  "changedByThisCheck": false
+}
