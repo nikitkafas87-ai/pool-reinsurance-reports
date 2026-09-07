@@ -1,0 +1,12 @@
+{
+  "версия": 1,
+  "среда": "DF с тестовыми базами",
+  "обновлено": "2026-09-07T15:29:11+03:00",
+  "страховщик": "СОГАЗ",
+  "статус": "рабочий",
+  "sourceApplicationId": "08df042b-e0f3-5672-bee7-433d7000e121",
+  "lastPositiveNewApplicationId": "08df0cdb-96ef-71d5-bee7-430c1005ad8d",
+  "признак": "processingResult.reinsured=true; offerRequired отсутствует",
+  "оффер": {"OfferId":"08df0cdb-98d0-b4b3-bee7-430c1005ae4f","OfferStatusTypeId":9,"OfferTypeId":4},
+  "примечание": "Очищенный снимок без API-ключей, анкеты, персональных данных и тел запросов."
+}
