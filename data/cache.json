@@ -91,12 +91,12 @@
     {
       "date": "2026-09-07 15:29 +03:00",
       "environment": "ДЭВ/тест",
-      "title": "Снимок кэша СОГАЗ после свежего DF replay",
-      "slug": "2026-09-07-sogaz-df-source",
-      "href": "cache/dev/2026-09-07-sogaz-df-source/",
-      "alias": "СОГАЗ",
+      "title": "Снимок кэша СК «21 век» после свежего DF replay",
+      "slug": "2026-09-07-vek21-df-source",
+      "href": "cache/dev/2026-09-07-vek21-df-source/",
+      "alias": "Vek21",
       "status": "рабочий",
-      "lastResult": "Свежая заявка 08df0cdb-96ef-71d5-bee7-430c1005ad8d воспроизвела точный признак пула; Core-оффер имеет корректные статус и тип 9/4.",
+      "lastResult": "Свежая заявка 08df0cdb-96ef-71d5-bee7-430c1005ad8d воспроизвела ReinsuranceRSA=true; Core-оффер имеет статус и тип 3/4.",
       "summary": "Очищенный снимок метаданных без API-ключей, анкеты, персональных данных и тел запросов."
     }
   ],

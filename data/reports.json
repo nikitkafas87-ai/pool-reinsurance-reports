@@ -85,12 +85,12 @@
     {
       "date": "2026-09-07 15:29 +03:00",
       "environment": "ДЭВ/тест",
-      "title": "СОГАЗ — подтверждение рабочего источника пула",
-      "slug": "2026-09-07-sogaz-df-source",
-      "href": "reports/dev/2026-09-07-sogaz-df-source/",
-      "insurers": "СОГАЗ; остальные 21 СК вне целевого объёма",
+      "title": "21 век — подтверждение рабочего источника пула",
+      "slug": "2026-09-07-vek21-df-source",
+      "href": "reports/dev/2026-09-07-vek21-df-source/",
+      "insurers": "Двадцать первый век; остальные СК вне целевого объёма",
       "status": "пройдено",
-      "summary": "Свежий DF replay воспроизвёл processingResult.reinsured=true; точный оффер СОГАЗа имеет OfferStatusTypeId=9 и OfferTypeId=4; источник кэша переведён в рабочий статус."
+      "summary": "Свежий DF replay воспроизвёл ReinsuranceRSA=true; точный оффер СК «Двадцать первый век» имеет OfferStatusTypeId=3 и OfferTypeId=4; источник анкеты сохранён в кэше."
     }
   ],
   "prod": [
